@@ -4,8 +4,30 @@
   padding: 0 1rem;
 }
 
+.hidden {
+  display: none;
+}
+
 a {
   text-decoration: none;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 27pt;
+}
+
+h1:hover {
+  color: #1913c9;
+}
+
+h1:active {
+  transform: translateY(4px);
+}
+
+h2 {
+  font-style: italic;
+  font-weight: 200;
 }
 
 .Arts {
@@ -78,23 +100,7 @@ a {
   background-color: blue;
 }
 
-h1 {
-  font-weight: 800;
-  font-size: 27pt;
-}
 
-h1:hover {
-  color: #1913c9;
-}
-
-h1:active {
-  transform: translateY(4px);
-}
-
-h2 {
-  font-style: italic;
-  font-weight: 200;
-}
 
 .medium {
   margin-top: 30px;
