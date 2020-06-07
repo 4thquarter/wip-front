@@ -52,8 +52,14 @@ function App() {
 		});
 	}, [completedUsername, history, username]);
   
-
   
+  // easy fix for weird state problems
+  window.onload = () => {
+		// console.log('window onloading');
+		if (window.location.pathname != '/') {
+			window.location.assign('/');
+		}
+	};
   
   function userButtonClick(event) {
 		if (event.target.getAttribute('name') === 'user') {
@@ -293,16 +299,20 @@ function App() {
               
 							{/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
 				 			<div className={hideUserOptions ? 'hidden' : 'user'}>
+                 
       							<Link to='/signup'>
       								<h2 className="navSignButton">sign up</h2>
       							</Link>
       							<Link to='/signin'>
       								<h2 className="navSignButton">sign in</h2>
       							</Link>
+                    
 							</div>
+              
               <Link to="/about">
                 <h2 className="about">about</h2>
               </Link>
+              
               <Arts artData={artData} error={error}/>
             </>
           )
@@ -340,7 +350,7 @@ function App() {
 						return (
 							<>
 								<Link to='/'>
-									<h1 className='header'>paperclip//sign up</h1>
+									<h1 className='header'>"User Art" // sign up</h1>
 								</Link>
 								<SignUp
 									handleChange={handleChange}
@@ -358,7 +368,7 @@ function App() {
 						return (
 							<>
 								<Link to='/'>
-									<h1 className='header'>paperclip//sign in</h1>
+									<h1 className='header'>"User Art" // sign in</h1>
 								</Link>
 								<SignIn
 									handleChange={handleChange}
