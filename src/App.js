@@ -271,7 +271,7 @@ function App() {
   return (
     <div className='wrapper'>
       <main>
-        <Route path="/" render={() => {
+        <Route path="/" exact={true} render={() => {
           return (
             <>
               <a href=''><h1 className="header" onClick={getArtData}>"User Art"</h1></a>
@@ -344,6 +344,55 @@ function App() {
           )
         }}
         />
+        <Route
+					path='/user'
+					render={() => {
+						return (
+							<>
+								<a href=''><h1 className="header" onClick={getArtData}>"User Art"</h1></a>
+                
+                {/* USER BUTTON */}
+                <div className={hideUserOptions ? 'user' : 'hidden'}>
+  									
+                    {/* GENERIC USER HEADER */}
+                    <h2
+                      onClick={userButtonClick}
+                      className={completedUsername ? 'hidden' : 'user'}
+                      name='user'>
+                      user
+                    </h2>
+                    
+                    {/* USERNAME HEADER */}
+                    <Link to={completedUsername ? `${completedUsername}` : 'user'}>
+                      <h2
+                        className={completedUsername ? 'user' : 'hidden'}
+                        name='completedUsername'>
+                        {completedUsername}
+                      </h2>
+                    </Link>
+                </div>
+            
+                {/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
+                <div className={hideUserOptions ? 'hidden' : 'user'}>
+                   
+                      <Link to='/signup'>
+                        <h2 className="navSignButton">sign up</h2>
+                      </Link>
+                      <Link to='/signin'>
+                        <h2 className="navSignButton">sign in</h2>
+                      </Link>
+                      
+                </div>
+            
+            <Link to="/about">
+              <h2 className="about">about</h2>
+            </Link>
+            
+            <Arts artData={artData} error={error}/>
+							</>
+						);
+					}}
+				/>
         <Route
 					path='/signup'
 					render={() => {
