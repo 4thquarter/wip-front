@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Route, Link, useHistory } from "react-router-dom";
 import "./App.css";
+
 import Arts from "./components/Arts.js"
 import Art from "./components/Art.js"
+
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import User from './components/User';
+
 import About from "./components/About"
+
 
 
 
