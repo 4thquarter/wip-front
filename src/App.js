@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Route, Link, useHistory } from "react-router-dom";
+
+import useHorizontal from '@oberon-amsterdam/horizontal';
+
 import "./App.css";
 
 import Arts from "./components/Arts.js"
@@ -15,6 +18,9 @@ import About from "./components/About"
 
 
 function App() {
+  
+  
+  // useHorizontal();
   
   
   const [artData, setartData] = useState([]);
