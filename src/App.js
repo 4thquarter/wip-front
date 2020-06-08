@@ -64,7 +64,6 @@ function App() {
   function userButtonClick(event) {
 		if (event.target.getAttribute('name') === 'user') {
       setHideUserOptions(false);
-      history.push('/user')
 		}
 		// if (event.target.getAttribute('name') === 'completedUsername') {
 		// 	setHideInventory(false);
@@ -102,7 +101,6 @@ function App() {
     //SIGNING IN AND UP
     
     
-    
     function handleChange(event) {
       // eslint-disable-next-line default-case
       // console.log('handling change');
@@ -126,6 +124,16 @@ function App() {
       }
     }
     
+    
+    
+    
+    
+    
+    
+    function submitArt(event) {
+      console.log('art submitted');
+      
+    }
     
     
     let signUpInformation;
@@ -268,6 +276,13 @@ function App() {
     }
     
     
+    
+    
+    
+    
+    
+    
+    
   return (
     <div className='wrapper'>
       <main>
@@ -278,7 +293,8 @@ function App() {
               
               {/* USER BUTTON */}
               <div className={hideUserOptions ? 'user' : 'hidden'}>
-									
+                <Link to={completedUsername ? `${completedUsername}` : 'user'}>
+                  
 										{/* GENERIC USER HEADER */}
 										<h2
                       onClick={userButtonClick}
@@ -288,13 +304,13 @@ function App() {
 										</h2>
                     
                     {/* USERNAME HEADER */}
-                    <Link to={completedUsername ? `${completedUsername}` : 'user'}>
-											<h2
-												className={completedUsername ? 'user' : 'hidden'}
-												name='completedUsername'>
-												{completedUsername}
-											</h2>
-										</Link>
+										<h2
+											className={completedUsername ? 'user' : 'hidden'}
+											name='completedUsername'>
+											{completedUsername}
+										</h2>
+                    
+								  </Link>
 							</div>
               
 							{/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
@@ -353,22 +369,22 @@ function App() {
                 
                 {/* USER BUTTON */}
                 <div className={hideUserOptions ? 'user' : 'hidden'}>
-  									
-                    {/* GENERIC USER HEADER */}
-                    <h2
-                      onClick={userButtonClick}
-                      className={completedUsername ? 'hidden' : 'user'}
-                      name='user'>
-                      user
-                    </h2>
-                    
-                    {/* USERNAME HEADER */}
-                    <Link to={completedUsername ? `${completedUsername}` : 'user'}>
+                  <Link to={completedUsername ? `${completedUsername}` : 'user'}>
+                      {/* NOT LOGGED IN HEADER */}
+                      <h2
+                        onClick={userButtonClick}
+                        className={completedUsername ? 'hidden' : 'user'}
+                        name='user'>
+                        user
+                      </h2>
+                      
+                      {/* LOGGED IN HEADER */}
                       <h2
                         className={completedUsername ? 'user' : 'hidden'}
                         name='completedUsername'>
                         {completedUsername}
                       </h2>
+                      
                     </Link>
                 </div>
             
@@ -425,6 +441,19 @@ function App() {
 									hideSignIn={hideSignIn}
 									isUserFound={isUserFound}
 								/>
+							</>
+						);
+					}}
+				/>
+        <Route
+					path={'/' + completedUsername}
+					render={() => {
+						return (
+							<>
+								<Link to='/'>
+									<h1 className='header'>"User Art" // {completedUsername}</h1>
+								</Link>
+                <User handleChange={handleChange} submitArt={submitArt} />
 							</>
 						);
 					}}
