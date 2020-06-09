@@ -18,11 +18,8 @@ import About from "./components/About"
 
 
 function App(props) {
-  
-  const refContainer = useRef(0);
-  
+    
   // useHorizontal();
-  
   
   const [artData, setartData] = useState([]);
   const [error, setError] = useState('')
@@ -340,33 +337,7 @@ function App(props) {
       <main>
         <Route path="/" exact={true} render={() => {
           return (
-            <>
-              {/* <a href=''><h1 className="header" onClick={getArtData}>"User Art"</h1></a> */}
-              
-              {/* <div
-                ref={refContainer}
-                onScroll={onScroll}
-                style={{
-                  border: '1px solid black',
-                  width: '600px',
-                  height: '100px',
-                  overflow: 'scroll',
-                }} >
-                <p>This demonstrates how to get the scrollTop position within a scrollable react component.</p>
-                <p>ScrollTop is {scrollValue}</p>
-                <p>This demonstrates how to get the scrollValue position within a scrollable react component.</p>
-                <p>scrollValue is {scrollValue}</p>
-                <p>This demonstrates how to get the scrollValue position within a scrollable react component.</p>
-                <p>scrollValue is {scrollValue}</p>
-                <p>This demonstrates how to get the scrollValue position within a scrollable react component.</p>
-                <p>scrollValue is {scrollValue}</p>
-                <p>This demonstrates how to get the scrollValue position within a scrollable react component.</p>
-                <p>scrollValue is {scrollValue}</p>
-                <p>This demonstrates how to get the scrollValue position within a scrollable react component.</p>
-                <p>scrollValue is {scrollValue}</p>
-              </div> */}
-              
-              
+            <>              
               <div className="circleTextContainer">
                 <svg className="header" viewBox="1 1 1800 200">
                   <path id="curve" fill="none" d="
@@ -412,20 +383,6 @@ function App(props) {
                     </text>
                 </svg>
               </div>
-{/*               
-              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="header">
-
-                <path id="MyPath" fill="none" stroke="red"
-                      d="M10,90 Q90,90 90,45 Q90,10 50,10 Q10,10 10,40 Q10,70 45,70 Q70,70 75,50" />
-
-                <text>
-                  <textPath href="#MyPath" className="circleText">
-                    Quick brown fox jumps over the lazy dog.
-                  </textPath>
-                </text>
-
-              </svg> */}
-                            
               
               {/* USER BUTTON */}
               <div className={hideUserOptions ? 'user' : 'hidden'}>
@@ -600,12 +557,3 @@ function App(props) {
 }
 
 export default App;
-
-/*
-
-URL:
-for basic 10 paintings:
-`https://api.harvardartmuseums.org/object?classification=Paintings&sort=random&hasimage=1&apikey=038ebf20-87f7-11ea-8c88-97e5b91498c3`
-
-
-*/
