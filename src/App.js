@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Route, Link, useHistory } from "react-router-dom";
 
 import useHorizontal from '@oberon-amsterdam/horizontal';
@@ -19,6 +19,7 @@ import About from "./components/About"
 
 function App() {
   
+  const refContainer = useRef(0);
   
   // useHorizontal();
   
@@ -47,6 +48,15 @@ function App() {
 
   
   const history = useHistory();
+  
+  
+  
+  
+  const [scrollValue, setScrollValue] = useState(0)
+  
+  
+  
+  
   
   useEffect(() => {
     console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020')
@@ -288,31 +298,132 @@ function App() {
     
     
     
+    function click1() {
+      console.log('1');
+      
+    }
+    
+    function click2() {
+      console.log('2');
+      
+    }
+    
+    function click3() {
+      console.log('3');
+      
+    }
+    
+    function click4() {
+      console.log('4');
+      
+    }
     
     
+    function onScroll() {
+      const scrollX = window.scrollX //Don't get confused by what's scrolling - It's not the window
+      const scrollValue = refContainer.current.scrollLeft
+      // console.log(`onScroll, window.scrollX: ${scrollX} refContainer.scrollValue: ${scrollValue}`)
+      setScrollValue(scrollValue)
+    }
     
     
-    
+    const navAnimation = {
+      transform: `rotate(${scrollValue/20}deg)`,
+      position: 'absolute'
+      // transformOrigin: '50%50%'
+    };
     
   return (
-    <div className='wrapper'>
+    <div className='wrapper' ref={refContainer} onScroll={onScroll}>
       <main>
         <Route path="/" exact={true} render={() => {
           return (
             <>
-              <a href=''><h1 className="header" onClick={getArtData}>"User Art"</h1></a>
+              {/* <a href=''><h1 className="header" onClick={getArtData}>"User Art"</h1></a> */}
+              
+              {/* <div
+                ref={refContainer}
+                onScroll={onScroll}
+                style={{
+                  border: '1px solid black',
+                  width: '600px',
+                  height: '100px',
+                  overflow: 'scroll',
+                }} >
+                <p>This demonstrates how to get the scrollTop position within a scrollable react component.</p>
+                <p>ScrollTop is {scrollValue}</p>
+                <p>This demonstrates how to get the scrollValue position within a scrollable react component.</p>
+                <p>scrollValue is {scrollValue}</p>
+                <p>This demonstrates how to get the scrollValue position within a scrollable react component.</p>
+                <p>scrollValue is {scrollValue}</p>
+                <p>This demonstrates how to get the scrollValue position within a scrollable react component.</p>
+                <p>scrollValue is {scrollValue}</p>
+                <p>This demonstrates how to get the scrollValue position within a scrollable react component.</p>
+                <p>scrollValue is {scrollValue}</p>
+                <p>This demonstrates how to get the scrollValue position within a scrollable react component.</p>
+                <p>scrollValue is {scrollValue}</p>
+              </div> */}
               
               
-              <svg viewBox="0 0 500 500">
-                <path id="curve" fill="transparent" d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97" />
-                  <text width="500">
-                    <textPath xlinkHref="#curve">
-                    Dangerous Curves Ahead
-                    </textPath>
-                  </text>
-              </svg>
+              <div className="circleTextContainer">
+                <svg className="header" viewBox="1 1 1800 200">
+                  <path id="curve" fill="none" d="
+                     M 100, 100
+                     m -75, 0
+                     a 75,75 0 1,0 150,0
+                     a 75,75 0 1,0 -150,0
+                     " />
+                     
+                    <text width="500" className="circleTextSquare" style={navAnimation}>
                       
-              
+                        <textPath href="#curve" className="circleText" id="ct1" onClick={click4}>
+                          <tspan
+                        		x='0'
+                        		dy='0'
+                        		className='circleText1'
+                        		onClick={getArtData}>
+                        		user
+                        	</tspan>
+                        	<tspan
+                        		x='100'
+                        		dy='0'
+                        		className='circleText2'
+                        		onClick={getArtData}>
+                        		about
+                        	</tspan>
+                          <tspan
+                        		x='200'
+                        		dy='0'
+                        		className='circleText2'
+                        		onClick={getArtData}>
+                        		me
+                        	</tspan>
+                          <tspan
+                        		x='300'
+                        		dy='0'
+                        		className='circleText2'
+                        		onClick={getArtData}>
+                        		you
+                        	</tspan>
+                        </textPath>
+                        
+                    </text>
+                </svg>
+              </div>
+{/*               
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="header">
+
+                <path id="MyPath" fill="none" stroke="red"
+                      d="M10,90 Q90,90 90,45 Q90,10 50,10 Q10,10 10,40 Q10,70 45,70 Q70,70 75,50" />
+
+                <text>
+                  <textPath href="#MyPath" className="circleText">
+                    Quick brown fox jumps over the lazy dog.
+                  </textPath>
+                </text>
+
+              </svg> */}
+                            
               
               {/* USER BUTTON */}
               <div className={hideUserOptions ? 'user' : 'hidden'}>

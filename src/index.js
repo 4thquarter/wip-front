@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from "react";
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from "react-router-dom";
 
@@ -8,6 +8,13 @@ import useHorizontal from '@oberon-amsterdam/horizontal';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+function Helper() {
+  const refContainer = useRef(0);
+  
+  const [scrollValue, setScrollValue] = useState(0)
+
+}
 
 ReactDOM.render(
   <React.StrictMode>
