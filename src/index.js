@@ -9,12 +9,26 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-function Helper() {
-  const refContainer = useRef(0);
+// function Helper() {
+//   const refContainer = useRef(0);
   
-  const [scrollValue, setScrollValue] = useState(0)
-
-}
+//   const [scrollValue, setScrollValue] = useState(0)
+  
+//   function onScroll() {
+//     const scrollX = window.scrollX //Don't get confused by what's scrolling - It's not the window
+//     const scrollValue = refContainer.current.scrollLeft
+//     console.log(`onScroll, window.scrollX: ${scrollX} refContainer.scrollValue: ${scrollValue}`)
+//     setScrollValue(scrollValue)
+//   }
+  
+//   return (
+//     <div onScroll={onScroll} >
+//     <BrowserRouter>
+//       <App scrollValue={scrollValue} />
+//     </BrowserRouter>
+//     </div>
+//   )
+// }
 
 ReactDOM.render(
   <React.StrictMode>
@@ -29,3 +43,6 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+
+// style={{overflow: 'scroll'}}

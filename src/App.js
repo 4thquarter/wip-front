@@ -17,7 +17,7 @@ import About from "./components/About"
 
 
 
-function App() {
+function App(props) {
   
   const refContainer = useRef(0);
   
@@ -61,6 +61,9 @@ function App() {
   useEffect(() => {
     console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020')
     getArtData();
+    
+    window.addEventListener('scroll', onScroll)
+    
     return history.listen((location) => {
 			// console.log(location.pathname);
 			// console.log('useffecting');
@@ -320,9 +323,8 @@ function App() {
     
     
     function onScroll() {
-      const scrollX = window.scrollX //Don't get confused by what's scrolling - It's not the window
-      const scrollValue = refContainer.current.scrollLeft
-      // console.log(`onScroll, window.scrollX: ${scrollX} refContainer.scrollValue: ${scrollValue}`)
+      const scrollValue = window.scrollX
+      // console.log(`onScroll, window.scrollX: ${scrollValue}`)
       setScrollValue(scrollValue)
     }
     
@@ -334,7 +336,7 @@ function App() {
     };
     
   return (
-    <div className='wrapper' ref={refContainer} onScroll={onScroll}>
+    <div className='wrapper'>
       <main>
         <Route path="/" exact={true} render={() => {
           return (
