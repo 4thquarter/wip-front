@@ -1,3 +1,7 @@
+body {
+  background-color: black;
+}
+
 .wrapper {
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 1px;
@@ -35,31 +39,43 @@ h2 {
 
 /* NAV */
 
+/* CIRCLE TEXT */
+
+svg {
+  z-index: 10;
+}
 
 .header {
-  color: black;
   position: fixed;
-  bottom: 2px;
-  left: 20px;
+  bottom: 200px;
+  left: 10px;
+  fill: white;
+  width: 2000px;
+  letter-spacing: 10px;
+  font-size: 15px;
+  font-weight: 400;
+  text-shadow: 0 -15px 5px rgba(255, 255, 255, 0.495);
 }
 
+/* @media (max-width: 1000px) {
+    .header {
+      width: 1500px;
+      letter-spacing: 2.3vmin;
+      font-size: 15px;
+    }
+} */
 
-
-        /* CIRCLE TEXT */
-
-.circleText {
-  letter-spacing: .4px;
-  word-spacing: 20px;
-  opacity: 1;
-}
-
-.circleText1:hover {
+/* .circleText1:hover {
   fill: blue;
   cursor: pointer;
-}
+} */
 
-.circleText2:hover {
-  fill: blue;
+.navlink:hover {
+  text-shadow: 0 -10px 7px rgba(225, 255, 77, 0.824);
+  font-size: 17px;
+  letter-spacing: 8.3px;
+  /* letter-spacing: 9.2px; */
+  font-weight: 800;
   cursor: pointer;
 }
 
@@ -70,7 +86,7 @@ h2 {
 :not(svg) {
   transform-origin: 100px 100px;
 }
-
+/* 
 
 #ct1 {
   
@@ -86,7 +102,7 @@ h2 {
 
 #ct4 {
 
-}
+} */
 
 
 

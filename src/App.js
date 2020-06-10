@@ -328,103 +328,119 @@ function App(props) {
     
     const navAnimation = {
       transform: `rotate(${scrollValue/20}deg)`,
-      position: 'absolute'
-      // transformOrigin: '50%50%'
+	  position: 'absolute'
     };
-    
+	
+	// d="
+    //                  M 100, 100
+    //                  m -75, 0
+    //                  a 75,75 0 1,0 150,0
+    //                  a 75,75 0 1,0 -150,0
+	//                  "
+	
+// 	d="M150.7,50v2c12.1,0,23,4.9,30.9,12.8c7.9,7.9,12.8,18.8,12.8,30.9c0,12.1-4.9,23-12.8,30.9
+// c-7.9,7.9-18.8,12.8-30.9,12.8c-12.1,0-23-4.9-30.9-12.8c-7.9-7.9-12.8-18.8-12.8-30.9c0-12.1,4.9-23,12.8-30.9
+// c7.9-7.9,18.8-12.8,30.9-12.8V50v-2C124.4,48,103,69.3,103,95.6c0,26.3,21.4,47.7,47.7,47.7c26.3,0,47.7-21.4,47.7-47.7
+// c0-26.3-21.4-47.7-47.7-47.7V50z"
+	
   return (
     <div className='wrapper'>
       <main>
         <Route path="/" exact={true} render={() => {
           return (
-            <>              
-              <div className="circleTextContainer">
-                <svg className="header" viewBox="1 1 1800 200">
-                  <path id="curve" fill="none" d="
-                     M 100, 100
-                     m -75, 0
-                     a 75,75 0 1,0 150,0
-                     a 75,75 0 1,0 -150,0
-                     " />
-                     
-                    <text width="500" className="circleTextSquare" style={navAnimation}>
-                      
-                        <textPath href="#curve" className="circleText" id="ct1" onClick={click4}>
-                          <tspan
-                        		x='0'
-                        		dy='0'
-                        		className='circleText1'
-                        		onClick={getArtData}>
-                        		user
-                        	</tspan>
-                        	<tspan
-                        		x='100'
-                        		dy='0'
-                        		className='circleText2'
-                        		onClick={getArtData}>
-                        		about
-                        	</tspan>
-                          <tspan
-                        		x='200'
-                        		dy='0'
-                        		className='circleText2'
-                        		onClick={getArtData}>
-                        		me
-                        	</tspan>
-                          <tspan
-                        		x='300'
-                        		dy='0'
-                        		className='circleText2'
-                        		onClick={getArtData}>
-                        		you
-                        	</tspan>
-                        </textPath>
-                        
-                    </text>
-                </svg>
-              </div>
-              
-              {/* USER BUTTON */}
-              <div className={hideUserOptions ? 'user' : 'hidden'}>
-                <Link to={completedUsername ? `${completedUsername}` : 'user'}>
-                  
-										{/* GENERIC USER HEADER */}
-										<h2
-                      onClick={userButtonClick}
-											className={completedUsername ? 'hidden' : 'user'}
-											name='user'>
-											user
-										</h2>
-                    
-                    {/* USERNAME HEADER */}
-										<h2
-											className={completedUsername ? 'user' : 'hidden'}
-											name='completedUsername'>
-											{completedUsername}
-										</h2>
-                    
-								  </Link>
+						<>
+							<div className='circleTextContainer'>
+								<svg className='header' viewBox='1 1 1500 200'>
+									<path
+										id='curve'
+										fill='none'
+										d='
+											M 100, 100
+											m -75, 0
+											a 75,75 0 1,0 150,0
+											a 75,75 0 1,0 -150,0
+											'
+									/>
+
+									<text
+										width='500'
+										className='circleTextSquare'
+										style={navAnimation}>
+										<textPath
+											href='#curve'
+											className='circleText'
+											id='ct1'
+											onClick={click4}>
+											<tspan
+												x='0'
+												dy='0'
+												className='navlink'
+												onClick={getArtData}>
+												profile
+											</tspan>
+											<tspan
+												x='130'
+												dy='0'
+												className='navlink'
+												onClick={getArtData}>
+												about
+											</tspan>
+											<tspan
+												x='400'
+												dy='0'
+												className='navlink'
+												onClick={getArtData}>
+												me
+											</tspan>
+											<tspan
+												x='300'
+												dy='0'
+												className='navlink'
+												onClick={getArtData}>
+												you
+											</tspan>
+										</textPath>
+									</text>
+								</svg>
 							</div>
-              
+
+							{/* USER BUTTON */}
+							<div className={hideUserOptions ? 'user' : 'hidden'}>
+								<Link to={completedUsername ? `${completedUsername}` : 'user'}>
+									{/* GENERIC USER HEADER */}
+									<h2
+										onClick={userButtonClick}
+										className={completedUsername ? 'hidden' : 'user'}
+										name='user'>
+										user
+									</h2>
+
+									{/* USERNAME HEADER */}
+									<h2
+										className={completedUsername ? 'user' : 'hidden'}
+										name='completedUsername'>
+										{completedUsername}
+									</h2>
+								</Link>
+							</div>
+
 							{/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
-				 			<div className={hideUserOptions ? 'hidden' : 'user'}>
-                 
-      							<Link to='/signup'>
-      								<h2 className="navSignButton">sign up</h2>
-      							</Link>
-      							<Link to='/signin'>
-      								<h2 className="navSignButton">sign in</h2>
-      							</Link>
-                    
+							<div className={hideUserOptions ? 'hidden' : 'user'}>
+								<Link to='/signup'>
+									<h2 className='navSignButton'>sign up</h2>
+								</Link>
+								<Link to='/signin'>
+									<h2 className='navSignButton'>sign in</h2>
+								</Link>
 							</div>
-              
-              <Link to="/about">
-                <h2 className="about">about</h2>
-              </Link>
-              
-              <Arts artData={artData} error={error}/>
-            </>
-          )
+
+							<Link to='/about'>
+								<h2 className='about'>about</h2>
+							</Link>
+
+							<Arts artData={artData} error={error} />
+						</>
+					);
         }} />  
         <Route 
         path="/Art/:title" 
