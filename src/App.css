@@ -47,14 +47,13 @@ svg {
 
 .header {
   position: fixed;
-  bottom: 200px;
+  bottom: 50px;
   left: 10px;
   fill: white;
   width: 2000px;
-  letter-spacing: 10px;
+  /* letter-spacing: 10px; */
   font-size: 15px;
   font-weight: 400;
-  text-shadow: 0 -15px 5px rgba(255, 255, 255, 0.495);
 }
 
 /* @media (max-width: 1000px) {
@@ -71,9 +70,11 @@ svg {
 } */
 
 .navlink:hover {
-  text-shadow: 0 -10px 7px rgba(225, 255, 77, 0.824);
+  /* text-shadow: 0 -10px 7px rgba(225, 255, 77, 0.824);   */
+  text-shadow: 0 -15px 5px rgba(255, 255, 255, 0.495);
+
   font-size: 17px;
-  letter-spacing: 8.3px;
+  /* letter-spacing: 8.3px; */
   /* letter-spacing: 9.2px; */
   font-weight: 800;
   cursor: pointer;
