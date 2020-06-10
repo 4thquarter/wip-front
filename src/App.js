@@ -5,6 +5,8 @@ import useHorizontal from '@oberon-amsterdam/horizontal';
 
 import "./App.css";
 
+import NavCircle from './components/NavCircle'
+
 import Arts from "./components/Arts.js"
 import Art from "./components/Art.js"
 
@@ -96,7 +98,7 @@ function App(props) {
   
   
   function getArtData() {    
-    const url = `https://api.harvardartmuseums.org/object?classification=Paintings&sort=random&size=8&hasimage=1&apikey=${process.env.REACT_APP_KEY}`
+    const url = `https://api.harvardartmuseums.org/object?classification=Paintings&sort=random&size=24&hasimage=1&apikey=${process.env.REACT_APP_KEY}`
         
     fetch(url)
       .then(response => response.json())
@@ -349,60 +351,7 @@ function App(props) {
         <Route path="/" exact={true} render={() => {
           return (
 						<>
-							<div className='circleTextContainer'>
-								<svg className='header' viewBox='1 1 1500 200'>
-									<path
-										id='curve'
-										fill='none'
-										d='
-											M 100, 100
-											m -75, 0
-											a 75,75 0 1,0 150,0
-											a 75,75 0 1,0 -150,0
-											'
-									/>
-
-									<text
-										width='500'
-										className='circleTextSquare'
-										style={navAnimation}>
-										<textPath
-											href='#curve'
-											className='circleText'
-											id='ct1'
-											onClick={click4}>
-											<tspan
-												x='0'
-												dy='0'
-												className='navlink'
-												onClick={getArtData}>
-												profile
-											</tspan>
-											<tspan
-												x='130'
-												dy='0'
-												className='navlink'
-												onClick={getArtData}>
-												about
-											</tspan>
-											<tspan
-												x='400'
-												dy='0'
-												className='navlink'
-												onClick={getArtData}>
-												me
-											</tspan>
-											<tspan
-												x='300'
-												dy='0'
-												className='navlink'
-												onClick={getArtData}>
-												you
-											</tspan>
-										</textPath>
-									</text>
-								</svg>
-							</div>
+							<NavCircle navAnimation={navAnimation} getArtData={getArtData}/>
 
 							{/* USER BUTTON */}
 							<div className={hideUserOptions ? 'user' : 'hidden'}>
@@ -458,6 +407,7 @@ function App(props) {
             </>
           );
         }} />
+        
         <Route path="/about" render={() => {
           return (
             <>
