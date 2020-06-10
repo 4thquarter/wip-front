@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-function Mediums() {
+function Mediums(props) {
   let mediums = ['music', 'garment', 'painting', 'sculpture', 'photo', 'writing', 'drawing', 'graphic', 'website']
   
   for(let i = 0; i<mediums.length; i++) {
