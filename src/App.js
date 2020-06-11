@@ -268,22 +268,6 @@ function App(props) {
 			});
 	}
 
-	function click1() {
-		console.log('1');
-	}
-
-	function click2() {
-		console.log('2');
-	}
-
-	function click3() {
-		console.log('3');
-	}
-
-	function click4() {
-		console.log('4');
-	}
-
 	function onScroll() {
     const scrollValue = window.scrollX;
     // console.log(`onScroll, window.scrollX: ${scrollValue}`)

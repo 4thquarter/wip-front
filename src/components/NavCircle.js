@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, useHistory } from 'react-router-dom';
 import Colors from './Colors'
 
 function NavCircle(props) {
-
+  const history = useHistory();
+  
   return (
 		<div className='circleTextContainer'>
 			<Route path='/colors' exact component={Colors} />
@@ -25,7 +26,10 @@ function NavCircle(props) {
 					style={props.navAnimation}>
 					<textPath href='#curve' className='circleText' id='ct1'>
 						<tspan x='0' dy='0' className='navlink' onClick={props.getArtData}>
-							<Link style={{ fill: 'white' }} to='/profile'>
+							<Link style={{ fill: 'white' }} onClick={(e) => {
+                      {e.preventDefault()
+                       history.push('/profile')} 
+                    }}>
 								profile
 							</Link>
 						</tspan>
@@ -34,27 +38,36 @@ function NavCircle(props) {
 							dy='0'
 							className='navlink'
 							onClick={props.getArtData}>
-							<Link style={{ fill: 'white' }} to='/colors'>
+							<a style={{ fill: 'white' }} onClick={(e) => {
+                      {e.preventDefault()
+                       history.push('/colors')} 
+                    }}>
 								colors
-							</Link>
+							</a>
 						</tspan>
 						<tspan
 							x='225'
 							dy='0'
 							className='navlink'
 							onClick={props.getArtData}>
-							<Link style={{ fill: 'white' }} to='/mediums'>
+							<a style={{ fill: 'white' }} onClick={(e) => {
+                      {e.preventDefault()
+                       history.push('/mediums')} 
+                    }}>
 								mediums
-							</Link>
+							</a>
 						</tspan>
 						<tspan
 							x='355'
 							dy='0'
 							className='navlink'
 							onClick={props.getArtData}>
-							<Link style={{ fill: 'white' }} to='/artists'>
-								artists
-							</Link>
+							<a style={{ fill: 'white' }} onClick={(e) => {
+                      {e.preventDefault()
+                       history.push('/mediums')} 
+                    }}>
+								mediums
+							</a>
 						</tspan>
 					</textPath>
 				</text>
