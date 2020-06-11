@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Link, Route, useHistory } from 'react-router-dom';
+import React from "react";
+import { Route, useHistory } from 'react-router-dom';
 import Colors from './Colors'
 
 function NavCircle(props) {
