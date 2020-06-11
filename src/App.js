@@ -20,6 +20,9 @@ import About from './components/About';
 function App(props) {
 	// useHorizontal();
 
+  
+  const refContainer = useRef(0);
+
 	const [artData, setartData] = useState([]);
 	const [error, setError] = useState('');
 
@@ -282,10 +285,11 @@ function App(props) {
 	}
 
 	function onScroll() {
-		const scrollValue = window.scrollX;
-		// console.log(`onScroll, window.scrollX: ${scrollValue}`)
+    const scrollValue = window.scrollX;
+    // console.log(`onScroll, window.scrollX: ${scrollValue}`)
 		setScrollValue(scrollValue);
-	}
+  }
+  
 
 	const navAnimation = {
 		transform: `rotate(${scrollValue / 20}deg)`,
@@ -306,193 +310,191 @@ function App(props) {
 
 	return (
 		<div className='wrapper'>
-			<main>
-				<Route path='/colors' exact component={Colors} />
-				<Route
-					path='/'
-					exact={true}
-					render={() => {
-						return (
-							<>
-								<NavCircle
-									navAnimation={navAnimation}
-									getArtData={getArtData}
-								/>
+			<Route path='/colors' exact component={Colors} />
+			<Route
+				path='/'
+				exact={true}
+				render={() => {
+					return (
+						<>
+							<NavCircle
+								navAnimation={navAnimation}
+								getArtData={getArtData}
+							/>
 
-								{/* USER BUTTON */}
-								<div className={hideUserOptions ? 'user' : 'hidden'}>
-									<Link
-										to={completedUsername ? `${completedUsername}` : 'user'}>
-										{/* GENERIC USER HEADER */}
-										<h2
-											onClick={userButtonClick}
-											className={completedUsername ? 'hidden' : 'user'}
-											name='user'>
-											user
-										</h2>
+							{/* USER BUTTON */}
+							<div className={hideUserOptions ? 'user' : 'hidden'}>
+								<Link
+									to={completedUsername ? `${completedUsername}` : 'user'}>
+									{/* GENERIC USER HEADER */}
+									<h2
+										onClick={userButtonClick}
+										className={completedUsername ? 'hidden' : 'user'}
+										name='user'>
+										user
+									</h2>
 
-										{/* USERNAME HEADER */}
-										<h2
-											className={completedUsername ? 'user' : 'hidden'}
-											name='completedUsername'>
-											{completedUsername}
-										</h2>
-									</Link>
-								</div>
-
-								{/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
-								<div className={hideUserOptions ? 'hidden' : 'user'}>
-									<Link to='/signup'>
-										<h2 className='navSignButton'>sign up</h2>
-									</Link>
-									<Link to='/signin'>
-										<h2 className='navSignButton'>sign in</h2>
-									</Link>
-								</div>
-
-								<Link to='/about'>
-									<h2 className='about'>about</h2>
+									{/* USERNAME HEADER */}
+									<h2
+										className={completedUsername ? 'user' : 'hidden'}
+										name='completedUsername'>
+										{completedUsername}
+									</h2>
 								</Link>
+							</div>
 
-								<Arts artData={artData} error={error} />
-							</>
-						);
-					}}
-				/>
-				<Route
-					path='/Art/:title'
-					render={(routerProps) => {
-						return (
-							<>
-								<Link to='/'>
-									<h1 className='header' id='artHeader'>
-										"Harvard Art"
-									</h1>
+							{/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
+							<div className={hideUserOptions ? 'hidden' : 'user'}>
+								<Link to='/signup'>
+									<h2 className='navSignButton'>sign up</h2>
 								</Link>
-								<Art
-									match={routerProps.match}
-									artData={artData}
-									handleClick={handleClick}
-								/>
-							</>
-						);
-					}}
-				/>
-
-				<Route
-					path='/about'
-					render={() => {
-						return (
-							<>
-								<Link to='/'>
-									<h1 className='header'>"Harvard Art"</h1>
+								<Link to='/signin'>
+									<h2 className='navSignButton'>sign in</h2>
 								</Link>
-								<About />
-							</>
-						);
-					}}
-				/>
-				<Route
-					path='/user'
-					render={() => {
-						return (
-							<>
-								<a href=''>
-									<h1 className='header' onClick={getArtData}>
-										"User Art"
-									</h1>
-								</a>
+							</div>
 
-								{/* USER BUTTON */}
-								<div className={hideUserOptions ? 'user' : 'hidden'}>
-									<Link
-										to={completedUsername ? `${completedUsername}` : 'user'}>
-										{/* NOT LOGGED IN HEADER */}
-										<h2
-											onClick={userButtonClick}
-											className={completedUsername ? 'hidden' : 'user'}
-											name='user'>
-											user
-										</h2>
+							<Link to='/about'>
+								<h2 className='about'>about</h2>
+							</Link>
 
-										{/* LOGGED IN HEADER */}
-										<h2
-											className={completedUsername ? 'user' : 'hidden'}
-											name='completedUsername'>
-											{completedUsername}
-										</h2>
-									</Link>
-								</div>
+							<Arts artData={artData} error={error} />
+						</>
+					);
+				}}
+			/>
+			<Route
+				path='/Art/:title'
+				render={(routerProps) => {
+					return (
+						<>
+							<Link to='/'>
+								<h1 className='header' id='artHeader'>
+									"Harvard Art"
+								</h1>
+							</Link>
+							<Art
+								match={routerProps.match}
+								artData={artData}
+								handleClick={handleClick}
+							/>
+						</>
+					);
+				}}
+			/>
 
-								{/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
-								<div className={hideUserOptions ? 'hidden' : 'user'}>
-									<Link to='/signup'>
-										<h2 className='navSignButton'>sign up</h2>
-									</Link>
-									<Link to='/signin'>
-										<h2 className='navSignButton'>sign in</h2>
-									</Link>
-								</div>
+			<Route
+				path='/about'
+				render={() => {
+					return (
+						<>
+							<Link to='/'>
+								<h1 className='header'>"Harvard Art"</h1>
+							</Link>
+							<About />
+						</>
+					);
+				}}
+			/>
+			<Route
+				path='/user'
+				render={() => {
+					return (
+						<>
+							<a href=''>
+								<h1 className='header' onClick={getArtData}>
+									"User Art"
+								</h1>
+							</a>
 
-								<Link to='/about'>
-									<h2 className='about'>about</h2>
+							{/* USER BUTTON */}
+							<div className={hideUserOptions ? 'user' : 'hidden'}>
+								<Link
+									to={completedUsername ? `${completedUsername}` : 'user'}>
+									{/* NOT LOGGED IN HEADER */}
+									<h2
+										onClick={userButtonClick}
+										className={completedUsername ? 'hidden' : 'user'}
+										name='user'>
+										user
+									</h2>
+
+									{/* LOGGED IN HEADER */}
+									<h2
+										className={completedUsername ? 'user' : 'hidden'}
+										name='completedUsername'>
+										{completedUsername}
+									</h2>
 								</Link>
+							</div>
 
-								<Arts artData={artData} error={error} />
-							</>
-						);
-					}}
-				/>
-				<Route
-					path='/signup'
-					render={() => {
-						return (
-							<>
-								<Link to='/'>
-									<h1 className='header'>"User Art" // sign up</h1>
+							{/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
+							<div className={hideUserOptions ? 'hidden' : 'user'}>
+								<Link to='/signup'>
+									<h2 className='navSignButton'>sign up</h2>
 								</Link>
-								<SignUp
-									handleChange={handleChange}
-									checkSubmit={checkSubmit}
-									hideSignUp={hideSignUp}
-									isPasswordValid={isPasswordValid}
-								/>
-							</>
-						);
-					}}
-				/>
-				<Route
-					path='/signin'
-					render={() => {
-						return (
-							<>
-								<Link to='/'>
-									<h1 className='header'>"User Art" // sign in</h1>
+								<Link to='/signin'>
+									<h2 className='navSignButton'>sign in</h2>
 								</Link>
-								<SignIn
-									handleChange={handleChange}
-									checkSubmit={checkSubmit}
-									hideSignIn={hideSignIn}
-									isUserFound={isUserFound}
-								/>
-							</>
-						);
-					}}
-				/>
-				<Route
-					path={'/' + completedUsername}
-					render={() => {
-						return (
-							<>
-								<Link to='/'>
-									<h1 className='header'>"User Art" // {completedUsername}</h1>
-								</Link>
-								<User handleChange={handleChange} submitArt={submitArt} />
-							</>
-						);
-					}}
-				/>
-			</main>
+							</div>
+
+							<Link to='/about'>
+								<h2 className='about'>about</h2>
+							</Link>
+
+							<Arts artData={artData} error={error} />
+						</>
+					);
+				}}
+			/>
+			<Route
+				path='/signup'
+				render={() => {
+					return (
+						<>
+							<Link to='/'>
+								<h1 className='header'>"User Art" // sign up</h1>
+							</Link>
+							<SignUp
+								handleChange={handleChange}
+								checkSubmit={checkSubmit}
+								hideSignUp={hideSignUp}
+								isPasswordValid={isPasswordValid}
+							/>
+						</>
+					);
+				}}
+			/>
+			<Route
+				path='/signin'
+				render={() => {
+					return (
+						<>
+							<Link to='/'>
+								<h1 className='header'>"User Art" // sign in</h1>
+							</Link>
+							<SignIn
+								handleChange={handleChange}
+								checkSubmit={checkSubmit}
+								hideSignIn={hideSignIn}
+								isUserFound={isUserFound}
+							/>
+						</>
+					);
+				}}
+			/>
+			<Route
+				path={'/' + completedUsername}
+				render={() => {
+					return (
+						<>
+							<Link to='/'>
+								<h1 className='header'>"User Art" // {completedUsername}</h1>
+							</Link>
+							<User handleChange={handleChange} submitArt={submitArt} />
+						</>
+					);
+				}}
+			/>
 		</div>
 	);
 }
