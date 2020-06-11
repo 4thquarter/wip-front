@@ -268,7 +268,7 @@ function App(props) {
 			});
 	}
 
-	function onScroll() {
+	function onScroll() {    
     const scrollValue = window.scrollX;
     // console.log(`onScroll, window.scrollX: ${scrollValue}`)
 		setScrollValue(scrollValue);
