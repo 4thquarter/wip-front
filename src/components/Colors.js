@@ -59,6 +59,7 @@ export default Colors;
 
 function Colors() {
 	useEffect(() => {
+    getRandomIntegers()
 		fetchColors();
 	}, []);
 
@@ -69,6 +70,9 @@ function Colors() {
   const [unknown, setUnkown] = useState([])
   const [deceased, setDeceased] = useState([])
   const [presumedDead, setPresumedDead] = useState([])
+  
+  const [randomIntegers, setRandomIntegers] = useState([])
+
 	// const fetchColors = async () => {
 	// 	const colorsData = await fetch(
 	// 		'https://www.breakingbadapi.com/api/characters'
@@ -119,6 +123,21 @@ function Colors() {
     
   };
   
+  function getRandomIntegers() {
+    console.log('scrolling');
+    
+    let randomIntegers = []
+    
+    for(let i=0; i<5; i++) {
+      let min = 30;
+      let max = 70;
+      randomIntegers.push(Math.floor(Math.random() * (max - min)) + min);
+    }
+    
+    
+    setRandomIntegers(randomIntegers)
+  }
+  
 
 	return (
 		<>
@@ -129,7 +148,10 @@ function Colors() {
         <div className='colorCollageHolder'>
     			<h3 className='color-collage-title'>red</h3>
     			{alive.slice(0, 5).map((alive, i) => (
-    				<div key={alive.char_id} className={`color-collage${i + 1}`}>
+            <div key={alive.char_id} className='color-collage' id={`cc${i + 1}`} style={{
+              marginLeft: `${randomIntegers[i]}%`,
+              // marginTop: `${randomIntegers[i]}%`,
+            }}>
     					<Link
     						className='image-link'
     						style={{
@@ -150,7 +172,7 @@ function Colors() {
         <div className='colorCollageHolder'>
     			<h3 className='color-collage-title'>blue</h3>
     			{unknown.slice(0, 5).map((unknown, i) => (
-    				<div key={unknown.char_id} className={`color-collage${i + 1}`}>
+    				<div key={unknown.char_id} className='color-collage' id={`cc${i + 1}`}>
     					<Link
     						className='image-link'
     						style={{
@@ -171,7 +193,7 @@ function Colors() {
         <div className='colorCollageHolder'>
     			<h3 className='color-collage-title'>yellow</h3>
     			{deceased.slice(0, 5).map((deceased, i) => (
-    				<div key={deceased.char_id} className={`color-collage${i + 1}`}>
+    				<div key={deceased.char_id} className='color-collage' id={`cc${i + 1}`}>
     					<Link
     						className='image-link'
     						style={{
@@ -192,7 +214,7 @@ function Colors() {
         <div className='colorCollageHolder'>
     			<h3 className='color-collage-title'>green</h3>
     			{presumedDead.slice(0, 5).map((presumedDead, i) => (
-    				<div key={presumedDead.char_id} className={`color-collage${i + 1}`}>
+    				<div key={presumedDead.char_id} className='color-collage' id={`cc${i + 1}`}>
     					<Link
     						className='image-link'
     						style={{
