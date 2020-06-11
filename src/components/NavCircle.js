@@ -26,12 +26,12 @@ function NavCircle(props) {
 					style={props.navAnimation}>
 					<textPath href='#curve' className='circleText' id='ct1'>
 						<tspan x='0' dy='0' className='navlink' onClick={props.getArtData}>
-							<Link style={{ fill: 'white' }} onClick={(e) => {
+							<a style={{ fill: 'white' }} onClick={(e) => {
                       {e.preventDefault()
                        history.push('/profile')} 
                     }}>
 								profile
-							</Link>
+							</a>
 						</tspan>
 						<tspan
 							x='115'
