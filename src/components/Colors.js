@@ -142,7 +142,8 @@ function Colors() {
 	return (
 		<>
 			<div className='colorsGalleryHolder'>
-				<div className='colorCollageHolder'>
+        
+				<div className='colorCollageHolder' id="colorsGalleryEntrance">
 					<h2 className='collage-title'>
 						explore color gallery ⟶
 					</h2>

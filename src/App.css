@@ -5,10 +5,10 @@ body {
   background-color: black;
 }
 
-/* #root {
+#root {
   max-height: 100%; 
   position: absolute;
-} */
+}
 
 .wrapper {
   height: 100%; 
@@ -16,7 +16,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 	letter-spacing: 1px;
   padding: 0 1rem;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 
@@ -39,7 +39,8 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: rgba(105, 95, 73, 0.447);
+  /* background-color: rgba(105, 95, 73, 0.447); */
+  background-color: red;
 	width: 10px;
 }
 
@@ -49,9 +50,10 @@ body {
 
 
 
-/* .hidden {
+.hidden {
 	display: none;
-} */
+}
+
 
 a {
 	text-decoration: none;
@@ -85,8 +87,17 @@ h2 {
 
 
 
+/* MAIN SCREEN */
 
+.userSignIn {
+  margin-top: 50vh;
+  margin-left: 54vh;
+}
 
+.userButton {
+  margin-top: 50vh;
+  margin-left: 54vh;
+}
 
 
 /* NAV WHEEL */
@@ -105,9 +116,11 @@ svg {
 	top: 0;
 	z-index: 1000;
 	fill: rgb(255, 255, 255);
-	text-shadow: 0 -15px 10px rgba(0, 0, 0, 0.5);
+	/* text-shadow: 0 -15px 10px rgba(0, 0, 0, 0.5); */
 	/* width: 2000px; */
-	letter-spacing: 8px;
+  /* letter-spacing: 8px; */
+  letter-spacing: .04px;
+
 	font-size: 15px;
   	font-weight: 800;
 }
@@ -115,8 +128,8 @@ svg {
 @media (max-width: 1000px) {
     .header {
       /* width: 1500px; */
-      letter-spacing: 2.3vmin;
-      font-size: 15px;
+      /* letter-spacing: 2.3vmin; */
+      /* font-size: 15px; */
     }
 }
 
@@ -124,6 +137,7 @@ svg {
   fill: blue;
   cursor: pointer;
 } */
+
 
 .navlink {
 	color: rgb(255, 255, 255);
@@ -133,8 +147,8 @@ svg {
 	fill: white;
 	/* text-shadow: 0 -10px 7px rgba(225, 255, 77, 0.824);   */
 	text-shadow: 0 -15px 5px rgba(0, 0, 0, 0.5);
-	font-size: 17px;
-	letter-spacing: 7.5px;
+	/* font-size: 17px;
+	letter-spacing: 7.5px; */
 	/* letter-spacing: 9.2px; */
 	font-weight: 800;
 	cursor: pointer;
@@ -153,22 +167,15 @@ svg {
 
 
 
+/* COLOR GALLERY */
 
 
 .collage-title {
 	/* transform: rotate(270deg); */
 	position: absolute;
 	margin: 0 auto;
-	top: 49vh;
-}
-
-
-/* COLOR GALLERY */
-
-
-
-.collage-title {
-	color: white;
+  top: 49vh;
+  color: white;
 	letter-spacing: 2px;
 }
 
@@ -177,17 +184,22 @@ svg {
 	letter-spacing: 2px;
 }
 
+#colorsGalleryEntrance {
+  background-color: transparent;
+  margin-left: 75vw;
+}
+
 .colorsGalleryHolder {
   display: flex;
-  height: 100vh;
+  height: 10vh;
 }
 
 .colorCollageHolder {
-  margin-right: 80vw;
+  margin-left: 125vw;
   /* margin-left: 10vw; */
   /* margin-right: 200px; */
-  /* height: 80vh; */
-  width: 20vw;
+  height: 80vh;
+  width: 60vw;
   background-color: grey;
 }
 
@@ -238,7 +250,17 @@ svg {
 
 
 
-
+@media screen and (max-width: 500px) {
+	.colorsGalleryHolder {
+    display: block;
+  }
+  
+  .colorCollageHolder {
+    margin: 10px;
+    margin-bottom: 1500px;
+  }
+  
+}
 
 
 

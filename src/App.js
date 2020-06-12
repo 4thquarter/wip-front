@@ -308,14 +308,14 @@ function App(props) {
 									{/* GENERIC USER HEADER */}
 									<h2
 										onClick={userButtonClick}
-										className={completedUsername ? 'hidden' : 'user'}
+										className={completedUsername ? 'hidden' : 'userButton'}
 										name='user'>
 										user
 									</h2>
 
 									{/* USERNAME HEADER */}
 									<h2
-										className={completedUsername ? 'user' : 'hidden'}
+										className={completedUsername ? 'userButton' : 'hidden'}
 										name='completedUsername'>
 										{completedUsername}
 									</h2>
@@ -379,26 +379,20 @@ function App(props) {
 				render={() => {
 					return (
 						<>
-							<a href=''>
-								<h1 className='header' onClick={getArtData}>
-									"User Art"
-								</h1>
-							</a>
-
 							{/* USER BUTTON */}
 							<div className={hideUserOptions ? 'user' : 'hidden'}>
 								<Link to={completedUsername ? `${completedUsername}` : 'user'}>
 									{/* NOT LOGGED IN HEADER */}
 									<h2
 										onClick={userButtonClick}
-										className={completedUsername ? 'hidden' : 'user'}
+										className={completedUsername ? 'hidden' : 'userButton'}
 										name='user'>
 										user
 									</h2>
 
 									{/* LOGGED IN HEADER */}
 									<h2
-										className={completedUsername ? 'user' : 'hidden'}
+										className={completedUsername ? 'userButton' : 'hidden'}
 										name='completedUsername'>
 										{completedUsername}
 									</h2>
@@ -406,7 +400,7 @@ function App(props) {
 							</div>
 
 							{/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
-							<div className={hideUserOptions ? 'hidden' : 'user'}>
+							<div className={hideUserOptions ? 'hidden' : 'userSignIn'}>
 								<Link to='/signup'>
 									<h2 className='navSignButton'>sign up</h2>
 								</Link>
@@ -418,8 +412,6 @@ function App(props) {
 							<Link to='/about'>
 								<h2 className='about'>about</h2>
 							</Link>
-
-							<Arts artData={artData} error={error} />
 						</>
 					);
 				}}
