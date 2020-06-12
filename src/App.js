@@ -54,7 +54,8 @@ function App(props) {
 		getArtData();
 
 		window.addEventListener('scroll', onScroll);
-
+    window.addEventListener('wheel', onAttemptedScroll);
+    
 		return history.listen((location) => {
 			// console.log(location.pathname);
 			// console.log('useffecting');
@@ -269,9 +270,26 @@ function App(props) {
 	}
 
 	function onScroll() {    
-    const scrollValue = window.scrollX;
+    if (window.screen.width > 500) {
+      const scrollValue = window.scrollX;
+      setScrollValue(scrollValue);
+    } else {
+      const scrollValueY = window.scrollY
+      setScrollValue(scrollValueY);
+    };
     // console.log(`onScroll, window.scrollX: ${scrollValue}`)
-		setScrollValue(scrollValue);
+  }
+  
+  function onAttemptedScroll(e) {
+    let y = e.deltaY;
+    // console.log(y);
+    
+    if (window.screen.width > 500) {
+      // console.log('big screen')
+      window.scrollBy(y, 0)
+    } else {
+      return
+    }
   }
   
 
