@@ -129,7 +129,7 @@ function Colors() {
     let randomIntegers = []
     
     for(let i=0; i<5; i++) {
-      let min = 30;
+      let min = 10;
       let max = 70;
       randomIntegers.push(Math.floor(Math.random() * (max - min)) + min);
     }
@@ -144,7 +144,7 @@ function Colors() {
 			<div className='colorsGalleryHolder'>
         
 				<div className='colorCollageHolder' id="colorsGalleryEntrance">
-					<h2 className='collage-title'>
+					<h2 className='entranceText'>
 						explore color gallery ⟶
 					</h2>
 				</div>

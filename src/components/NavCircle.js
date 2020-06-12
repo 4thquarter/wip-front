@@ -37,6 +37,8 @@ function NavCircle(props) {
 					width='500'
 					className='circleTextSquare'
 					style={props.navAnimation}>
+            
+          
 					<textPath href='#curve' className='circleText' id='ct1'>
 						<tspan x='0' dy='0' className='navlink' onClick={props.getArtData}>
 							<a
