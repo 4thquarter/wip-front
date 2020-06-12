@@ -92,39 +92,43 @@ function Colors() {
     colors.sort(() => Math.random() - 0.5);
     // console.log(colors);
         
-    let alive = []
-    let unknown = []
-    let deceased = []
-    let presumedDead = []
+    let red = []
+    let blue = []
+    let yellow  = []
+    let green = []
+    let purple = []
+    let orange = []
+    let brown = []
+    let black = []
+    let white = []
+    let gray = []
     
     colors.map((color) => {
       switch(color.status) {
         case 'Alive':
-          alive.push(color)
+          red.push(color)
           break;
         case '?':
-          unknown.push(color)
+          blue.push(color)
           break;
         case 'Deceased':
-          deceased.push(color)
+          yellow.push(color)
           break;
         case 'Presumed dead':
-          presumedDead.push(color)
+          green.push(color)
           break;
       }
     })
     
     setColors(colors);
 
-    setAlive(alive)
-    setUnkown(unknown)
-    setDeceased(deceased)
-    setPresumedDead(presumedDead)
-    
+    setAlive(red)
+    setUnkown(blue)
+    setDeceased(yellow)
+    setPresumedDead(green)
   };
   
   function getRandomIntegers() {
-    console.log('scrolling');
     
     let randomIntegers = []
     
@@ -154,12 +158,14 @@ function Colors() {
 					{alive.slice(0, 5).map((alive, i) => (
 						<div
 							key={alive.char_id}
-							className='color-collage'
+              className='color-collage'
+              
 							id={`cc${i + 1}`}
 							style={{
 								marginLeft: `${randomIntegers[i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
+                
 							<Link
 								className='image-link'
 								style={{
@@ -182,8 +188,16 @@ function Colors() {
 					{unknown.slice(0, 5).map((unknown, i) => (
 						<div
 							key={unknown.char_id}
-							className='color-collage'
-							id={`cc${i + 1}`}>
+              className='color-collage'
+              
+							id={`cc${i + 1}`}
+              style={{
+								marginLeft: `${randomIntegers[i]}%`,
+								// marginTop: `${randomIntegers[i]}%`,
+							}}>
+                
+                
+                
 							<Link
 								className='image-link'
 								style={{
@@ -206,8 +220,14 @@ function Colors() {
 					{deceased.slice(0, 5).map((deceased, i) => (
 						<div
 							key={deceased.char_id}
-							className='color-collage'
-							id={`cc${i + 1}`}>
+              className='color-collage'
+              
+							id={`cc${i + 1}`}
+              style={{
+								marginLeft: `${randomIntegers[i]}%`,
+								// marginTop: `${randomIntegers[i]}%`,
+							}}>
+                
 							<Link
 								className='image-link'
 								style={{
@@ -230,8 +250,14 @@ function Colors() {
 					{presumedDead.slice(0, 5).map((presumedDead, i) => (
 						<div
 							key={presumedDead.char_id}
-							className='color-collage'
-							id={`cc${i + 1}`}>
+              className='color-collage'
+              
+              id={`cc${i + 1}`}
+              style={{
+								marginLeft: `${randomIntegers[i]}%`,
+								// marginTop: `${randomIntegers[i]}%`,
+							}}>
+              
 							<Link
 								className='image-link'
 								style={{

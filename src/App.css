@@ -140,12 +140,64 @@ svg {
 } */
 
 
+
+
+
+
+
+
+
+/* NAV CIRCLE */
+
+#nav1 {
+  fill: #695F49;
+}
+
+#nav1:hover {
+  fill: red;
+}
+
+
+
+#nav2 {
+  fill: #B6AB92;
+}
+
+#nav2:hover {
+  fill: red;
+}
+
+
+
+#nav3 {
+  fill: #695F49;
+}
+
+#nav3:hover {
+  fill: red;
+}
+
+
+
+#nav4 {
+  fill: #B6AB92;
+}
+
+#nav4:hover {
+  fill: red;
+}
+
+
+
+
+
 .navlink {
-	color: rgb(255, 255, 255);
+  /* fill: rgb(255, 255, 255); */
+  /* fill: blue; */
 }
 
 .navlink:hover {
-	fill: white;
+	fill: red;
 	/* text-shadow: 0 -10px 7px rgba(225, 255, 77, 0.824);   */
 	/* text-shadow: 0 -15px 5px rgba(0, 0, 0, 0.5); */
 	/* font-size: 17px;
@@ -199,7 +251,7 @@ svg {
 }
 
 .colorsGalleryHolder {
-  margin-top: 8vh;
+  margin-top: 4vh;
   display: flex;
   height: 10vh;
 }

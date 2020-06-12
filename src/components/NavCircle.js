@@ -40,9 +40,13 @@ function NavCircle(props) {
             
           
 					<textPath href='#curve' className='circleText' id='ct1'>
-						<tspan x='0' dy='0' className='navlink' onClick={props.getArtData}>
+            <tspan 
+              x='0' 
+              dy='0' 
+              onClick={props.getArtData}>
 							<a
-								style={{ fill: '#695F49' }}
+                className='navlink'
+                id="nav1"
 								onClick={(e) => {
 									{
 										e.preventDefault();
@@ -52,14 +56,14 @@ function NavCircle(props) {
 								profile
 							</a>
 						</tspan>
+            
 						<tspan
 							x='115'
 							dy='0'
-							className='navlink'
 							onClick={props.getArtData}>
 							<a
-								to='/colors'
-								style={{ fill: '#B6AB92' }}
+                className='navlink'
+                id="nav2"
 								onClick={(e) => {
 									{
 										e.preventDefault();
@@ -69,13 +73,14 @@ function NavCircle(props) {
 								colors
 							</a>
 						</tspan>
+            
 						<tspan
 							x='225'
 							dy='0'
-							className='navlink'
 							onClick={props.getArtData}>
 							<a
-								style={{ fill: '#695F49' }}
+                className='navlink'
+                id="nav3"
 								onClick={(e) => {
 									{
 										e.preventDefault();
@@ -85,13 +90,14 @@ function NavCircle(props) {
 								mediums
 							</a>
 						</tspan>
+            
 						<tspan
 							x='355'
 							dy='0'
-							className='navlink'
 							onClick={props.getArtData}>
 							<a
-								style={{ fill: '#B6AB92' }}
+                className='navlink'
+                id="nav4"
 								onClick={(e) => {
 									{
 										e.preventDefault();
@@ -101,6 +107,7 @@ function NavCircle(props) {
 								artists
 							</a>
 						</tspan>
+            
 					</textPath>
 				</text>
 			</svg>
