@@ -120,7 +120,7 @@ svg {
 	/* text-shadow: 0 -15px 10px rgba(0, 0, 0, 0.5); */
 	/* width: 2000px; */
   letter-spacing: .04px;
-  letter-spacing: 8px;
+  /* letter-spacing: 8px; */
 
 	font-size: 15px;
   	font-weight: 800;
@@ -147,10 +147,10 @@ svg {
 .navlink:hover {
 	fill: white;
 	/* text-shadow: 0 -10px 7px rgba(225, 255, 77, 0.824);   */
-	text-shadow: 0 -15px 5px rgba(0, 0, 0, 0.5);
+	/* text-shadow: 0 -15px 5px rgba(0, 0, 0, 0.5); */
 	/* font-size: 17px;
 	letter-spacing: 7.5px; */
-	/* letter-spacing: 9.2px; */
+  /* letter-spacing: 9.2px; */
 	font-weight: 800;
 	cursor: pointer;
 }
@@ -189,7 +189,7 @@ svg {
 }
 
 .color-collage-title {
-	color: white;
+	color: black;
 	letter-spacing: 2px;
 }
 
@@ -199,7 +199,7 @@ svg {
 }
 
 .colorsGalleryHolder {
-  margin-top: 10vh;
+  margin-top: 8vh;
   display: flex;
   height: 10vh;
 }
@@ -210,7 +210,7 @@ svg {
   /* margin-right: 200px; */
   height: 80vh;
   width: 60vw;
-  background-color: grey;
+  /* background-color: grey; */
 }
 
 .color-collage {
@@ -227,6 +227,7 @@ svg {
 }
 
 #cc1 {
+  margin-top: 10vh;
   width: 20vh;
 }
 
