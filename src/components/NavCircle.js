@@ -50,10 +50,10 @@ function NavCircle(props) {
 								onClick={(e) => {
 									{
 										e.preventDefault();
-										history.push('/profile');
+										history.push('/');
 									}
 								}}>
-								profile
+								home
 							</a>
 						</tspan>
             

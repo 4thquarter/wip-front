@@ -200,7 +200,7 @@ function App(props) {
 
 		console.log(requestOptions);
 
-		fetch('https://paperclip-api.herokuapp.com/api/user', requestOptions)
+		fetch('https://q4backend.herokuapp.com/signup/', requestOptions)
 			.then((response) => response.json())
 			.then((data) => {
 				if (data) {
@@ -221,6 +221,11 @@ function App(props) {
 			});
 	}
 
+	
+	
+	
+	
+	
 	function signIn(body) {
 		const requestOptions = {
 			method: 'GET',
@@ -440,7 +445,7 @@ function App(props) {
 					return (
 						<>
 							<Link to='/'>
-								<h1 className='header'>"User Art" // sign up</h1>
+								<h1 className='signUpHeader'>[wip] // sign up</h1>
 							</Link>
 							<SignUp
 								handleChange={handleChange}
@@ -458,7 +463,7 @@ function App(props) {
 					return (
 						<>
 							<Link to='/'>
-								<h1 className='header'>"User Art" // sign in</h1>
+								<h1 className='signInHeader' >[wip] // sign in</h1>
 							</Link>
 							<SignIn
 								handleChange={handleChange}

@@ -65,7 +65,7 @@ function Colors() {
 
   
   
-	const [colors, setColors] = useState([]);
+	const [arts, setArts] = useState([]);
   const [alive, setAlive] = useState([])
   const [unknown, setUnkown] = useState([])
   const [deceased, setDeceased] = useState([])
@@ -83,13 +83,13 @@ function Colors() {
   
   
   const fetchColors = async () => {
-		const colorsData = await fetch(
+		const artsData = await fetch(
 			'https://www.breakingbadapi.com/api/characters'
 		);
-    const colors = await colorsData.json();
-    console.log(colors);
+    const arts = await artsData.json();
+    console.log(arts);
     
-    colors.sort(() => Math.random() - 0.5);
+    arts.sort(() => Math.random() - 0.5);
     // console.log(colors);
         
     let red = []
@@ -103,25 +103,45 @@ function Colors() {
     let white = []
     let gray = []
     
-    colors.map((color) => {
-      switch(color.status) {
+    arts.map((art) => {
+      switch(art.status) {
         case 'Alive':
-          red.push(color)
+          red.push(art)
           break;
         case '?':
-          blue.push(color)
+          blue.push(art)
           break;
         case 'Deceased':
-          yellow.push(color)
+          yellow.push(art)
           break;
         case 'Presumed dead':
-          green.push(color)
+          green.push(art)
+          break;
+        case 'purple':
+          green.push(art)
+          break;
+        case 'orange':
+          green.push(art)
+          break;
+        case 'brown':
+          green.push(art)
+          break;
+        case 'black':
+          green.push(art)
+          break;
+        case 'white':
+          green.push(art)
+          break;   
+        case 'grey':
+          green.push(art)
           break;
       }
     })
     
-    setColors(colors);
-
+    setArts(arts);
+    
+    console.log(red);
+    
     setAlive(red)
     setUnkown(blue)
     setDeceased(yellow)
@@ -195,8 +215,6 @@ function Colors() {
 								marginLeft: `${randomIntegers[i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
-                
-                
                 
 							<Link
 								className='image-link'
@@ -276,20 +294,29 @@ function Colors() {
 				</div>
 
 				<div className='colorCollageHolder'>
-					<h3 className='color-collage-title'>purple</h3>
-					{colors.slice(20, 25).map((color) => (
-						<div key={color.char_id} className='color-collage'>
+					<h3 className='color-collage-title'>red</h3>
+					{alive.slice(0, 5).map((alive, i) => (
+						<div
+							key={alive.char_id}
+              className='color-collage'
+              
+							id={`cc${i + 1}`}
+							style={{
+								marginLeft: `${randomIntegers[i]}%`,
+								// marginTop: `${randomIntegers[i]}%`,
+							}}>
+                
 							<Link
 								className='image-link'
 								style={{
-									filter: 'sepia(100%) saturate(300%) hue-rotate(190deg)',
+									filter: 'sepia(100%) saturate(300%) hue-rotate(-30deg)',
 								}}
-								to={`/colors/${color.char_id}`}>
+								to={`/colors/${alive.char_id}`}>
 								<img
-									key={color.char_id}
+									key={alive.char_id}
 									className='image-in-collage'
-									src={color.img}
-									alt={color.name}
+									src={alive.img}
+									alt={alive.name}
 								/>
 							</Link>
 						</div>
@@ -297,20 +324,29 @@ function Colors() {
 				</div>
 
 				<div className='colorCollageHolder'>
-					<h3 className='color-collage-title'>orange</h3>
-					{colors.slice(25, 30).map((color) => (
-						<div key={color.char_id} className='color-collage'>
+					<h3 className='color-collage-title'>red</h3>
+					{alive.slice(0, 5).map((alive, i) => (
+						<div
+							key={alive.char_id}
+              className='color-collage'
+              
+							id={`cc${i + 1}`}
+							style={{
+								marginLeft: `${randomIntegers[i]}%`,
+								// marginTop: `${randomIntegers[i]}%`,
+							}}>
+                
 							<Link
 								className='image-link'
 								style={{
-									filter: 'sepia(100%) saturate(300%) hue-rotate(-5deg)',
+									filter: 'sepia(100%) saturate(300%) hue-rotate(-30deg)',
 								}}
-								to={`/colors/${color.char_id}`}>
+								to={`/colors/${alive.char_id}`}>
 								<img
-									key={color.char_id}
+									key={alive.char_id}
 									className='image-in-collage'
-									src={color.img}
-									alt={color.name}
+									src={alive.img}
+									alt={alive.name}
 								/>
 							</Link>
 						</div>
@@ -318,21 +354,29 @@ function Colors() {
 				</div>
 
 				<div className='colorCollageHolder'>
-					<h3 className='color-collage-title'>brown</h3>
-					{colors.slice(0, 5).map((color) => (
-						<div key={color.char_id} className='color-collage'>
+					<h3 className='color-collage-title'>red</h3>
+					{alive.slice(0, 5).map((alive, i) => (
+						<div
+							key={alive.char_id}
+              className='color-collage'
+              
+							id={`cc${i + 1}`}
+							style={{
+								marginLeft: `${randomIntegers[i]}%`,
+								// marginTop: `${randomIntegers[i]}%`,
+							}}>
+                
 							<Link
 								className='image-link'
 								style={{
-									filter:
-										'sepia(100%) saturate(300%) opacity(60%) hue-rotate(-25deg)',
+									filter: 'sepia(100%) saturate(300%) hue-rotate(-30deg)',
 								}}
-								to={`/colors/${color.char_id}`}>
+								to={`/colors/${alive.char_id}`}>
 								<img
-									key={color.char_id}
+									key={alive.char_id}
 									className='image-in-collage'
-									src={color.img}
-									alt={color.name}
+									src={alive.img}
+									alt={alive.name}
 								/>
 							</Link>
 						</div>
@@ -340,20 +384,29 @@ function Colors() {
 				</div>
 
 				<div className='colorCollageHolder'>
-					<h3 className='color-collage-title'>black</h3>
-					{colors.slice(5, 10).map((color) => (
-						<div key={color.char_id} className='color-collage'>
+					<h3 className='color-collage-title'>red</h3>
+					{alive.slice(0, 5).map((alive, i) => (
+						<div
+							key={alive.char_id}
+              className='color-collage'
+              
+							id={`cc${i + 1}`}
+							style={{
+								marginLeft: `${randomIntegers[i]}%`,
+								// marginTop: `${randomIntegers[i]}%`,
+							}}>
+                
 							<Link
 								className='image-link'
 								style={{
-									filter: 'brightness(.4) grayscale(100%)',
+									filter: 'sepia(100%) saturate(300%) hue-rotate(-30deg)',
 								}}
-								to={`/colors/${color.char_id}`}>
+								to={`/colors/${alive.char_id}`}>
 								<img
-									key={color.char_id}
+									key={alive.char_id}
 									className='image-in-collage'
-									src={color.img}
-									alt={color.name}
+									src={alive.img}
+									alt={alive.name}
 								/>
 							</Link>
 						</div>
@@ -361,41 +414,59 @@ function Colors() {
 				</div>
 
 				<div className='colorCollageHolder'>
-					<h3 className='color-collage-title'>white</h3>
-					{colors.slice(10, 15).map((color) => (
-						<div key={color.char_id} className='color-collage'>
+					<h3 className='color-collage-title'>red</h3>
+					{alive.slice(0, 5).map((alive, i) => (
+						<div
+							key={alive.char_id}
+              className='color-collage'
+              
+							id={`cc${i + 1}`}
+							style={{
+								marginLeft: `${randomIntegers[i]}%`,
+								// marginTop: `${randomIntegers[i]}%`,
+							}}>
+                
 							<Link
 								className='image-link'
 								style={{
-									filter: 'brightness(5) grayscale(100%)',
+									filter: 'sepia(100%) saturate(300%) hue-rotate(-30deg)',
 								}}
-								to={`/colors/${color.char_id}`}>
+								to={`/colors/${alive.char_id}`}>
 								<img
-									key={color.char_id}
+									key={alive.char_id}
 									className='image-in-collage'
-									src={color.img}
-									alt={color.name}
+									src={alive.img}
+									alt={alive.name}
 								/>
 							</Link>
 						</div>
 					))}
 				</div>
-
+        
 				<div className='colorCollageHolder'>
-					<h3 className='color-collage-title'>grey</h3>
-					{colors.slice(15, 20).map((color) => (
-						<div key={color.char_id} className='color-collage'>
+					<h3 className='color-collage-title'>red</h3>
+					{alive.slice(0, 5).map((alive, i) => (
+						<div
+							key={alive.char_id}
+              className='color-collage'
+              
+							id={`cc${i + 1}`}
+							style={{
+								marginLeft: `${randomIntegers[i]}%`,
+								// marginTop: `${randomIntegers[i]}%`,
+							}}>
+                
 							<Link
 								className='image-link'
 								style={{
-									filter: 'brightness(.5) contrast(50%) grayscale(100%)',
+									filter: 'sepia(100%) saturate(300%) hue-rotate(-30deg)',
 								}}
-								to={`/colors/${color.char_id}`}>
+								to={`/colors/${alive.char_id}`}>
 								<img
-									key={color.char_id}
+									key={alive.char_id}
 									className='image-in-collage'
-									src={color.img}
-									alt={color.name}
+									src={alive.img}
+									alt={alive.name}
 								/>
 							</Link>
 						</div>
