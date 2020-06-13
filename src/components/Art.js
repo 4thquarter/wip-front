@@ -10,7 +10,7 @@ class Art extends Component {
                   <div className="singleDisplay">
                     <a className="readMore" 
                     onClick={() => {
-                      {window.open(art.url, '_blank')} 
+                      window.open(art.url, '_blank')
                     }}
                     rel="noopener noreferrer"
                     >

@@ -50,10 +50,10 @@ function NavCircle(props) {
                 id="nav1"
 								onClick={(e) => {
 										e.preventDefault();
-										history.push('/');
+										history.push('/user');
 								}}>
 							  {/* ––––– home ––––– */}
-								││ home∜ ∝ ∞ ∟
+								││ user∜ ∝ ∞ ∟
 								
 							</a>
 						</tspan>
@@ -104,7 +104,7 @@ function NavCircle(props) {
 										history.push('/mediums');
 								}}>
 							  {/* –––– artists ––––– */}
-								││ artists◰ ◱ ▲
+								││ artists ◰ ◱ ▲
 								
 							</a>
 						</tspan>

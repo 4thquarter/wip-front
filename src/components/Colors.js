@@ -1,6 +1,7 @@
 // import React, { Component } from "react";
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export default Colors;
 
@@ -148,15 +149,17 @@ function Colors() {
   };
   
   function getRandomIntegers() {
-    
     let randomIntegers = []
     
-    for(let i=0; i<5; i++) {
-      let min = 10;
-      let max = 70;
-      randomIntegers.push(Math.floor(Math.random() * (max - min)) + min);
-    }
+    for(let j=0; j<10; j++) {
+      randomIntegers[j] = []
     
+      for(let i=0; i<5; i++) {
+          let min = 10;
+          let max = 70;
+          randomIntegers[j].push(Math.floor(Math.random() * (max - min)) + min)
+        }
+    }
     
     setRandomIntegers(randomIntegers)
   }
@@ -181,7 +184,7 @@ function Colors() {
               
 							id={`cc${i + 1}`}
 							style={{
-								marginLeft: `${randomIntegers[i]}%`,
+								marginLeft: `${randomIntegers[0][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
                 
@@ -211,7 +214,7 @@ function Colors() {
               
 							id={`cc${i + 1}`}
               style={{
-								marginLeft: `${randomIntegers[i]}%`,
+								marginLeft: `${randomIntegers[1][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
                 
@@ -241,7 +244,7 @@ function Colors() {
               
 							id={`cc${i + 1}`}
               style={{
-								marginLeft: `${randomIntegers[i]}%`,
+								marginLeft: `${randomIntegers[2][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
                 
@@ -271,7 +274,7 @@ function Colors() {
               
               id={`cc${i + 1}`}
               style={{
-								marginLeft: `${randomIntegers[i]}%`,
+								marginLeft: `${randomIntegers[3][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
               
@@ -301,7 +304,7 @@ function Colors() {
               
 							id={`cc${i + 1}`}
 							style={{
-								marginLeft: `${randomIntegers[i]}%`,
+								marginLeft: `${randomIntegers[4][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
                 
@@ -331,7 +334,7 @@ function Colors() {
               
 							id={`cc${i + 1}`}
 							style={{
-								marginLeft: `${randomIntegers[i]}%`,
+								marginLeft: `${randomIntegers[5][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
                 
@@ -361,7 +364,7 @@ function Colors() {
               
 							id={`cc${i + 1}`}
 							style={{
-								marginLeft: `${randomIntegers[i]}%`,
+								marginLeft: `${randomIntegers[6][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
                 
@@ -391,7 +394,7 @@ function Colors() {
               
 							id={`cc${i + 1}`}
 							style={{
-								marginLeft: `${randomIntegers[i]}%`,
+								marginLeft: `${randomIntegers[7][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
                 
@@ -421,7 +424,7 @@ function Colors() {
               
 							id={`cc${i + 1}`}
 							style={{
-								marginLeft: `${randomIntegers[i]}%`,
+								marginLeft: `${randomIntegers[8][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
                 
@@ -451,7 +454,7 @@ function Colors() {
               
 							id={`cc${i + 1}`}
 							style={{
-								marginLeft: `${randomIntegers[i]}%`,
+								marginLeft: `${randomIntegers[9][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
                 

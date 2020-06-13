@@ -23,7 +23,7 @@ function App(props) {
   // const refContainer = useRef(0);
 
 	const [artData, setartData] = useState([]);
-	const [error, setError] = useState('');
+	const [error, setError] = useState(null);
 
 	// hooks for login and sign up
 	const [email, setEmail] = useState(null);
@@ -68,17 +68,17 @@ function App(props) {
 	}, [completedUsername, history, username]);
 	
 	
-	window.addEventListener('mouseup', (e) => {
-		// Let's pick a random color between #000000 and #FFFFFF
-		var colors = ['red', 'green', 'blue', 'yellow'];
+	// window.addEventListener('mouseup', (e) => {
+	// 	// Let's pick a random color between #000000 and #FFFFFF
+	// 	var colors = ['red', 'green', 'blue', 'yellow'];
 		
-		// Let's format the color to fit CSS requirements
-		const fill = colors[Math.floor(Math.random() * colors.length)]
+	// 	// Let's format the color to fit CSS requirements
+	// 	const fill = colors[Math.floor(Math.random() * colors.length)]
 	
-		// Let's apply our color in the
-		// element we actually clicked on
-		e.target.style.fill = fill
-	})
+	// 	// Let's apply our color in the
+	// 	// element we actually clicked on
+	// 	e.target.style.fill = fill
+	// })
 
 	// // easy fix for weird state problems
 	// window.onload = () => {
@@ -213,24 +213,30 @@ function App(props) {
 		console.log(requestOptions);
 
 		fetch('https://q4backend.herokuapp.com/signup/', requestOptions)
-			.then((response) => response.json())
+			.then((response) => {
+				if (response.status >= 200 && response.status <= 299) {
+					return response.json();
+				} else {
+					console.log(response.json())
+					setError('invalid email.')
+					throw Error(response.statusText);
+				}
+			})
 			.then((data) => {
-				if (data) {
 					setPostId(data.id);
 					setUserId(data._id);
-					setIsUserFound(true);
 					getArtData();
-				} else {
-					// console.log('bad user');
-					setIsUserFound(false);
-				}
 			})
 			.then(() => {
 				setPassword(null);
 				setconfirmPassword(null);
 				setHideSignIn(true);
 				history.push(`/${username}`);
-			});
+			})
+			.catch(error => {
+				console.error(error)
+			})
+			
 	}
 
 	
@@ -368,10 +374,6 @@ function App(props) {
 								</Link>
 							</div>
 
-							<Link to='/about'>
-								<h2 className='about'>about</h2>
-							</Link>
-
 							{/* <Arts artData={artData} error={error} /> */}
 						</>
 					);
@@ -445,9 +447,6 @@ function App(props) {
 								</Link>
 							</div>
 
-							<Link to='/about'>
-								<h2 className='about'>about</h2>
-							</Link>
 						</>
 					);
 				}}
@@ -465,6 +464,7 @@ function App(props) {
 								checkSubmit={checkSubmit}
 								hideSignUp={hideSignUp}
 								isPasswordValid={isPasswordValid}
+								error={error}
 							/>
 						</>
 					);
