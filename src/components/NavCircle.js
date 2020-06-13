@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Route, useHistory } from 'react-router-dom';
-import Colors from './Colors'
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 function NavCircle(props) {
   const history = useHistory();
@@ -39,72 +38,74 @@ function NavCircle(props) {
 					style={props.navAnimation}>
             
           
-					<textPath href='#curve' className='circleText' id='ct1'>
-            <tspan 
+					<textPath href='#curve' className='circleText' id='ct1' pointerEvents = 'visiblePoint'>
+						<tspan 
               x='0' 
               dy='0' 
-              onClick={props.getArtData}>
+							pointerEvents = 'visiblePoint'
+							id="tspan"
+							>
 							<a
                 className='navlink'
                 id="nav1"
 								onClick={(e) => {
-									{
 										e.preventDefault();
 										history.push('/');
-									}
 								}}>
-								home
+							  {/* ––––– home ––––– */}
+								││ home∜ ∝ ∞ ∟
+								
 							</a>
 						</tspan>
-            
+						
 						<tspan
 							x='115'
 							dy='0'
-							onClick={props.getArtData}>
+							>
 							<a
                 className='navlink'
                 id="nav2"
 								onClick={(e) => {
-									{
 										e.preventDefault();
 										history.push('/colors');
-									}
 								}}>
-								colors
+								{/* -––– colors ––––- */}
+								││ colors♕☯☭☠
+								
 							</a>
 						</tspan>
             
 						<tspan
 							x='225'
 							dy='0'
-							onClick={props.getArtData}>
+							>
 							<a
                 className='navlink'
                 id="nav3"
 								onClick={(e) => {
-									{
 										e.preventDefault();
 										history.push('/mediums');
-									}
 								}}>
-								mediums
+								{/* –––– mediums –––– */}
+								││ mediums⋬ ⋭ ⋮ 
+
 							</a>
 						</tspan>
             
 						<tspan
 							x='355'
 							dy='0'
-							onClick={props.getArtData}>
+							>
 							<a
                 className='navlink'
                 id="nav4"
 								onClick={(e) => {
-									{
 										e.preventDefault();
 										history.push('/mediums');
-									}
 								}}>
-								artists
+							  {/* –––– artists ––––– */}
+								││ artists◰ ◱ ▲
+								
 							</a>
 						</tspan>
             

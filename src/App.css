@@ -120,7 +120,11 @@ h2 {
 
 
 .signUpHeader {
-	margin-left: 80vh;
+	margin-left: 80vw;
+}
+
+.signInHeader {
+	margin-left: 75vw;
 }
 
 
@@ -133,13 +137,14 @@ h2 {
 
 .signIn {
 	position: absolute;
-	right: 8%;
-	top: 90%;
+	left: 8px;
+	bottom: 20px;
 }
 
 .inputBox {
 	background: transparent;
 	border: 2px solid white;
+	color: white;
 	border-right: none;
 	border-left: none;
 	margin-left: 8px;
@@ -170,7 +175,8 @@ h2 {
 	border: 2px solid white;
 	font-weight: bolder;
 	font-size: 12pt;
-	width: 70px
+	width: 70px;
+	margin-top: 15px;
 }
 
 .signUpButton:hover,
@@ -192,10 +198,12 @@ h2 {
 
 .passwordMatch {
 	margin-left: 8px;
+	color: white;
 }
 
 .isUserFound {
 	margin-left: 8px;
+	color: white;
 }
 
 
@@ -255,39 +263,29 @@ svg {
 /* NAV CIRCLE */
 
 #nav1 {
-  fill: #695F49;
+	fill: #695F49;
 }
-
-#nav1:hover {
-  fill: red;
-}
-
-
-
 #nav2 {
   fill: #B6AB92;
 }
-
-#nav2:hover {
-  fill: red;
-}
-
-
-
 #nav3 {
   fill: #695F49;
 }
-
-#nav3:hover {
-  fill: red;
-}
-
-
-
 #nav4 {
   fill: #B6AB92;
 }
 
+
+
+#nav1:hover {
+  fill: red;
+}
+#nav2:hover {
+  fill: red;
+}
+#nav3:hover {
+  fill: red;
+}
 #nav4:hover {
   fill: red;
 }
@@ -296,17 +294,37 @@ svg {
 
 
 
+
+
+
+
+
+
+
+
+#ct1:hover {
+	fill: red;
+}
+
+/* #tspan:hover {
+	cursor: pointer;
+} */
+
+/* .graphic:hover {
+	cursor: pointer;
+} */
+
 .navlink {
   /* fill: rgb(255, 255, 255); */
-  /* fill: blue; */
+	/* fill: blue; */
 }
 
 .navlink:hover {
 	fill: red;
 	/* text-shadow: 0 -10px 7px rgba(225, 255, 77, 0.824);   */
 	/* text-shadow: 0 -15px 5px rgba(0, 0, 0, 0.5); */
-	/* font-size: 17px;
-	letter-spacing: 7.5px; */
+	/* font-size: 17px; */
+	/* letter-spacing: 7.5px; */
   /* letter-spacing: 9.2px; */
 	font-weight: 800;
 	cursor: pointer;

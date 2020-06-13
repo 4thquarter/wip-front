@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Link, useHistory } from 'react-router-dom';
 
-import useHorizontal from '@oberon-amsterdam/horizontal';
+// import useHorizontal from '@oberon-amsterdam/horizontal';
 
 import './App.css';
 
 import NavCircle from './components/NavCircle';
 import Colors from './components/Colors';
 
-import Arts from './components/Arts.js';
 import Art from './components/Art.js';
 
 import SignIn from './components/SignIn';
@@ -21,7 +20,7 @@ function App(props) {
 	// useHorizontal();
 
   
-  const refContainer = useRef(0);
+  // const refContainer = useRef(0);
 
 	const [artData, setartData] = useState([]);
 	const [error, setError] = useState('');
@@ -67,6 +66,19 @@ function App(props) {
 			}
 		});
 	}, [completedUsername, history, username]);
+	
+	
+	window.addEventListener('mouseup', (e) => {
+		// Let's pick a random color between #000000 and #FFFFFF
+		var colors = ['red', 'green', 'blue', 'yellow'];
+		
+		// Let's format the color to fit CSS requirements
+		const fill = colors[Math.floor(Math.random() * colors.length)]
+	
+		// Let's apply our color in the
+		// element we actually clicked on
+		e.target.style.fill = fill
+	})
 
 	// // easy fix for weird state problems
 	// window.onload = () => {
@@ -156,11 +168,11 @@ function App(props) {
 
 		signUpInformation = {
 			email: email,
-			userName: username,
+			name: username,
 			password: password,
 		};
 		signInInformation = {
-			userName: username,
+			email: email,
 			password: password,
 		};
 		// console.log(signUpInformation);
@@ -230,12 +242,13 @@ function App(props) {
 		const requestOptions = {
 			method: 'GET',
 			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(signUpInformation),
 		};
 
 		let dataVariable = null;
 
 		fetch(
-			`https://paperclip-api.herokuapp.com/api/user/${username}/name`,
+			'https://q4backend.herokuapp.com/signin/',
 			requestOptions
 		)
 			.then((response) => response.json())

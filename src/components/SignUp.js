@@ -37,7 +37,7 @@ function SignUp(props) {
 						className="inputBox"
 						onChange={props.handleChange}
 						type='password'
-						placeholder='password'
+						placeholder='confirm password'
 						id='passwordConfirm'
 						name='confirmPassword'
 					/>
