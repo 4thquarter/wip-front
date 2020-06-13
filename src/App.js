@@ -42,7 +42,6 @@ function App(props) {
 	const [completedUsername, setcompletedUsername] = useState(null);
 	const [completedEmail, setcompletedEmail] = useState(null)
 
-	const [hideUserOptions, setHideUserOptions] = useState(true);
 	const [hideSignIn, setHideSignIn] = useState(true);
 	const [hideSignUp, setHideSignUp] = useState(true);
 	const [hideSignOut, setHideSignOut] = useState(true);
@@ -53,7 +52,9 @@ function App(props) {
 
 	useEffect(() => {
 		console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
-		getArtData();
+		
+		let access = localStorage.getItem('accessToken')
+					console.log(access)
 
 		window.addEventListener('scroll', onScroll);
     window.addEventListener('wheel', onAttemptedScroll);
@@ -64,8 +65,7 @@ function App(props) {
 
 			switch (location.pathname) {
 				case '/':
-					setHideUserOptions(true);
-					break;
+				break;
 			}
 		});
 	}, [completedUsername, history, username]);
@@ -91,32 +91,6 @@ function App(props) {
 	// 	}
 	// };
 
-	function userButtonClick(event) {
-		if (event.target.getAttribute('name') === 'user') {
-			setHideUserOptions(false);
-		}
-		// if (event.target.getAttribute('name') === 'completedUsername') {
-		// 	setHideInventory(false);
-		// 	setHideNav(true);
-		// }
-	}
-
-	function getArtData() {
-		const url = `https://api.harvardartmuseums.org/object?classification=Paintings&sort=random&size=24&hasimage=1&apikey=${process.env.REACT_APP_KEY}`;
-
-		fetch(url)
-			.then((response) => response.json())
-			.then((response) => {
-				setartData(response.records);
-			})
-			.catch(function (error) {
-				setError(error);
-			});
-	}
-
-	function handleClick() {
-		console.log('click');
-	}
 
 	//SIGNING IN AND UP
 
@@ -165,6 +139,7 @@ function App(props) {
 
 			default:
 				console.log('switch is broke');
+				break;
 		}
 		
 		if (password === null) {
@@ -241,7 +216,6 @@ function App(props) {
 			.then((data) => {
 					setPostId(data.id);
 					setUserId(data._id);
-					getArtData();
 			})
 			.then(() => {
 				setPassword(null);
@@ -366,7 +340,8 @@ function App(props) {
 	return (
 		<div className='wrapper'>
 			<Route
-				path='welcome'
+				path='/'
+				exact={true}
 				render={() => {
 					return (
 						<>
@@ -377,19 +352,18 @@ function App(props) {
 				}}
 			/>
 			<Route path='/colors' exact component={Colors} />
-			<NavCircle navAnimation={navAnimation} getArtData={getArtData} />
+			<NavCircle navAnimation={navAnimation} />
 			<Route
-				path='/'
+				path='/user'
 				exact={true}
 				render={() => {
 					return (
 						<>
 							{/* USER BUTTON */}
-							<div className={hideUserOptions ? 'user' : 'hidden'}>
-								<Link to={completedUsername ? `${completedUsername}` : 'user'}>
+							<div className='user'>
+								<Link to={completedUsername ? `${completedUsername}` : 'usersign'}>
 									{/* GENERIC USER HEADER */}
 									<h2
-										onClick={userButtonClick}
 										className={completedUsername ? 'hidden' : 'userButton'}
 										name='user'>
 										user
@@ -404,8 +378,18 @@ function App(props) {
 								</Link>
 							</div>
 
+							{/* <Arts artData={artData} error={error} /> */}
+						</>
+					);
+				}}
+			/>
+			<Route
+				path='/usersign'
+				render={() => {
+					return (
+						<>
 							{/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
-							<div className={hideUserOptions ? 'hidden' : 'user'}>
+							<div className='userSignIn'>
 								<Link to='/signup'>
 									<h2 className='navSignButton'>sign up</h2>
 								</Link>
@@ -414,7 +398,6 @@ function App(props) {
 								</Link>
 							</div>
 
-							{/* <Arts artData={artData} error={error} /> */}
 						</>
 					);
 				}}
@@ -432,13 +415,11 @@ function App(props) {
 							<Art
 								match={routerProps.match}
 								artData={artData}
-								handleClick={handleClick}
 							/>
 						</>
 					);
 				}}
 			/>
-
 			<Route
 				path='/about'
 				render={() => {
@@ -448,45 +429,6 @@ function App(props) {
 								<h1 className='header'>"Harvard Art"</h1>
 							</Link>
 							<About />
-						</>
-					);
-				}}
-			/>
-			<Route
-				path='/user'
-				render={() => {
-					return (
-						<>
-							{/* USER BUTTON */}
-							<div className={hideUserOptions ? 'user' : 'hidden'}>
-								<Link to={completedUsername ? `${completedUsername}` : 'user'}>
-									{/* NOT LOGGED IN HEADER */}
-									<h2
-										onClick={userButtonClick}
-										className={completedUsername ? 'hidden' : 'userButton'}
-										name='user'>
-										user
-									</h2>
-
-									{/* LOGGED IN HEADER */}
-									<h2
-										className={completedUsername ? 'userButton' : 'hidden'}
-										name='completedUsername'>
-										{completedUsername}
-									</h2>
-								</Link>
-							</div>
-
-							{/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
-							<div className={hideUserOptions ? 'hidden' : 'userSignIn'}>
-								<Link to='/signup'>
-									<h2 className='navSignButton'>sign up</h2>
-								</Link>
-								<Link to='/signin'>
-									<h2 className='navSignButton'>sign in</h2>
-								</Link>
-							</div>
-
 						</>
 					);
 				}}
