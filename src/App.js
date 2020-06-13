@@ -352,7 +352,11 @@ function App(props) {
 				}}
 			/>
 			<Route path='/colors' exact component={Colors} />
-			<NavCircle navAnimation={navAnimation} />
+			
+			<div className="general-nav-position-and-size">
+				<NavCircle navAnimation={navAnimation} />
+			</div>
+			
 			<Route
 				path='/user'
 				exact={true}

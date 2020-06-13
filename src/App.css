@@ -247,20 +247,35 @@ svg {
 
 .header {
 	cursor: default;
-	position: fixed;
 	overflow: hidden;
-	display: inline;
-	top: 0;
-	z-index: 1000;
 	fill: rgb(255, 255, 255);
 	/* text-shadow: 0 -15px 10px rgba(0, 0, 0, 0.5); */
 	/* width: 2000px; */
-  letter-spacing: .04px;
-  /* letter-spacing: 8px; */
-
+  	letter-spacing: .04px;
+  	/* letter-spacing: 8px; */
 	font-size: 15px;
   	font-weight: 800;
 }
+.general-nav-position-and-size {
+	display: inline;
+	top: 0;
+	position: fixed;
+	z-index: 1000;
+}
+.welcome-nav-position-and-size {
+	display: block;
+	/* margin-left: -280px;
+	top: 38vh;
+	left: 50vmin; */
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: scale(2.8) translate(-18%, -18%);
+	z-index: 1000;
+}
+
+
+
 
 @media (max-width: 1000px) {
     .header {
