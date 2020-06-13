@@ -45,6 +45,7 @@ function SignUp(props) {
 						===>
 					</button>
 					<p className={props.isPasswordValid ? 'hidden' : 'passwordMatch'}>passwords must match!</p>
+					<p className={props.error ? 'error' : 'hidden'}>{props.error}</p>
 				</form>
 			</div>
 		</>

@@ -5,6 +5,8 @@ import { Route, Link, useHistory } from 'react-router-dom';
 
 import './App.css';
 
+import Welcome from './components/Welcome';
+
 import NavCircle from './components/NavCircle';
 import Colors from './components/Colors';
 
@@ -23,7 +25,7 @@ function App(props) {
   // const refContainer = useRef(0);
 
 	const [artData, setartData] = useState([]);
-	const [error, setError] = useState('');
+	const [error, setError] = useState(null);
 
 	// hooks for login and sign up
 	const [email, setEmail] = useState(null);
@@ -38,8 +40,8 @@ function App(props) {
 	//ideally this would be in local storage so refreshing wouldn't break everything
 	const [userId, setUserId] = useState('');
 	const [completedUsername, setcompletedUsername] = useState(null);
+	const [completedEmail, setcompletedEmail] = useState(null)
 
-	const [hideUserOptions, setHideUserOptions] = useState(true);
 	const [hideSignIn, setHideSignIn] = useState(true);
 	const [hideSignUp, setHideSignUp] = useState(true);
 	const [hideSignOut, setHideSignOut] = useState(true);
@@ -50,7 +52,9 @@ function App(props) {
 
 	useEffect(() => {
 		console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
-		getArtData();
+		
+		let access = localStorage.getItem('accessToken')
+					console.log(access)
 
 		window.addEventListener('scroll', onScroll);
     window.addEventListener('wheel', onAttemptedScroll);
@@ -61,24 +65,23 @@ function App(props) {
 
 			switch (location.pathname) {
 				case '/':
-					setHideUserOptions(true);
-					break;
+				break;
 			}
 		});
 	}, [completedUsername, history, username]);
 	
 	
-	window.addEventListener('mouseup', (e) => {
-		// Let's pick a random color between #000000 and #FFFFFF
-		var colors = ['red', 'green', 'blue', 'yellow'];
+	// window.addEventListener('mouseup', (e) => {
+	// 	// Let's pick a random color between #000000 and #FFFFFF
+	// 	var colors = ['red', 'green', 'blue', 'yellow'];
 		
-		// Let's format the color to fit CSS requirements
-		const fill = colors[Math.floor(Math.random() * colors.length)]
+	// 	// Let's format the color to fit CSS requirements
+	// 	const fill = colors[Math.floor(Math.random() * colors.length)]
 	
-		// Let's apply our color in the
-		// element we actually clicked on
-		e.target.style.fill = fill
-	})
+	// 	// Let's apply our color in the
+	// 	// element we actually clicked on
+	// 	e.target.style.fill = fill
+	// })
 
 	// // easy fix for weird state problems
 	// window.onload = () => {
@@ -88,32 +91,6 @@ function App(props) {
 	// 	}
 	// };
 
-	function userButtonClick(event) {
-		if (event.target.getAttribute('name') === 'user') {
-			setHideUserOptions(false);
-		}
-		// if (event.target.getAttribute('name') === 'completedUsername') {
-		// 	setHideInventory(false);
-		// 	setHideNav(true);
-		// }
-	}
-
-	function getArtData() {
-		const url = `https://api.harvardartmuseums.org/object?classification=Paintings&sort=random&size=24&hasimage=1&apikey=${process.env.REACT_APP_KEY}`;
-
-		fetch(url)
-			.then((response) => response.json())
-			.then((response) => {
-				setartData(response.records);
-			})
-			.catch(function (error) {
-				setError(error);
-			});
-	}
-
-	function handleClick() {
-		console.log('click');
-	}
 
 	//SIGNING IN AND UP
 
@@ -149,16 +126,28 @@ function App(props) {
 
 	function checkSubmit(event) {
 		event.preventDefault();
-		// 		console.log('checking submit');
+				console.log('checking submit');
+				
+		switch (event.target.name) {
+			case 'signUp':
+				if (username === null)
+				break;
 
-		if (username === null) {
-			return;
+			case 'signIn':
+				if (email === null)
+				break;
+
+			default:
+				console.log('switch is broke');
+				break;
 		}
+		
 		if (password === null) {
 			return;
 		} else {
 			// 			console.log(username);
 			setcompletedUsername(username);
+			setcompletedEmail(email);
 			runSubmit(event);
 		}
 	}
@@ -188,11 +177,13 @@ function App(props) {
 				break;
 
 			case 'signIn':
+				// console.log('signin')
 				signIn();
 				break;
 
 			default:
 				console.log('switch is broke');
+				break;
 		}
 	}
 
@@ -213,24 +204,30 @@ function App(props) {
 		console.log(requestOptions);
 
 		fetch('https://q4backend.herokuapp.com/signup/', requestOptions)
-			.then((response) => response.json())
+			.then((response) => {
+				if (response.status >= 200 && response.status <= 299) {
+					return response.json();
+				} else {
+					console.log(response.json())
+					setError('invalid email.')
+					throw Error(response.statusText);
+				}
+			})
 			.then((data) => {
-				if (data) {
 					setPostId(data.id);
 					setUserId(data._id);
-					setIsUserFound(true);
-					getArtData();
-				} else {
-					// console.log('bad user');
-					setIsUserFound(false);
-				}
 			})
 			.then(() => {
 				setPassword(null);
 				setconfirmPassword(null);
 				setHideSignIn(true);
 				history.push(`/${username}`);
-			});
+				setError(null);
+			})
+			.catch(error => {
+				console.error(error)
+			})
+			
 	}
 
 	
@@ -240,51 +237,63 @@ function App(props) {
 	
 	function signIn(body) {
 		const requestOptions = {
-			method: 'GET',
+			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(signUpInformation),
+			body: JSON.stringify(signInInformation),
 		};
 
 		let dataVariable = null;
 
 		fetch(
-			'https://q4backend.herokuapp.com/signin/',
+			'https://q4backend.herokuapp.com/api/token/',
 			requestOptions
 		)
-			.then((response) => response.json())
+			.then((response) => {
+				if (response.status >= 200 && response.status <= 299) {
+					// console.log(requestOptions)
+					let data = response.json()
+					// console.log(data)
+					return data;
+				} else {
+					// console.log(response.json())
+					setError('invalid login.')
+					throw Error(response.statusText);
+				}
+			})
 			.then((data) => {
-				// console.log(data);
+				console.log(data);
 				if (data) {
-					// 					console.log(data);
+					localStorage.setItem('accessToken', `${data.access}`)
+					let access = localStorage.getItem('accessToken')
+					console.log(access)
+					console.log('yes data');
 					dataVariable = data;
 					setPostId(data.id);
 					setUserId(data._id);
+					
 					setIsUserFound(true);
-					getArtData();
 				} else {
 					// console.log('bad user');
-					// 					console.log('no data');
+					console.log('no data');
 
-					setIsUserFound(false);
+					// setIsUserFound(false);
 				}
-				// check response to see if the info was good
-				// if not, call a function that will reset the state?
 			})
 			.then(() => {
 				if (dataVariable) {
-					// 				console.log('nextscreen');
-
 					setPassword(null);
 					setconfirmPassword(null);
 					setHideSignIn(true);
 					setHideSignOut(true);
-					console.log(hideSignOut);
 					history.push(`/${username}`);
 				} else {
 					setPassword(null);
 					setconfirmPassword(null);
 				}
-			});
+			})
+			.catch(error => {
+				console.error(error)
+			})
 	}
 
 	function onScroll() {    
@@ -330,20 +339,35 @@ function App(props) {
 
 	return (
 		<div className='wrapper'>
-			<Route path='/colors' exact component={Colors} />
-			<NavCircle navAnimation={navAnimation} getArtData={getArtData} />
 			<Route
 				path='/'
 				exact={true}
 				render={() => {
 					return (
 						<>
+							<Welcome
+							/>
+						</>
+					);
+				}}
+			/>
+			<Route path='/colors' exact component={Colors} />
+			
+			<div className="general-nav-position-and-size">
+				<NavCircle navAnimation={navAnimation} />
+			</div>
+			
+			<Route
+				path='/user'
+				exact={true}
+				render={() => {
+					return (
+						<>
 							{/* USER BUTTON */}
-							<div className={hideUserOptions ? 'user' : 'hidden'}>
-								<Link to={completedUsername ? `${completedUsername}` : 'user'}>
+							<div className='user'>
+								<Link to={completedUsername ? `${completedUsername}` : 'usersign'}>
 									{/* GENERIC USER HEADER */}
 									<h2
-										onClick={userButtonClick}
 										className={completedUsername ? 'hidden' : 'userButton'}
 										name='user'>
 										user
@@ -358,8 +382,18 @@ function App(props) {
 								</Link>
 							</div>
 
+							{/* <Arts artData={artData} error={error} /> */}
+						</>
+					);
+				}}
+			/>
+			<Route
+				path='/usersign'
+				render={() => {
+					return (
+						<>
 							{/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
-							<div className={hideUserOptions ? 'hidden' : 'user'}>
+							<div className='userSignIn'>
 								<Link to='/signup'>
 									<h2 className='navSignButton'>sign up</h2>
 								</Link>
@@ -368,11 +402,6 @@ function App(props) {
 								</Link>
 							</div>
 
-							<Link to='/about'>
-								<h2 className='about'>about</h2>
-							</Link>
-
-							{/* <Arts artData={artData} error={error} /> */}
 						</>
 					);
 				}}
@@ -390,13 +419,11 @@ function App(props) {
 							<Art
 								match={routerProps.match}
 								artData={artData}
-								handleClick={handleClick}
 							/>
 						</>
 					);
 				}}
 			/>
-
 			<Route
 				path='/about'
 				render={() => {
@@ -406,48 +433,6 @@ function App(props) {
 								<h1 className='header'>"Harvard Art"</h1>
 							</Link>
 							<About />
-						</>
-					);
-				}}
-			/>
-			<Route
-				path='/user'
-				render={() => {
-					return (
-						<>
-							{/* USER BUTTON */}
-							<div className={hideUserOptions ? 'user' : 'hidden'}>
-								<Link to={completedUsername ? `${completedUsername}` : 'user'}>
-									{/* NOT LOGGED IN HEADER */}
-									<h2
-										onClick={userButtonClick}
-										className={completedUsername ? 'hidden' : 'userButton'}
-										name='user'>
-										user
-									</h2>
-
-									{/* LOGGED IN HEADER */}
-									<h2
-										className={completedUsername ? 'userButton' : 'hidden'}
-										name='completedUsername'>
-										{completedUsername}
-									</h2>
-								</Link>
-							</div>
-
-							{/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
-							<div className={hideUserOptions ? 'hidden' : 'userSignIn'}>
-								<Link to='/signup'>
-									<h2 className='navSignButton'>sign up</h2>
-								</Link>
-								<Link to='/signin'>
-									<h2 className='navSignButton'>sign in</h2>
-								</Link>
-							</div>
-
-							<Link to='/about'>
-								<h2 className='about'>about</h2>
-							</Link>
 						</>
 					);
 				}}
@@ -465,6 +450,7 @@ function App(props) {
 								checkSubmit={checkSubmit}
 								hideSignUp={hideSignUp}
 								isPasswordValid={isPasswordValid}
+								error={error}
 							/>
 						</>
 					);
@@ -483,6 +469,7 @@ function App(props) {
 								checkSubmit={checkSubmit}
 								hideSignIn={hideSignIn}
 								isUserFound={isUserFound}
+								error={error}
 							/>
 						</>
 					);

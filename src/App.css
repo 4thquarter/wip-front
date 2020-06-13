@@ -3,12 +3,13 @@ body {
   height: 100%;
   overflow: hidden;
   /* margin: 0; */
-  background-color: black;
+	background-color: black;
 }
 
 #root {
   height: 100%; 
-  position: absolute;
+	position: absolute;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 /* .wrapper {
@@ -73,13 +74,12 @@ a:hover {
 	color: grey;
 }
 
-/* h1 {
-	font-weight: 800;
-	font-size: 27pt;
-} */
+h1 {
+	color: #B6AB92
+}
 
 h1:hover {
-	color: #1913c9;
+	color: #695F49;
 }
 
 h1:active {
@@ -87,8 +87,9 @@ h1:active {
 }
 
 h2 {
-	font-style: italic;
+	/* font-style: italic; */
 	font-weight: 200;
+	color: #B6AB92;
 }
 
 
@@ -98,14 +99,28 @@ h2 {
 
 /* MAIN SCREEN */
 
+
+
+/* .userButton {
+	position: sticky;
+  top: 500px;
+	left: 1000px;
+} */
+
 .userSignIn {
-  margin-top: 50vh;
-  margin-left: 54vh;
+  position: fixed;
+	top: 50%;
+	left: 50%;
 }
 
-.userButton {
-  margin-top: 50vh;
-  margin-left: 54vh;
+.user {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+}
+
+.navSignButton:hover {
+	color: #695F49;
 }
 
 
@@ -143,14 +158,14 @@ h2 {
 
 .inputBox {
 	background: transparent;
-	border: 2px solid white;
-	color: white;
+	border: 2px solid #B6AB92;
+	color: #B6AB92;
 	border-right: none;
 	border-left: none;
 	margin-left: 8px;
 	height: 20px;
 	font-size: 10pt;
-	caret-color: white;
+	caret-color: #B6AB92;
 }
 
 .inputBox:focus {
@@ -158,7 +173,7 @@ h2 {
 }
 
 ::placeholder {
-	color: white;
+	color: #B6AB92;
 	font-weight: bold;
 }
 
@@ -171,8 +186,8 @@ h2 {
 .signInButton {
 	padding: 5px;
 	background: transparent;
-	color: white;
-	border: 2px solid white;
+	color: #B6AB92;
+	border: 2px solid #B6AB92;
 	font-weight: bolder;
 	font-size: 12pt;
 	width: 70px;
@@ -182,6 +197,7 @@ h2 {
 .signUpButton:hover,
 .signInButton:hover {
 	background-color: red;
+	color: black;
 	cursor: pointer;
 }
 
@@ -198,12 +214,19 @@ h2 {
 
 .passwordMatch {
 	margin-left: 8px;
-	color: white;
+	color: #B6AB92;
+	font-weight: 800;
 }
 
 .isUserFound {
 	margin-left: 8px;
-	color: white;
+	color: #B6AB92;
+}
+
+.error {
+	margin-left: 8px;
+	color: #B6AB92;
+	font-weight: 800;
 }
 
 
@@ -224,20 +247,35 @@ svg {
 
 .header {
 	cursor: default;
-	position: fixed;
 	overflow: hidden;
-	display: inline;
-	top: 0;
-	z-index: 1000;
 	fill: rgb(255, 255, 255);
 	/* text-shadow: 0 -15px 10px rgba(0, 0, 0, 0.5); */
 	/* width: 2000px; */
-  letter-spacing: .04px;
-  /* letter-spacing: 8px; */
-
+  	letter-spacing: .04px;
+  	/* letter-spacing: 8px; */
 	font-size: 15px;
   	font-weight: 800;
 }
+.general-nav-position-and-size {
+	display: inline;
+	top: 0;
+	position: fixed;
+	z-index: 1000;
+}
+.welcome-nav-position-and-size {
+	display: block;
+	/* margin-left: -280px;
+	top: 38vh;
+	left: 50vmin; */
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: scale(2.8) translate(-18%, -18%);
+	z-index: 1000;
+}
+
+
+
 
 @media (max-width: 1000px) {
     .header {
@@ -358,9 +396,12 @@ svg {
 .entranceText {
   position: absolute;
   top: 49vh;
-  color: white;
+  color: #B6AB92;
   letter-spacing: 2px;
-  left: 60vw
+	left: 60vw;
+	font-weight: 800;
+	font-style: normal;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .color-collage-title {
@@ -432,7 +473,9 @@ svg {
 	filter: blur(0px) saturate(40%);
 	/* width: 200px; */
   /* height: 100%; */
-  width: 100%;
+	width: 100%;
+	border-radius: 5px;
+	/* box-shadow: 0 0 20px rgba(0, 0, 0, .5); */
 	/* object-fit: cover;
 	object-position: top; */
 }
@@ -569,7 +612,7 @@ svg {
 	margin-top: 170px;
 	margin-left: 20px;
 	padding: 20px;
-	background-color: white;
+	background-color: #B6AB92;
 	border: 2px solid black;
 	min-width: 400px;
 	max-height: 250px;
@@ -617,7 +660,7 @@ svg {
 }
 
 #artHeader {
-	background-color: white;
+	background-color: #B6AB92;
 	border: 2px solid black;
 	padding: 2px;
 	bottom: 0px;
