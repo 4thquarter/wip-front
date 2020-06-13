@@ -5,6 +5,8 @@ import { Route, Link, useHistory } from 'react-router-dom';
 
 import './App.css';
 
+import Welcome from './components/Welcome';
+
 import NavCircle from './components/NavCircle';
 import Colors from './components/Colors';
 
@@ -38,6 +40,7 @@ function App(props) {
 	//ideally this would be in local storage so refreshing wouldn't break everything
 	const [userId, setUserId] = useState('');
 	const [completedUsername, setcompletedUsername] = useState(null);
+	const [completedEmail, setcompletedEmail] = useState(null)
 
 	const [hideUserOptions, setHideUserOptions] = useState(true);
 	const [hideSignIn, setHideSignIn] = useState(true);
@@ -149,16 +152,27 @@ function App(props) {
 
 	function checkSubmit(event) {
 		event.preventDefault();
-		// 		console.log('checking submit');
+				console.log('checking submit');
+				
+		switch (event.target.name) {
+			case 'signUp':
+				if (username === null)
+				break;
 
-		if (username === null) {
-			return;
+			case 'signIn':
+				if (email === null)
+				break;
+
+			default:
+				console.log('switch is broke');
 		}
+		
 		if (password === null) {
 			return;
 		} else {
 			// 			console.log(username);
 			setcompletedUsername(username);
+			setcompletedEmail(email);
 			runSubmit(event);
 		}
 	}
@@ -188,11 +202,13 @@ function App(props) {
 				break;
 
 			case 'signIn':
+				// console.log('signin')
 				signIn();
 				break;
 
 			default:
 				console.log('switch is broke');
+				break;
 		}
 	}
 
@@ -232,6 +248,7 @@ function App(props) {
 				setconfirmPassword(null);
 				setHideSignIn(true);
 				history.push(`/${username}`);
+				setError(null);
 			})
 			.catch(error => {
 				console.error(error)
@@ -246,51 +263,63 @@ function App(props) {
 	
 	function signIn(body) {
 		const requestOptions = {
-			method: 'GET',
+			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(signUpInformation),
+			body: JSON.stringify(signInInformation),
 		};
 
 		let dataVariable = null;
 
 		fetch(
-			'https://q4backend.herokuapp.com/signin/',
+			'https://q4backend.herokuapp.com/api/token/',
 			requestOptions
 		)
-			.then((response) => response.json())
+			.then((response) => {
+				if (response.status >= 200 && response.status <= 299) {
+					// console.log(requestOptions)
+					let data = response.json()
+					// console.log(data)
+					return data;
+				} else {
+					// console.log(response.json())
+					setError('invalid login.')
+					throw Error(response.statusText);
+				}
+			})
 			.then((data) => {
-				// console.log(data);
+				console.log(data);
 				if (data) {
-					// 					console.log(data);
+					localStorage.setItem('accessToken', `${data.access}`)
+					let access = localStorage.getItem('accessToken')
+					console.log(access)
+					console.log('yes data');
 					dataVariable = data;
 					setPostId(data.id);
 					setUserId(data._id);
+					
 					setIsUserFound(true);
-					getArtData();
 				} else {
 					// console.log('bad user');
-					// 					console.log('no data');
+					console.log('no data');
 
-					setIsUserFound(false);
+					// setIsUserFound(false);
 				}
-				// check response to see if the info was good
-				// if not, call a function that will reset the state?
 			})
 			.then(() => {
 				if (dataVariable) {
-					// 				console.log('nextscreen');
-
 					setPassword(null);
 					setconfirmPassword(null);
 					setHideSignIn(true);
 					setHideSignOut(true);
-					console.log(hideSignOut);
 					history.push(`/${username}`);
 				} else {
 					setPassword(null);
 					setconfirmPassword(null);
 				}
-			});
+			})
+			.catch(error => {
+				console.error(error)
+			})
 	}
 
 	function onScroll() {    
@@ -336,6 +365,17 @@ function App(props) {
 
 	return (
 		<div className='wrapper'>
+			<Route
+				path='welcome'
+				render={() => {
+					return (
+						<>
+							<Welcome
+							/>
+						</>
+					);
+				}}
+			/>
 			<Route path='/colors' exact component={Colors} />
 			<NavCircle navAnimation={navAnimation} getArtData={getArtData} />
 			<Route
@@ -483,6 +523,7 @@ function App(props) {
 								checkSubmit={checkSubmit}
 								hideSignIn={hideSignIn}
 								isUserFound={isUserFound}
+								error={error}
 							/>
 						</>
 					);

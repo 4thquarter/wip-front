@@ -4,6 +4,8 @@ function SignIn(props) {
 	return (
 		<>
 			<div className='signIn'>
+				<p className={props.isUserFound ? 'hidden' : 'isUserFound'}>user not found!</p>
+				<p className={props.error ? 'error' : 'hidden'}>{props.error}</p>
 				<form autoComplete="yeeyee">
 					<input
 						className="inputBox"
@@ -27,7 +29,7 @@ function SignIn(props) {
 					<button className="signInButton" onClick={props.checkSubmit} type='submit' name='signIn'>
 						===>
 					</button>
-					<p className={props.isUserFound ? 'hidden' : 'isUserFound'}>user not found!</p>
+					
 				</form>
 			</div>
 		</>

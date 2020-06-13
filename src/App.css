@@ -199,17 +199,19 @@ h2 {
 
 .passwordMatch {
 	margin-left: 8px;
-	color: #695F49;
+	color: #B6AB92;
+	font-weight: 800;
 }
 
 .isUserFound {
 	margin-left: 8px;
-	color: #695F49;
+	color: #B6AB92;
 }
 
 .error {
 	margin-left: 8px;
-	color: #695F49;
+	color: #B6AB92;
+	font-weight: 800;
 }
 
 
