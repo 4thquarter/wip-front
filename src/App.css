@@ -1,23 +1,35 @@
 body {
   /* position: absolute; */
-  /* height: 100%; */
+  height: 100%;
+  overflow: hidden;
   /* margin: 0; */
   background-color: black;
 }
 
 #root {
-  max-height: 100%; 
-  position: fixed;
+  height: 100%; 
+  position: absolute;
 }
 
 /* .wrapper {
-  height: 100%; 
+	height: 100%;
   position: absolute;
   font-family: Arial, Helvetica, sans-serif;
 	letter-spacing: 1px;
   padding: 0 1rem;
   overflow: hidden;
 } */
+
+
+
+
+
+
+
+
+/* SCROLL BAR */
+
+
 
 ::-webkit-scrollbar {
 	width: 5px;
@@ -28,13 +40,28 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: red;
+  /* background-color: rgba(105, 95, 73, 0.447); */
+  background-color: red;
 	width: 10px;
 }
+
+
+
+
+
+
+
+
+
+
+/* MISC */
+
+
 
 .hidden {
 	display: none;
 }
+
 
 a {
 	text-decoration: none;
@@ -46,10 +73,10 @@ a:hover {
 	color: grey;
 }
 
-h1 {
+/* h1 {
 	font-weight: 800;
 	font-size: 27pt;
-}
+} */
 
 h1:hover {
 	color: #1913c9;
@@ -64,49 +91,241 @@ h2 {
 	font-weight: 200;
 }
 
-/* NAV */
 
-/* CIRCLE TEXT */
+
+
+
+
+/* MAIN SCREEN */
+
+.userSignIn {
+  margin-top: 50vh;
+  margin-left: 54vh;
+}
+
+.userButton {
+  margin-top: 50vh;
+  margin-left: 54vh;
+}
+
+
+
+
+
+
+
+
+
+/* SIGN UP AND IN */
+
+
+.signUpHeader {
+	margin-left: 80vw;
+}
+
+.signInHeader {
+	margin-left: 75vw;
+}
+
+
+
+.signUp {
+	position: absolute;
+	left: 8px;
+	bottom: 20px;
+}
+
+.signIn {
+	position: absolute;
+	left: 8px;
+	bottom: 20px;
+}
+
+.inputBox {
+	background: transparent;
+	border: 2px solid white;
+	color: white;
+	border-right: none;
+	border-left: none;
+	margin-left: 8px;
+	height: 20px;
+	font-size: 10pt;
+	caret-color: white;
+}
+
+.inputBox:focus {
+	outline: 0
+}
+
+::placeholder {
+	color: white;
+	font-weight: bold;
+}
+
+.inputBox:focus::placeholder {
+	color: transparent;
+	outline: 0
+}
+
+.signUpButton,
+.signInButton {
+	padding: 5px;
+	background: transparent;
+	color: white;
+	border: 2px solid white;
+	font-weight: bolder;
+	font-size: 12pt;
+	width: 70px;
+	margin-top: 15px;
+}
+
+.signUpButton:hover,
+.signInButton:hover {
+	background-color: red;
+	cursor: pointer;
+}
+
+.signUpButton:active,
+.signInButton:active {
+	background-color: grey;
+	transform: translateY(3px);
+}
+
+.signUpButton:focus,
+.signInButton:focus {
+	outline: 0
+}
+
+.passwordMatch {
+	margin-left: 8px;
+	color: white;
+}
+
+.isUserFound {
+	margin-left: 8px;
+	color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* NAV WHEEL */
 
 svg {
 	z-index: 10;
 }
 
 .header {
-	position: absolute;
-	bottom: 0px;
-	left: 10px;
-	fill: white;
-	width: 2000px;
-	/* letter-spacing: 10px; */
+	cursor: default;
+	position: fixed;
+	overflow: hidden;
+	display: inline;
+	top: 0;
+	z-index: 1000;
+	fill: rgb(255, 255, 255);
+	/* text-shadow: 0 -15px 10px rgba(0, 0, 0, 0.5); */
+	/* width: 2000px; */
+  letter-spacing: .04px;
+  /* letter-spacing: 8px; */
+
 	font-size: 15px;
-  font-weight: 400;
+  	font-weight: 800;
 }
 
-/* @media (max-width: 1000px) {
+@media (max-width: 1000px) {
     .header {
-      width: 1500px;
-      letter-spacing: 2.3vmin;
-      font-size: 15px;
+      /* width: 1500px; */
+      /* letter-spacing: 2.3vmin; */
+      /* font-size: 15px; */
     }
-} */
+}
 
 /* .circleText1:hover {
   fill: blue;
   cursor: pointer;
 } */
 
+
+
+
+
+
+
+
+
+/* NAV CIRCLE */
+
+#nav1 {
+	fill: #695F49;
+}
+#nav2 {
+  fill: #B6AB92;
+}
+#nav3 {
+  fill: #695F49;
+}
+#nav4 {
+  fill: #B6AB92;
+}
+
+
+
+#nav1:hover {
+  fill: red;
+}
+#nav2:hover {
+  fill: red;
+}
+#nav3:hover {
+  fill: red;
+}
+#nav4:hover {
+  fill: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#ct1:hover {
+	fill: red;
+}
+
+/* #tspan:hover {
+	cursor: pointer;
+} */
+
+/* .graphic:hover {
+	cursor: pointer;
+} */
+
 .navlink {
-	color: white;
+  /* fill: rgb(255, 255, 255); */
+	/* fill: blue; */
 }
 
 .navlink:hover {
+	fill: red;
 	/* text-shadow: 0 -10px 7px rgba(225, 255, 77, 0.824);   */
-	text-shadow: 0 -15px 5px rgba(255, 255, 255, 0.495);
-
-	font-size: 17px;
-	/* letter-spacing: 8.3px; */
-	/* letter-spacing: 9.2px; */
+	/* text-shadow: 0 -15px 5px rgba(0, 0, 0, 0.5); */
+	/* font-size: 17px; */
+	/* letter-spacing: 7.5px; */
+  /* letter-spacing: 9.2px; */
 	font-weight: 800;
 	cursor: pointer;
 }
@@ -124,35 +343,49 @@ svg {
 
 
 
-
-
-
-
-
 /* COLOR GALLERY */
 
+
 .collage-title {
-	color: white;
+	/* transform: rotate(270deg); */
+	position: absolute;
+	margin: 0 auto;
+  top: 49vh;
+  color: white;
 	letter-spacing: 2px;
+}
+
+.entranceText {
+  position: absolute;
+  top: 49vh;
+  color: white;
+  letter-spacing: 2px;
+  left: 60vw
 }
 
 .color-collage-title {
-	color: white;
+	color: black;
 	letter-spacing: 2px;
 }
 
+#colorsGalleryEntrance {
+  background-color: transparent;
+  margin-left: 75vw;
+}
+
 .colorsGalleryHolder {
+  margin-top: 4vh;
   display: flex;
   height: 10vh;
 }
 
 .colorCollageHolder {
-  margin: 10px;
-  margin-left: 1500px;
-  margin-right: 200px;
+  margin-left: 125vw;
+  /* margin-left: 10vw; */
+  /* margin-right: 200px; */
   height: 80vh;
   width: 60vw;
-  background-color: grey;
+  /* background-color: grey; */
 }
 
 .color-collage {
@@ -169,21 +402,26 @@ svg {
 }
 
 #cc1 {
+  margin-top: 10vh;
   width: 20vh;
 }
+
 #cc2 {
   margin-left: 40%;
   margin-top: 10%;
   /* margin-bottom: 20%; */
   /* margin-top: 30%; */
 }
+
 #cc3 {
   margin-left: 20%;
   
 }
+
 #cc4 {
   margin-left: 30%;
 }
+
 #cc5 {
   margin-left: 60%;
   margin-top: 2%;
@@ -202,7 +440,24 @@ svg {
 
 
 
-
+@media screen and (max-width: 500px) {
+	.colorsGalleryHolder {
+    display: block;
+  }
+  
+  .colorCollageHolder {
+    margin: 10px;
+    margin-bottom: 1500px;
+    margin-left: 15vh;
+  }
+  
+  body {
+    background-color: black;
+    overflow: auto;
+    height: visible;
+  }
+  
+}
 
 
 

@@ -1,14 +1,26 @@
-import React from "react";
-import { Route, useHistory } from 'react-router-dom';
-import Colors from './Colors'
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 function NavCircle(props) {
   const history = useHistory();
+
+
+	// const [scrollValue, setScrollValue] = useState(0);
+
+	// function onScroll() {
+	// 	const scrollValue = window.scrollX;
+	// 	// console.log(`onScroll, window.scrollX: ${scrollValue}`)
+	// 	setScrollValue(scrollValue);
+	// }
+
+	// const navAnimation = {
+	// 	transform: `rotate(${scrollValue / 20}deg)`,
+	// 	position: 'absolute',
+	// };
   
   return (
-		<div className='circleTextContainer'>
-			<Route path='/colors' exact component={Colors} />
-			<svg className='header' viewBox='1 1 1500 200'>
+		// <div>
+			<svg className='header' width='200px' height='200px' viewBox='100 100'>
 				<path
 					id='curve'
 					fill='none'
@@ -24,55 +36,83 @@ function NavCircle(props) {
 					width='500'
 					className='circleTextSquare'
 					style={props.navAnimation}>
-					<textPath href='#curve' className='circleText' id='ct1'>
-						<tspan x='0' dy='0' className='navlink' onClick={props.getArtData}>
-							<a style={{ fill: 'white' }} onClick={(e) => {
-                      {e.preventDefault()
-                       history.push('/profile')} 
-                    }}>
-								profile
+            
+          
+					<textPath href='#curve' className='circleText' id='ct1' pointerEvents = 'visiblePoint'>
+						<tspan 
+              x='0' 
+              dy='0' 
+							pointerEvents = 'visiblePoint'
+							id="tspan"
+							>
+							<a
+                className='navlink'
+                id="nav1"
+								onClick={(e) => {
+										e.preventDefault();
+										history.push('/');
+								}}>
+							  {/* ––––– home ––––– */}
+								││ home∜ ∝ ∞ ∟
+								
 							</a>
 						</tspan>
+						
 						<tspan
 							x='115'
 							dy='0'
-							className='navlink'
-							onClick={props.getArtData}>
-							<a style={{ fill: 'white' }} onClick={(e) => {
-                      {e.preventDefault()
-                       history.push('/colors')} 
-                    }}>
-								colors
+							>
+							<a
+                className='navlink'
+                id="nav2"
+								onClick={(e) => {
+										e.preventDefault();
+										history.push('/colors');
+								}}>
+								{/* -––– colors ––––- */}
+								││ colors♕☯☭☠
+								
 							</a>
 						</tspan>
+            
 						<tspan
 							x='225'
 							dy='0'
-							className='navlink'
-							onClick={props.getArtData}>
-							<a style={{ fill: 'white' }} onClick={(e) => {
-                      {e.preventDefault()
-                       history.push('/mediums')} 
-                    }}>
-								mediums
+							>
+							<a
+                className='navlink'
+                id="nav3"
+								onClick={(e) => {
+										e.preventDefault();
+										history.push('/mediums');
+								}}>
+								{/* –––– mediums –––– */}
+								││ mediums⋬ ⋭ ⋮ 
+
 							</a>
 						</tspan>
+            
 						<tspan
 							x='355'
 							dy='0'
-							className='navlink'
-							onClick={props.getArtData}>
-							<a style={{ fill: 'white' }} onClick={(e) => {
-                      {e.preventDefault()
-                       history.push('/mediums')} 
-                    }}>
-								mediums
+							>
+							<a
+                className='navlink'
+                id="nav4"
+								onClick={(e) => {
+										e.preventDefault();
+										history.push('/mediums');
+								}}>
+							  {/* –––– artists ––––– */}
+								││ artists◰ ◱ ▲
+								
 							</a>
 						</tspan>
+            
 					</textPath>
 				</text>
 			</svg>
-		</div>
+		// </div>
 	);
 }
 

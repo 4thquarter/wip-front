@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Route, Link, useHistory } from 'react-router-dom';
 
-// import useHorizontal from '@oberon-amsterdam/horizontal';
+import useHorizontal from '@oberon-amsterdam/horizontal';
 
 import './App.css';
 
 import NavCircle from './components/NavCircle';
 import Colors from './components/Colors';
 
+import Arts from './components/Arts.js';
 import Art from './components/Art.js';
 
 import SignIn from './components/SignIn';
@@ -19,8 +20,7 @@ import About from './components/About';
 function App(props) {
 	// useHorizontal();
 
-  
-  // const refContainer = useRef(0);
+	const refContainer = useRef(0);
 
 	const [artData, setartData] = useState([]);
 	const [error, setError] = useState('');
@@ -53,8 +53,7 @@ function App(props) {
 		getArtData();
 
 		window.addEventListener('scroll', onScroll);
-    window.addEventListener('wheel', onAttemptedScroll);
-    
+
 		return history.listen((location) => {
 			// console.log(location.pathname);
 			// console.log('useffecting');
@@ -66,27 +65,14 @@ function App(props) {
 			}
 		});
 	}, [completedUsername, history, username]);
-	
-	
-	window.addEventListener('mouseup', (e) => {
-		// Let's pick a random color between #000000 and #FFFFFF
-		var colors = ['red', 'green', 'blue', 'yellow'];
-		
-		// Let's format the color to fit CSS requirements
-		const fill = colors[Math.floor(Math.random() * colors.length)]
-	
-		// Let's apply our color in the
-		// element we actually clicked on
-		e.target.style.fill = fill
-	})
 
-	// // easy fix for weird state problems
-	// window.onload = () => {
-	// 	// console.log('window onloading');
-	// 	if (window.location.pathname != '/') {
-	// 		window.location.assign('/');
-	// 	}
-	// };
+	// easy fix for weird state problems
+	window.onload = () => {
+		// console.log('window onloading');
+		if (window.location.pathname != '/') {
+			window.location.assign('/');
+		}
+	};
 
 	function userButtonClick(event) {
 		if (event.target.getAttribute('name') === 'user') {
@@ -168,11 +154,11 @@ function App(props) {
 
 		signUpInformation = {
 			email: email,
-			name: username,
+			userName: username,
 			password: password,
 		};
 		signInInformation = {
-			email: email,
+			userName: username,
 			password: password,
 		};
 		// console.log(signUpInformation);
@@ -212,7 +198,7 @@ function App(props) {
 
 		console.log(requestOptions);
 
-		fetch('https://q4backend.herokuapp.com/signup/', requestOptions)
+		fetch('https://paperclip-api.herokuapp.com/api/user', requestOptions)
 			.then((response) => response.json())
 			.then((data) => {
 				if (data) {
@@ -233,22 +219,16 @@ function App(props) {
 			});
 	}
 
-	
-	
-	
-	
-	
 	function signIn(body) {
 		const requestOptions = {
 			method: 'GET',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(signUpInformation),
 		};
 
 		let dataVariable = null;
 
 		fetch(
-			'https://q4backend.herokuapp.com/signin/',
+			`https://paperclip-api.herokuapp.com/api/user/${username}/name`,
 			requestOptions
 		)
 			.then((response) => response.json())
@@ -287,29 +267,11 @@ function App(props) {
 			});
 	}
 
-	function onScroll() {    
-    if (window.screen.width > 500) {
-      const scrollValue = window.scrollX;
-      setScrollValue(scrollValue);
-    } else {
-      const scrollValueY = window.scrollY
-      setScrollValue(scrollValueY);
-    };
-    // console.log(`onScroll, window.scrollX: ${scrollValue}`)
-  }
-  
-  function onAttemptedScroll(e) {
-    let y = e.deltaY;
-    // console.log(y);
-    
-    if (window.screen.width > 500) {
-      // console.log('big screen')
-      window.scrollBy(y, 0)
-    } else {
-      return
-    }
-  }
-  
+	function onScroll() {
+		const scrollValue = window.scrollX;
+		// console.log(`onScroll, window.scrollX: ${scrollValue}`)
+		setScrollValue(scrollValue);
+	}
 
 	const navAnimation = {
 		transform: `rotate(${scrollValue / 20}deg)`,
@@ -344,14 +306,14 @@ function App(props) {
 									{/* GENERIC USER HEADER */}
 									<h2
 										onClick={userButtonClick}
-										className={completedUsername ? 'hidden' : 'userButton'}
+										className={completedUsername ? 'hidden' : 'user'}
 										name='user'>
 										user
 									</h2>
 
 									{/* USERNAME HEADER */}
 									<h2
-										className={completedUsername ? 'userButton' : 'hidden'}
+										className={completedUsername ? 'user' : 'hidden'}
 										name='completedUsername'>
 										{completedUsername}
 									</h2>
@@ -372,7 +334,7 @@ function App(props) {
 								<h2 className='about'>about</h2>
 							</Link>
 
-							{/* <Arts artData={artData} error={error} /> */}
+							<Arts artData={artData} error={error} />
 						</>
 					);
 				}}
@@ -415,20 +377,26 @@ function App(props) {
 				render={() => {
 					return (
 						<>
+							<a href=''>
+								<h1 className='header' onClick={getArtData}>
+									"User Art"
+								</h1>
+							</a>
+
 							{/* USER BUTTON */}
 							<div className={hideUserOptions ? 'user' : 'hidden'}>
 								<Link to={completedUsername ? `${completedUsername}` : 'user'}>
 									{/* NOT LOGGED IN HEADER */}
 									<h2
 										onClick={userButtonClick}
-										className={completedUsername ? 'hidden' : 'userButton'}
+										className={completedUsername ? 'hidden' : 'user'}
 										name='user'>
 										user
 									</h2>
 
 									{/* LOGGED IN HEADER */}
 									<h2
-										className={completedUsername ? 'userButton' : 'hidden'}
+										className={completedUsername ? 'user' : 'hidden'}
 										name='completedUsername'>
 										{completedUsername}
 									</h2>
@@ -436,7 +404,7 @@ function App(props) {
 							</div>
 
 							{/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
-							<div className={hideUserOptions ? 'hidden' : 'userSignIn'}>
+							<div className={hideUserOptions ? 'hidden' : 'user'}>
 								<Link to='/signup'>
 									<h2 className='navSignButton'>sign up</h2>
 								</Link>
@@ -448,6 +416,8 @@ function App(props) {
 							<Link to='/about'>
 								<h2 className='about'>about</h2>
 							</Link>
+
+							<Arts artData={artData} error={error} />
 						</>
 					);
 				}}
@@ -458,7 +428,7 @@ function App(props) {
 					return (
 						<>
 							<Link to='/'>
-								<h1 className='signUpHeader'>[wip] // sign up</h1>
+								<h1 className='header'>"User Art" // sign up</h1>
 							</Link>
 							<SignUp
 								handleChange={handleChange}
@@ -476,7 +446,7 @@ function App(props) {
 					return (
 						<>
 							<Link to='/'>
-								<h1 className='signInHeader' >[wip] // sign in</h1>
+								<h1 className='header'>"User Art" // sign in</h1>
 							</Link>
 							<SignIn
 								handleChange={handleChange}

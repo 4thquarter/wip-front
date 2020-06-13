@@ -9,10 +9,10 @@ function SignIn(props) {
 						className="inputBox"
 						onChange={props.handleChange}
 						type='text'
-						id='username'
-						name='username'
+						id='email'
+						name='email'
 						autoComplete="yeeyee"
-						placeholder='username'
+						placeholder='email'
 					/>
 					
 					<input
