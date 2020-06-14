@@ -88,7 +88,6 @@ function App(props) {
 			// console.log(location);
 
 			let thisPageLocal = location.pathname
-			console.log(thisPageLocal)
 		
 			setLastPage(lastPage => [lastPage[1], thisPageLocal])
 			
