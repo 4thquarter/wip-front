@@ -443,6 +443,10 @@ function App(props) {
 
 	return (
 		<div className='wrapper'>
+			<div className="general-nav-position-and-size">
+				<NavCircle navAnimation={navAnimation} />
+			</div>
+			
 			<Route
 				path='/'
 				exact={true}
@@ -457,9 +461,7 @@ function App(props) {
 			/>
 			<Route path='/colors' exact component={Colors} />
 			
-			<div className="general-nav-position-and-size">
-				<NavCircle navAnimation={navAnimation} />
-			</div>
+			
 			
 			<Route
 				path='/user'

@@ -409,7 +409,8 @@ svg {
 	position: fixed;
 	z-index: 1000;
 }
-.welcome-nav-position-and-size {
+
+.welcome-nav-outlining {
 	display: block;
 	/* margin-left: -280px;
 	top: 38vh;
@@ -419,6 +420,48 @@ svg {
 	left: 50%;
 	transform: scale(2.8) translate(-18%, -18%);
 	z-index: 1000;
+
+	-webkit-animation: 4s ease 0s normal forwards 1 fadeout;
+    animation: 4s ease 0s normal forwards 1 fadeout;
+}
+
+@keyframes fadeout{
+    0% { opacity:1; }
+    80% { opacity:1; }
+    100% { opacity:0; }
+}
+
+@-webkit-keyframes fadeout{
+    0% { opacity:1; }
+    80% { opacity:1; }
+    100% { opacity:0; }
+}
+
+.welcome-nav-position-and-size {
+	display: block;
+	/* margin-left: -280px;
+	top: 38vh;
+	left: 50vmin; */
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: scale(2.8) translate(-18%, -18%);
+	z-index: 1001;
+
+	-webkit-animation: 4.7s ease 0s normal forwards 1 fadein;
+    animation: 4.7s ease 0s normal forwards 1 fadein;
+}
+
+@keyframes fadein{
+    0% { opacity:0; }
+    65% { opacity:0; }
+    100% { opacity:1; }
+}
+
+@-webkit-keyframes fadein{
+    0% { opacity:0; }
+    65% { opacity:0; }
+    100% { opacity:1; }
 }
 
 
