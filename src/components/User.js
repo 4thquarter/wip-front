@@ -1,10 +1,18 @@
 import React from 'react';
 
 function User(props) {
-  
-  let mediumOptions = 'list of options'
-  let colorOptions = 'list of options'
-  
+	
+  let colors = ['red', 'blue', 'yellow', 'green', 'purple', 'orange', 'brown', 'black', 'white', 'gray', 'mixed']
+  let mediums = ['music', 'garment', 'painting', 'sculpture', 'photo', 'writing', 'drawing', 'graphic', 'website', 'mixed']
+	
+	const colorChoices = colors.map((color) => {
+		return <option value={color._id} key={color._id}>{color}</option>;
+	});
+	
+	const mediumChoices = mediums.map((medium) => {
+		return <option value={medium._id} key={medium._id} >{medium}</option>;
+	});
+	
   return (
     <>
 			<div className='submitArt'>
@@ -35,7 +43,7 @@ function User(props) {
 						onChange={props.handleChange}
 						className="select"
 						>
-						{colorOptions}
+						{colorChoices}
 					</select>
           
           <select
@@ -44,10 +52,10 @@ function User(props) {
 						onChange={props.handleChange}
 						className="select"
 						>
-						{mediumOptions}
+						{mediumChoices}
 					</select>
 					
-					<button className="submitArtButton" onClick={props.submitArt} type='submit' name='submit'>
+					<button className="artSubmit" onClick={props.submitArt} type='submit' name='submit'>
 						===>
 					</button>
           

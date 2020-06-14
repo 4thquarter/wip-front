@@ -99,17 +99,46 @@ h2 {
 
 /* MAIN SCREEN */
 
+.userButton {
+	transform: rotate(270deg);
+	position: fixed;
+	right: 2px;
+	bottom: 200px;
+}
+
+.userButton:hover {
+	color: #695F49;
+}
+
+.userButton1 {
+	transform: rotate(270deg);
+	position: fixed;
+	right: 2px;
+	bottom: 200px;
+}
+
+.userButton1:hover {
+	color: #695F49;
+}
+
+.userButton2 {
+	display: inline;
+	/* position: fixed; */
+	
+	transform: rotate(0deg);
+}
+
+.userButton2:hover {
+	color: #695F49;
+}
 
 
-/* .userButton {
-	position: sticky;
-  top: 500px;
-	left: 1000px;
-} */
+
+
 
 .userSignIn {
   position: fixed;
-	top: 50%;
+	top: 44%;
 	left: 50%;
 }
 
@@ -118,6 +147,8 @@ h2 {
 	top: 50%;
 	left: 50%;
 }
+
+
 
 .navSignButton:hover {
 	color: #695F49;
@@ -136,10 +167,14 @@ h2 {
 
 .signUpHeader {
 	margin-left: 80vw;
+	/* position: fixed;
+	right: 2px; */
 }
 
 .signInHeader {
-	margin-left: 75vw;
+	margin-left: 80vw;
+	/* position: absolute;
+	right: 20px; */
 }
 
 
@@ -231,13 +266,125 @@ h2 {
 
 
 
+/* USER PROFILE PAGE */
+
+.usernameHeader {
+	margin-left: 80vw;
+}
+
+.submitArt {
+	
+}
 
 
+.artsContainer {
+	position: absolute;
+	left: 20%;
+	top: 28%;
+	line-height: 30px;
+}
 
+.needsContainer {
+	position: absolute;
+	left: 72%;
+	top: 28%;
+}
 
+.tierarts {
+	line-height: 20px;
+}
 
+.newartDescription {
+	background: transparent;
+	border: 2px solid #B6AB92;
+	border-right: none;
+	border-left: none;
+	border-top: none;
+	margin-left: 8px;
+	height: 20px;
+	font-size: 8pt
+}
 
+.newartDescription:focus {
+	outline: 0;
+	background: transparent;
+}
 
+.newartDescription:focus::placeholder {
+	color: transparent;
+	outline: 0
+}
+
+.select {
+	appearance: none;
+	box-sizing: border-box;
+	width: 80px;
+	border: 2px solid #B6AB92;
+	border-radius: 0px;
+	/* border-top: none;
+	border-left: none;
+	border-right: none; */
+	background: transparent;
+	padding: 2px;
+	margin-left: 2px;
+	text-align-last: center;
+}
+
+.select:focus {
+	outline: 0;
+}
+
+#artTiers,
+#needTiers {
+	margin-right: 5px
+}
+
+#artCategories,
+#needCategories {
+	margin-left: 7px;
+	/* width: 80px; */
+}
+
+.categoryTier {
+	margin-top: 14px;
+	margin-bottom: 8px;
+}
+
+.artSubmit {
+	margin-left: 15px;
+}
+
+.artSubmit,
+.needSubmit {
+	margin-top: 3px;
+	padding: 5px;
+	background: transparent;
+	color: #B6AB92;
+	border: 2px solid #B6AB92;
+	font-weight: bolder;
+	font-size: 9pt;
+	width: 60px;
+	height: 60px;
+	border-radius: 90%;
+}
+
+.artSubmit:hover,
+.needSubmit:hover {
+	background-color: red;
+	color: black;
+	cursor: pointer;
+}
+
+.artSubmit:active,
+.needSubmit:active {
+	background-color: grey;
+	transform: translateY(3px);
+}
+
+.artSubmit:focus,
+.needSubmit:focus {
+	outline: 0;
+}
 
 /* NAV WHEEL */
 

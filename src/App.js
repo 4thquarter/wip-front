@@ -46,6 +46,20 @@ function App(props) {
 	const [hideSignUp, setHideSignUp] = useState(true);
 	const [hideSignOut, setHideSignOut] = useState(true);
 
+	
+	
+	//hooks for adding art
+	const [title, setTitle] = useState(null);
+	const [artist, setArtist] = useState(null)
+	const [color, setColor] = useState(null);
+	const [medium, setMedium] = useState(null);
+	const [description, setDescription] = useState(null);
+
+	// const [thisPage, setThisPage] = useState(null)
+	// const [lastPage, setLastPage] = useState(null)
+
+	const [lastPage, setLastPage] = useState([null, null])
+	
 	const history = useHistory();
 
 	const [scrollValue, setScrollValue] = useState(0);
@@ -53,19 +67,36 @@ function App(props) {
 	useEffect(() => {
 		console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
 		
-		let access = localStorage.getItem('accessToken')
-					console.log(access)
-
+		
 		window.addEventListener('scroll', onScroll);
     window.addEventListener('wheel', onAttemptedScroll);
-    
+		
+		
+		
+		let access = localStorage.getItem('accessToken')
+					// console.log(access)
+		let username = localStorage.getItem('username')
+					console.log(username);
+		setcompletedUsername(username)
+
+		
+		
+		
+		
 		return history.listen((location) => {
 			// console.log(location.pathname);
-			// console.log('useffecting');
+			// console.log(location);
 
-			switch (location.pathname) {
+			let thisPageLocal = location.pathname
+			console.log(thisPageLocal)
+		
+			setLastPage(lastPage => [lastPage[1], thisPageLocal])
+			
+			switch (lastPage) {
 				case '/':
+					
 				break;
+				
 			}
 		});
 	}, [completedUsername, history, username]);
@@ -115,10 +146,6 @@ function App(props) {
 			default:
 				console.log('switch is broke');
 		}
-	}
-
-	function submitArt(event) {
-		console.log('art submitted');
 	}
 
 	let signUpInformation;
@@ -266,7 +293,7 @@ function App(props) {
 					localStorage.setItem('accessToken', `${data.access}`)
 					let access = localStorage.getItem('accessToken')
 					console.log(access)
-					console.log('yes data');
+					localStorage.setItem('username', `${username}`)
 					dataVariable = data;
 					setPostId(data.id);
 					setUserId(data._id);
@@ -318,7 +345,84 @@ function App(props) {
       return
     }
   }
-  
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	function submitArt(body) {
+		// POST request using fetch inside useEffect React hook
+		console.log('submitting art');
+		
+		const newArtInformation = {
+			title: title,
+      description: description,
+      primary_palette: color,
+      medium: medium,
+      artist: artist,
+		}
+		
+		
+		const requestOptions = {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(newArtInformation),
+		};
+
+		console.log(requestOptions);
+
+		fetch('https://q4backend.herokuapp.com/signup/', requestOptions)
+			.then((response) => {
+				if (response.status >= 200 && response.status <= 299) {
+					return response.json();
+				} else {
+					console.log(response.json())
+					setError('invalid email.')
+					throw Error(response.statusText);
+				}
+			})
+			.then((data) => {
+					setPostId(data.id);
+					setUserId(data._id);
+			})
+			.then(() => {
+				setPassword(null);
+				setconfirmPassword(null);
+				setHideSignIn(true);
+				history.push(`/${username}`);
+				setError(null);
+			})
+			.catch(error => {
+				console.error(error)
+			})
+			
+	}
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	const navAnimation = {
 		transform: `rotate(${scrollValue / 20}deg)`,
@@ -368,10 +472,65 @@ function App(props) {
 								<Link to={completedUsername ? `${completedUsername}` : 'usersign'}>
 									{/* GENERIC USER HEADER */}
 									<h2
-										className={completedUsername ? 'hidden' : 'userButton'}
+										className={completedUsername ? 'hidden' : 'userButton1'}
 										name='user'>
 										user
 									</h2>
+									<h2
+										className={completedUsername ? 'hidden' : 'userButton1'}
+										name='user'>
+										user
+									</h2>
+									<h2
+										className={completedUsername ? 'hidden' : 'userButton1'}
+										name='user'>
+										user
+									</h2>
+									<h2
+										className={completedUsername ? 'hidden' : 'userButton1'}
+										name='user'>
+										user
+									</h2>
+									<h2
+										className={completedUsername ? 'hidden' : 'userButton1'}
+										name='user'>
+										user
+									</h2>
+									{/* <h2
+										className={completedUsername ? 'hidden' : 'userButton2'}
+										name='user'>
+										user
+									</h2>
+									<h2
+										className={completedUsername ? 'hidden' : 'userButton2'}
+										name='user'>
+										user
+									</h2>
+									<h2
+										className={completedUsername ? 'hidden' : 'userButton2'}
+										name='user'>
+										user
+									</h2>
+									<h2
+										className={completedUsername ? 'hidden' : 'userButton2'}
+										name='user'>
+										user
+									</h2>
+									<h2
+										className={completedUsername ? 'hidden' : 'userButton2'}
+										name='user'>
+										user
+									</h2>
+									<h2
+										className={completedUsername ? 'hidden' : 'userButton2'}
+										name='user'>
+										user
+									</h2>
+									<h2
+										className={completedUsername ? 'hidden' : 'userButton2'}
+										name='user'>
+										user
+									</h2> */}
 
 									{/* USERNAME HEADER */}
 									<h2
@@ -481,9 +640,11 @@ function App(props) {
 					return (
 						<>
 							<Link to='/'>
-								<h1 className='header'>"User Art" // {completedUsername}</h1>
+								<h1 className='usernameHeader'>[wip] // {completedUsername}</h1>
 							</Link>
-							<User handleChange={handleChange} submitArt={submitArt} />
+							<User handleChange={handleChange} 
+							// submitArt={submitArt} 
+							/>
 						</>
 					);
 				}}
