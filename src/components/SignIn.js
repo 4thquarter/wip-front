@@ -16,7 +16,6 @@ function SignIn(props) {
 						autoComplete="yeeyee"
 						placeholder='email'
 					/>
-					
 					<input
 						className="inputBox"
 						onChange={props.handleChange}
@@ -24,6 +23,15 @@ function SignIn(props) {
 						id='password'
 						name='password'
 						placeholder='password'
+					/>
+					<input
+						className="inputBox"
+						onChange={props.handleChange}
+						type='text'
+						id='username'
+						name='username'
+						autoComplete="yeeyee"
+						placeholder='who are you?'
 					/>
 					
 					<button className="signInButton" onClick={props.checkSubmit} type='submit' name='signIn'>
