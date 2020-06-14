@@ -30,6 +30,26 @@ import * as serviceWorker from './serviceWorker';
 //   )
 // }
 
+
+
+// return history.listen((location) => {
+//   // console.log(location.pathname);
+//   // console.log(location);
+
+//   let thisPageLocal = location.pathname
+
+//   setLastPage(lastPage => [lastPage[1], thisPageLocal])
+  
+//   switch (lastPage) {
+//     case '/':
+      
+//     break;
+    
+//   }
+// });
+
+
+
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
