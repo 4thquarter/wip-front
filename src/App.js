@@ -79,7 +79,7 @@ function App(props) {
 
     window.addEventListener('wheel', onAttemptedScroll);
 		
-		
+		// window.addEventListener('mousemove', onMouseMove)
 		
 		let access = localStorage.getItem('accessToken')
 					console.log(access)
@@ -89,8 +89,35 @@ function App(props) {
 			setcompletedUsername(username)
 		}
 		
-    
-    
+		
+		// FOR PRODUCTION ONLY
+    // function onMouseMove() {
+		// 	for(let i=0; i<20; i++) {
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	}
+		// 	console.log('V')
+		// 	console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020')
+		// 	window.removeEventListener('mousemove', onMouseMove)
+		// }
     
 		return history.listen((location) => {
 			// console.log(location.pathname);
@@ -107,26 +134,7 @@ function App(props) {
 		});
 	}, [completedUsername, history, lastPage, username]);
 
-	// window.addEventListener('mouseup', (e) => {
-	// 	// Let's pick a random color between #000000 and #FFFFFF
-	// 	var colors = ['red', 'green', 'blue', 'yellow'];
-
-	// 	// Let's format the color to fit CSS requirements
-	// 	const fill = colors[Math.floor(Math.random() * colors.length)]
-
-	// 	// Let's apply our color in the
-	// 	// element we actually clicked on
-	// 	e.target.style.fill = fill
-	// })
-
-	// // easy fix for weird state problems
-	// window.onload = () => {
-	// 	// console.log('window onloading');
-	// 	if (window.location.pathname != '/') {
-	// 		window.location.assign('/');
-	// 	}
-	// };
-
+	
   
 	//SIGNING IN AND UP
 

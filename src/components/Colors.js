@@ -171,8 +171,11 @@ function Colors() {
 			<div className='colorsGalleryHolder'>
         
 				<div className='colorCollageHolder' id="colorsGalleryEntrance">
-					<motion.h2 className='entranceText' animate={{ color: ["#E02200",'#00B82D', "#2C3EAD", "#FA0",  '#9500B8', '#E04A00',] }} transition={{ type: 'tween', duration: 10, yoyo: Infinity}}>
-					 <motion.span style={{color: '#695F49'}}>♠</motion.span> ♦ ♣ ♥ explore color gallery ⟶
+					<motion.h2 className='entranceText' 
+						animate={{ color: ["#E02200",'#00B82D', "#2C3EAD", "#FA0",  '#9500B8', '#E04A00',] }} 
+						transition={{ type: 'tween', duration: 10, yoyo: Infinity}}
+						>
+						 <motion.span style={{color: '#695F49'}}>♠</motion.span> ♦ ♣ ♥ explore color gallery ⟶
 					</motion.h2>
 				</div>
 
