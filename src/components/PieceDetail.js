@@ -17,14 +17,22 @@ const PieceDetail = ({ match }) => {
 		let response = null;
 		fetch(url)
 			.then((res) => {
-				response = res.json();
-				return response;
+				if (res.status >= 200 && res.status <= 299) {
+					// console.log(requestOptions)
+					let response = res.json();
+					// console.log(data)
+					return response;
+				} else {
+					// console.log(response.json())
+					setError('not found.')
+					throw Error(res.statusText);
+				}
 			})
 			.then((response) => {
 				setPiece([response]);
 			})
-			.catch(() => {
-				setError(true);
+			.catch((error) => {
+				console.error(error);
 			});
 
 		console.log(response);
@@ -107,11 +115,11 @@ const PieceDetail = ({ match }) => {
 							<Link
 								className='piece-information-artist-link'
 								to={`/artists/${piece[0].artist.id}`}>
-								<i>artist: {piece[0].artist.name}</i>
+								<i>{piece[0].artist.name}</i>
 							</Link>
 							<br />
 							<br />
-							<i>medium: {piece[0].medium}</i>
+							<i>{piece[0].medium}</i>
 							<br />
 							<br />
 							<br />
@@ -122,11 +130,17 @@ const PieceDetail = ({ match }) => {
 							<Link
 								className='anchor-to-fix'
 								to={`/pieces/${match.params.id}/edit`}>
-								<button className='details-update-button'>Edit</button>
+								<button 
+								className='details-update-button' 
+								id="piece-button"
+								>
+									Edit</button>
 							</Link>
 							<button
 								className='details-delete-button'
-								onClick={onDeletedPiece}>
+								onClick={onDeletedPiece}
+								id="piece-button"
+								>
 								Delete
 							</button>
 							<br />

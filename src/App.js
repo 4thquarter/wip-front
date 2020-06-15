@@ -32,7 +32,7 @@ function App(props) {
 	// useHorizontal();
 
 	// const refContainer = useRef(0);
-
+	const [artistData, setArtistData] = useState([])
 	const [artData, setartData] = useState([]);
 	const [error, setError] = useState(null);
 
@@ -72,14 +72,20 @@ function App(props) {
 	const [scrollValue, setScrollValue] = useState(0);
 	const [colorValue, setColorValue] = useState(0);
 
+	
+	
+	
 	useEffect(() => {
 		console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
 
 		window.addEventListener('scroll', onScroll);
 
-    window.addEventListener('wheel', onAttemptedScroll);
+		window.addEventListener('wheel', onAttemptedScroll);
 		
 		
+		getArtistData()
+		
+		// window.addEventListener('mousemove', onMouseMove)
 		
 		let access = localStorage.getItem('accessToken')
 					console.log(access)
@@ -89,8 +95,35 @@ function App(props) {
 			setcompletedUsername(username)
 		}
 		
-    
-    
+		
+		// FOR PRODUCTION ONLY
+    // function onMouseMove() {
+		// 	for(let i=0; i<20; i++) {
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	}
+		// 	console.log('V')
+		// 	console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020')
+		// 	window.removeEventListener('mousemove', onMouseMove)
+		// }
     
 		return history.listen((location) => {
 			// console.log(location.pathname);
@@ -107,26 +140,62 @@ function App(props) {
 		});
 	}, [completedUsername, history, lastPage, username]);
 
-	// window.addEventListener('mouseup', (e) => {
-	// 	// Let's pick a random color between #000000 and #FFFFFF
-	// 	var colors = ['red', 'green', 'blue', 'yellow'];
+	
+	
+	
+	
+	
+	// GETTING ARTIST AND ART DATA
+	
+	
+	async function getArtistData() {
+		const url = `https://q4backend.herokuapp.com/artists/`;
+		const artistsFetched = await fetch(url)
+			.then((response) => response.json())
+			.then(async (data) => {
+				console.log(data)
+				const sortedData = await data.sort(() => Math.random() - 0.5);
+				setArtistData(sortedData);
+				return sortedData;
+			})
+			.then((data) => {
+				// setNewItemTier(data[0]._id);
+				// setNewNeedTier(data[0]._id);
+				// console.log(data);
+				return true;
+			})
+			.catch(function (error) {
+				setError(error);
+			});
 
-	// 	// Let's format the color to fit CSS requirements
-	// 	const fill = colors[Math.floor(Math.random() * colors.length)]
-
-	// 	// Let's apply our color in the
-	// 	// element we actually clicked on
-	// 	e.target.style.fill = fill
-	// })
-
-	// // easy fix for weird state problems
-	// window.onload = () => {
-	// 	// console.log('window onloading');
-	// 	if (window.location.pathname != '/') {
-	// 		window.location.assign('/');
-	// 	}
-	// };
-
+		if (artistsFetched) {
+			console.log('fetched');
+			
+			// getItemData();
+			// getNeedData();
+			// setNewItemTier(tierData[0]._id);
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
   
 	//SIGNING IN AND UP
 
@@ -216,6 +285,19 @@ function App(props) {
 				break;
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	// SIGN UP AND SIGN IN FUNCTIONS
 
