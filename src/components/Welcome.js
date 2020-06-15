@@ -56,16 +56,8 @@ const Welcome = () => {
 				<div className='welcome'>
 					<div className='welcome-content'>
 						<span className='welcome-header'>
-							WIP<span>_</span>
+							WIP<span className='blinker'>_</span>
 						</span>
-						<div className='container'></div>
-						{/* <p className='welcome-text'>
-							Before we get started, we need to verify that you're 21+. If so,
-							please press confirm to continue.
-						</p> */}
-						{/* <button className='welcome-close-button'>
-							confirm
-						</button> */}
 					</div>
 				</div>
 			</div>

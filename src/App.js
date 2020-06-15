@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Link, useHistory } from 'react-router-dom';
+import { Route, Link, useHistory, Switch } from 'react-router-dom';
 import { motion } from 'framer-motion'
 // import useHorizontal from '@oberon-amsterdam/horizontal';
 
@@ -9,6 +9,16 @@ import Welcome from './components/Welcome';
 
 import NavCircle from './components/NavCircle';
 import Colors from './components/Colors';
+import Mediums from './components/Mediums';
+// import Artists from './components/Artists';
+// import ArtistCreate from './components/ArtistCreate';
+import ArtistDetail from './components/ArtistDetail';
+// import ArtistEdit from './components/ArtistEdit';
+// import ArtistForm from '.components/ArtistForm';
+// import PieceCreate from './components/PieceCreate';
+// import PieceDetail from './components/PieceDetail';
+// import PieceEdit from './components/PieceEdit';
+// import PieceForm from 'components/PieceForm';
 
 import Art from './components/Art.js';
 
@@ -21,8 +31,7 @@ import About from './components/About';
 function App(props) {
 	// useHorizontal();
 
-  
-  // const refContainer = useRef(0);
+	// const refContainer = useRef(0);
 
 	const [artData, setartData] = useState([]);
 	const [error, setError] = useState(null);
@@ -40,17 +49,15 @@ function App(props) {
 	//ideally this would be in local storage so refreshing wouldn't break everything
 	const [userId, setUserId] = useState('');
 	const [completedUsername, setcompletedUsername] = useState(null);
-	const [completedEmail, setcompletedEmail] = useState(null)
+	const [completedEmail, setcompletedEmail] = useState(null);
 
 	const [hideSignIn, setHideSignIn] = useState(true);
 	const [hideSignUp, setHideSignUp] = useState(true);
 	const [hideSignOut, setHideSignOut] = useState(true);
 
-	
-	
 	//hooks for adding art
 	const [title, setTitle] = useState(null);
-	const [artist, setArtist] = useState(null)
+	const [artist, setArtist] = useState(null);
 	const [color, setColor] = useState(null);
 	const [medium, setMedium] = useState(null);
 	const [description, setDescription] = useState(null);
@@ -58,8 +65,8 @@ function App(props) {
 	// const [thisPage, setThisPage] = useState(null)
 	// const [lastPage, setLastPage] = useState(null)
 
-	const [lastPage, setLastPage] = useState([null, null])
-	
+	const [lastPage, setLastPage] = useState([null, null]);
+
 	const history = useHistory();
 
 	const [scrollValue, setScrollValue] = useState(0);
@@ -67,9 +74,9 @@ function App(props) {
 
 	useEffect(() => {
 		console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
-		
-		
+
 		window.addEventListener('scroll', onScroll);
+
     window.addEventListener('wheel', onAttemptedScroll);
 		
 		
@@ -82,34 +89,31 @@ function App(props) {
 			setcompletedUsername(username)
 		}
 		
-		
-		
-		
+    
+    
+    
 		return history.listen((location) => {
 			// console.log(location.pathname);
 			// console.log(location);
 
-			let thisPageLocal = location.pathname
-		
-			setLastPage(lastPage => [lastPage[1], thisPageLocal])
-			
+			let thisPageLocal = location.pathname;
+
+			setLastPage((lastPage) => [lastPage[1], thisPageLocal]);
+
 			switch (lastPage) {
 				case '/':
-					
-				break;
-				
+					break;
 			}
 		});
-	}, [completedUsername, history, username]);
-	
-	
+	}, [completedUsername, history, lastPage, username]);
+
 	// window.addEventListener('mouseup', (e) => {
 	// 	// Let's pick a random color between #000000 and #FFFFFF
 	// 	var colors = ['red', 'green', 'blue', 'yellow'];
-		
+
 	// 	// Let's format the color to fit CSS requirements
 	// 	const fill = colors[Math.floor(Math.random() * colors.length)]
-	
+
 	// 	// Let's apply our color in the
 	// 	// element we actually clicked on
 	// 	e.target.style.fill = fill
@@ -123,13 +127,7 @@ function App(props) {
 	// 	}
 	// };
 
-	
-	
-	
-	
-	
-	
-
+  
 	//SIGNING IN AND UP
 
 	function handleChange(event) {
@@ -160,22 +158,20 @@ function App(props) {
 
 	function checkSubmit(event) {
 		event.preventDefault();
-				console.log('checking submit');
-				
+		console.log('checking submit');
+
 		switch (event.target.name) {
 			case 'signUp':
-				if (username === null)
-				break;
+				if (username === null) break;
 
 			case 'signIn':
-				if (email === null)
-				break;
+				if (email === null) break;
 
 			default:
 				console.log('switch is broke');
 				break;
 		}
-		
+
 		if (password === null) {
 			return;
 		} else {
@@ -242,14 +238,14 @@ function App(props) {
 				if (response.status >= 200 && response.status <= 299) {
 					return response.json();
 				} else {
-					console.log(response.json())
-					setError('invalid email.')
+					console.log(response.json());
+					setError('invalid email.');
 					throw Error(response.statusText);
 				}
 			})
 			.then((data) => {
-					setPostId(data.id);
-					setUserId(data._id);
+				setPostId(data.id);
+				setUserId(data._id);
 			})
 			.then(() => {
 				setPassword(null);
@@ -258,17 +254,11 @@ function App(props) {
 				history.push(`/${username}`);
 				setError(null);
 			})
-			.catch(error => {
-				console.error(error)
-			})
-			
+			.catch((error) => {
+				console.error(error);
+			});
 	}
 
-	
-	
-	
-	
-	
 	function signIn(body) {
 		const requestOptions = {
 			method: 'POST',
@@ -278,33 +268,30 @@ function App(props) {
 
 		let dataVariable = null;
 
-		fetch(
-			'https://q4backend.herokuapp.com/api/token/',
-			requestOptions
-		)
+		fetch('https://q4backend.herokuapp.com/api/token/', requestOptions)
 			.then((response) => {
 				if (response.status >= 200 && response.status <= 299) {
 					// console.log(requestOptions)
-					let data = response.json()
+					let data = response.json();
 					// console.log(data)
 					return data;
 				} else {
 					// console.log(response.json())
 					setError('invalid login.')
-					throw Error(response.statusText); 
+					throw Error(response.statusText);
 				}
 			})
 			.then((data) => {
 				console.log(data);
 				if (data) {
-					localStorage.setItem('accessToken', `${data.access}`)
-					let access = localStorage.getItem('accessToken')
-					console.log(access)
-					localStorage.setItem('username', `${username}`)
+					localStorage.setItem('accessToken', `${data.access}`);
+					let access = localStorage.getItem('accessToken');
+					console.log(access);
+					localStorage.setItem('username', `${username}`);
 					dataVariable = data;
 					setPostId(data.id);
 					setUserId(data._id);
-					
+
 					setIsUserFound(true);
 				} else {
 					// console.log('bad user');
@@ -325,10 +312,34 @@ function App(props) {
 					setconfirmPassword(null);
 				}
 			})
-			.catch(error => {
-				console.error(error)
-			})
+			.catch((error) => {
+				console.error(error);
+			});
 	}
+
+	function onScroll() {
+		if (window.screen.width > 500) {
+			const scrollValue = window.scrollX;
+			setScrollValue(scrollValue);
+		} else {
+			const scrollValueY = window.scrollY;
+			setScrollValue(scrollValueY);
+		}
+		// console.log(`onScroll, window.scrollX: ${scrollValue}`)
+	}
+
+	function onAttemptedScroll(e) {
+		let y = e.deltaY;
+		// console.log(y);
+
+		if (window.screen.width > 500) {
+			// console.log('big screen')
+			window.scrollBy(y, 0);
+		} else {
+			return;
+		}
+	}
+
 
 	function onScroll(event) {    
     if (window.screen.width > 500) {
@@ -442,19 +453,19 @@ function App(props) {
 	
 	
 	
+
 	function submitArt(body) {
 		// POST request using fetch inside useEffect React hook
 		console.log('submitting art');
-		
+
 		const newArtInformation = {
 			title: title,
-      description: description,
-      primary_palette: color,
-      medium: medium,
-      artist: artist,
-		}
-		
-		
+			description: description,
+			primary_palette: color,
+			medium: medium,
+			artist: artist,
+		};
+
 		const requestOptions = {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -468,14 +479,14 @@ function App(props) {
 				if (response.status >= 200 && response.status <= 299) {
 					return response.json();
 				} else {
-					console.log(response.json())
-					setError('invalid email.')
+					console.log(response.json());
+					setError('invalid email.');
 					throw Error(response.statusText);
 				}
 			})
 			.then((data) => {
-					setPostId(data.id);
-					setUserId(data._id);
+				setPostId(data.id);
+				setUserId(data._id);
 			})
 			.then(() => {
 				setPassword(null);
@@ -484,10 +495,9 @@ function App(props) {
 				history.push(`/${username}`);
 				setError(null);
 			})
-			.catch(error => {
-				console.error(error)
-			})
-			
+			.catch((error) => {
+				console.error(error);
+			});
 	}
 	
 	
@@ -509,6 +519,7 @@ function App(props) {
 	
 	
 
+
 	
 
 	// d="
@@ -528,23 +539,30 @@ function App(props) {
 			<div className="general-nav-position-and-size">
 				<NavCircle navAnimation={navAnimation} />
 			</div>
-			
-			<Route
-				path='/'
-				exact={true}
-				render={() => {
-					return (
-						<>
-							<Welcome
-							/>
-						</>
-					);
-				}}
-			/>
-			<Route path='/colors' exact component={Colors} />
-			
-			
-			
+
+			<Switch>
+				<Route
+					path='/'
+					exact={true}
+					render={() => {
+						return (
+							<>
+								<Welcome />
+							</>
+						);
+					}}
+				/>
+				<Route exact path='/colors' component={Colors} />
+				<Route exact path='/mediums' component={Mediums} />
+				{/* <Route exact path='/artists' component={Artists} /> */}
+				{/* <Route exact path='/artists/create' component={ArtistCreate} /> */}
+				<Route exact path='/artists/:id' component={ArtistDetail} />
+				{/* <Route exact path='/artists/:id/edit' component={ArtistEdit} /> */}
+				{/* <Route exact path='/pieces/create' component={PieceCreate} /> */}
+				{/* <Route exact path='/pieces/:id' component={PieceDetail} /> */}
+				{/* <Route exact path='/pieces/:id/edit' component={PieceEdit} /> */}
+			</Switch>
+
 			<Route
 				path='/user'
 				exact={true}
@@ -553,7 +571,8 @@ function App(props) {
 						<>
 							{/* USER BUTTON */}
 							<div className='user'>
-								<Link to={completedUsername ? `${completedUsername}` : 'usersign'}>
+								<Link
+									to={completedUsername ? `${completedUsername}` : 'usersign'}>
 									{/* GENERIC USER HEADER */}
 									<h2
 										className={completedUsername ? 'hidden' : 'userButton1'}
@@ -609,7 +628,6 @@ function App(props) {
 									<h2 className='navSignButton'>sign in</h2>
 								</Link>
 							</div>
-
 						</>
 					);
 				}}
@@ -624,10 +642,7 @@ function App(props) {
 									"Harvard Art"
 								</h1>
 							</Link>
-							<Art
-								match={routerProps.match}
-								artData={artData}
-							/>
+							<Art match={routerProps.match} artData={artData} />
 						</>
 					);
 				}}
@@ -670,7 +685,7 @@ function App(props) {
 					return (
 						<>
 							<Link to='/'>
-								<h1 className='signInHeader' >[wip] // sign in</h1>
+								<h1 className='signInHeader'>[wip] // sign in</h1>
 							</Link>
 							<SignIn
 								handleChange={handleChange}
@@ -691,8 +706,9 @@ function App(props) {
 							<Link to='/'>
 								<h1 className='usernameHeader'>[wip] // {completedUsername}</h1>
 							</Link>
-							<User handleChange={handleChange} 
-							// submitArt={submitArt} 
+							<User
+								handleChange={handleChange}
+								// submitArt={submitArt}
 							/>
 							<h2 className="signOutButton" onClick={signOut}>sign out</h2>
 						</>
