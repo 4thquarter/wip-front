@@ -93,28 +93,32 @@ const ArtistDetail = ({ match }) => {
 					{artist[0].name}
 					<span className='blinker'>_</span>
 				</span>
+				<span className='page-title2'>
+					{artist[0].name}
+					<span className='blinker'>_</span>
+				</span>
 				<img src={artist[0].media[0]} className='details-image' alt='' />
 				<ul className='details-text-1'>
-					<li className='details-property'>{artist[0].name}</li>
-					{/* <li className='details-value'></li> */}
 
 					{/* <li className='details-property'></li> */}
 					<li className='details-value'>{artist[0].location}</li>
 
 					{/* <li className='details-property'></li> */}
-					<li className='details-value'>{artist[0].information}</li>
+					<li className={artist[0].information ? 'details-value' : 'hidden'}>{artist[0].information}</li>
 
 					{/* <li className='details-property'></li> */}
 					<li className='details-value'>{artist[0].email}</li>
 
 					{/* <li className='details-property'></li> */}
 					<li className='details-value'>{artist[0].artist_website}</li>
+					
 				</ul>
 				<div className='details-hor-gallery'>
 					{artist[0].artwork.map((artwork) => (
 						<div key={artwork.id}>
 							<Link className='artist-piece' to={`/pieces/${artwork.id}`}>
-								<img
+								<img 
+									className="artist-piece-image"
 									src={artwork.media[0].media_url}
 									alt={artwork.media[0].name}
 								/>
@@ -123,10 +127,10 @@ const ArtistDetail = ({ match }) => {
 					))}
 				</div>
 				<Link className='anchor-to-fix' to={`/artists/${match.params.id}/edit`}>
-					<button className='details-update-button'>Edit</button>
+					<button className='details-update-button'>edit</button>
 				</Link>
 				<button className='details-delete-button' onClick={onDeletedArtist}>
-					Delete
+					delete
 				</button>
 			</div>
 		</div>
