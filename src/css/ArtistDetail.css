@@ -9,6 +9,13 @@
 	display: none;
 }
 
+
+.loading {
+	transition: 2s ease;
+}
+
+
+
 .details {
 	/* z-index: 100; */
 	font-family: Arial, Helvetica, sans-serif;
@@ -83,6 +90,9 @@
 }
 
 .details-update-button {
+	position: fixed;
+	bottom: 5vh;
+	right: 15vh;
 	margin-top: 3px;
 	padding: 5px;
 	background: transparent;
@@ -96,6 +106,9 @@
 }
 
 .details-delete-button {
+	position: fixed;
+	bottom: 8vh;
+	right: 10vh;
 	margin-top: 3px;
 	padding: 5px;
 	background: transparent;
@@ -114,6 +127,12 @@
 	background-color: red;
 	color: black;
 	cursor: pointer;
+}
+
+.details-update-button:active,
+.details-delete-button:active {
+	background-color: grey;
+	transform: translateY(3px);
 }
 
 .artist-piece-image {

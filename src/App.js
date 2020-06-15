@@ -32,7 +32,7 @@ function App(props) {
 	// useHorizontal();
 
 	// const refContainer = useRef(0);
-
+	const [artistData, setArtistData] = useState([])
 	const [artData, setartData] = useState([]);
 	const [error, setError] = useState(null);
 
@@ -72,12 +72,18 @@ function App(props) {
 	const [scrollValue, setScrollValue] = useState(0);
 	const [colorValue, setColorValue] = useState(0);
 
+	
+	
+	
 	useEffect(() => {
 		console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
 
 		window.addEventListener('scroll', onScroll);
 
-    window.addEventListener('wheel', onAttemptedScroll);
+		window.addEventListener('wheel', onAttemptedScroll);
+		
+		
+		getArtistData()
 		
 		// window.addEventListener('mousemove', onMouseMove)
 		
@@ -134,6 +140,61 @@ function App(props) {
 		});
 	}, [completedUsername, history, lastPage, username]);
 
+	
+	
+	
+	
+	
+	// GETTING ARTIST AND ART DATA
+	
+	
+	async function getArtistData() {
+		const url = `https://q4backend.herokuapp.com/artists/`;
+		const artistsFetched = await fetch(url)
+			.then((response) => response.json())
+			.then(async (data) => {
+				console.log(data)
+				const sortedData = await data.sort(() => Math.random() - 0.5);
+				setArtistData(sortedData);
+				return sortedData;
+			})
+			.then((data) => {
+				// setNewItemTier(data[0]._id);
+				// setNewNeedTier(data[0]._id);
+				// console.log(data);
+				return true;
+			})
+			.catch(function (error) {
+				setError(error);
+			});
+
+		if (artistsFetched) {
+			console.log('fetched');
+			
+			// getItemData();
+			// getNeedData();
+			// setNewItemTier(tierData[0]._id);
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
   
 	//SIGNING IN AND UP
@@ -224,6 +285,19 @@ function App(props) {
 				break;
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	// SIGN UP AND SIGN IN FUNCTIONS
 

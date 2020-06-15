@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import { BACKENDURL } from '../config';
 import { motion } from 'framer-motion';
 import '../css/ArtistDetail.css';
 
 const ArtistDetail = ({ match }) => {
+	
+	const history = useHistory();
+
+	
 	window.scrollTo(0, 0);
 
 	const [deleted, setDeleted] = useState(false);
@@ -16,14 +20,22 @@ const ArtistDetail = ({ match }) => {
 		let response = null;
 		fetch(url)
 			.then((res) => {
-				response = res.json();
-				return response;
+				if (res.status >= 200 && res.status <= 299) {
+					// console.log(requestOptions)
+					let response = res.json();
+					// console.log(data)
+					return response;
+				} else {
+					// console.log(response.json())
+					setError('not found.')
+					throw Error(res.statusText);
+				}
 			})
 			.then((response) => {
 				setArtist([response]);
 			})
-			.catch(() => {
-				setError(true);
+			.catch((error) => {
+				console.error(error);
 			});
 
 		console.log(response);
@@ -66,8 +78,9 @@ const ArtistDetail = ({ match }) => {
 	}
 	if (!artist) {
 		return (
-			<div>
+			<div className="details">
 				<motion.h2
+					className="loading"
 					style={entranceText}
 					animate={{
 						color: [
@@ -79,7 +92,9 @@ const ArtistDetail = ({ match }) => {
 							'#E04A00',
 						],
 					}}
-					transition={{ type: 'tween', duration: 7, yoyo: Infinity }}>
+					transition={{ 
+						type: 'tween', duration: 7, yoyo: Infinity 
+						}}>
 					☯☠♠<motion.span style={{ color: '#695F49' }}>LOADING</motion.span>♠☠☯
 				</motion.h2>
 			</div>
@@ -115,15 +130,34 @@ const ArtistDetail = ({ match }) => {
 				</ul>
 				<div className='details-hor-gallery'>
 					{artist[0].artwork.map((artwork) => (
-						<div key={artwork.id}>
-							<Link className='artist-piece' to={`/pieces/${artwork.id}`}>
-								<img 
+						<motion.div 
+						key={artwork.id}
+						animate={{ opacity: [0, 1] }}
+						transition={{ 
+							delay: 2,
+							duration: .5
+						}}>
+							
+							<a
+							className='artist-piece'
+							id='nav1'
+							style={{cursor: 'pointer'}}
+							onClick={(e) => {
+								e.preventDefault();
+								history.push(`/pieces/${artwork.id}`);
+							}}>
+								
+								<motion.img 
+								  whileHover={{ scale: 1.1, duration: .5 }}
+									whileTap={{ scale: 0.9 }}
+									
 									className="artist-piece-image"
 									src={artwork.media[0].media_url}
 									alt={artwork.media[0].name}
 								/>
-							</Link>
-						</div>
+								
+							</a>
+						</motion.div>
 					))}
 				</div>
 				<Link className='anchor-to-fix' to={`/artists/${match.params.id}/edit`}>
