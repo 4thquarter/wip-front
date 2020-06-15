@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Link, useHistory, Switch } from 'react-router-dom';
-
+import { motion } from 'framer-motion'
 // import useHorizontal from '@oberon-amsterdam/horizontal';
 
 import './App.css';
@@ -70,19 +70,28 @@ function App(props) {
 	const history = useHistory();
 
 	const [scrollValue, setScrollValue] = useState(0);
+	const [colorValue, setColorValue] = useState(0);
 
 	useEffect(() => {
 		console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
 
 		window.addEventListener('scroll', onScroll);
-		window.addEventListener('wheel', onAttemptedScroll);
 
-		let access = localStorage.getItem('accessToken');
-		// console.log(access)
-		let username = localStorage.getItem('username');
-		console.log(username);
-		setcompletedUsername(username);
-
+    window.addEventListener('wheel', onAttemptedScroll);
+		
+		
+		
+		let access = localStorage.getItem('accessToken')
+					console.log(access)
+		let username = localStorage.getItem('username')
+					console.log(username);
+		if (username != 'signedOut') {
+			setcompletedUsername(username)
+		}
+		
+    
+    
+    
 		return history.listen((location) => {
 			// console.log(location.pathname);
 			// console.log(location);
@@ -118,6 +127,7 @@ function App(props) {
 	// 	}
 	// };
 
+  
 	//SIGNING IN AND UP
 
 	function handleChange(event) {
@@ -267,7 +277,7 @@ function App(props) {
 					return data;
 				} else {
 					// console.log(response.json())
-					setError('invalid login.');
+					setError('invalid login.')
 					throw Error(response.statusText);
 				}
 			})
@@ -330,6 +340,120 @@ function App(props) {
 		}
 	}
 
+
+	function onScroll(event) {    
+    if (window.screen.width > 500) {
+      const scrollValue = window.scrollX;
+			setScrollValue(scrollValue);
+			
+			let path = window.location.pathname
+			
+			let w =  window.innerWidth
+			// console.log(w > scrollValue)
+			
+			if (path = '/colors') {
+				// console.log('colors');
+				
+				switch(true) {
+					case scrollValue < w: 
+					// console.log('black');
+					setColorValue('black')
+					break;
+					case scrollValue > w * 1.2 && scrollValue < w * 3.5:
+					setColorValue('rgb(255, 170, 0)'); //BLUE WITH   YELLOW
+					break;
+					case scrollValue > w * 3.5 && scrollValue < w * 5.5:
+					setColorValue('#2245AD'); //RED WITH   BLUE
+					break;
+					case scrollValue > w * 5.5 && scrollValue < w * 7:
+					setColorValue('#FF8100'); //GREEN WITH    ORANGE
+					break;
+					case scrollValue > w * 7 && scrollValue < w * 8.5:
+					setColorValue('#40077D'); //YELLOW WITH   PURPLE
+					break;
+					case scrollValue > w * 9 && scrollValue < w * 11:
+					setColorValue('#FA1001'); //PURPLE WITH     RED
+					break;
+					case scrollValue > w * 11 && scrollValue < w * 13:
+					setColorValue('#24874E'); //ORANGE WITH   GREEN
+					break;
+					case scrollValue > w * 13 && scrollValue < w * 14.5:
+					setColorValue('#FFE8CB'); //BROWN WITH   PARCHMENT
+					break;
+					case scrollValue > w * 14.5 && scrollValue < w * 16:
+					setColorValue('white'); //BLACK WITH   WHITE
+					break;
+					case scrollValue > w * 16.5 && scrollValue < w * 17.5:
+					setColorValue('black'); //WHITE WITH   BLACK
+					break;
+					case scrollValue > w * 17.5 && scrollValue < w * 19.5:
+					setColorValue('black'); //MIXED WITH   BLACK
+					break;
+				}
+				}
+			} else {
+      const scrollValueY = window.scrollY
+			setScrollValue(scrollValueY);
+    };
+    // console.log(`onScroll, window.scrollX: ${scrollValue}`)
+	}
+	
+	
+	const colorAnimation = {
+		backgroundColor: `${colorValue}`,
+	};
+	
+		const navAnimation = {
+		transform: `rotate(${scrollValue / 20}deg)`,
+		position: 'absolute',
+	};
+	
+  
+  function onAttemptedScroll(e) {
+    let y = e.deltaY;
+    // console.log(y);
+    
+    if (window.screen.width > 500) {
+      // console.log('big screen')
+      window.scrollBy(y, 0)
+    } else {
+      return
+    }
+  }
+	
+
+	
+	
+	
+	
+	// SIGN OUT
+	
+	function signOut() {
+		localStorage.setItem('accessToken', 'signedOut')
+		localStorage.setItem('username', 'signedOut')
+		setcompletedUsername(null)
+		setcompletedEmail(null)
+		history.push('/')
+		// window.location.pathname = '/'
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 	function submitArt(body) {
 		// POST request using fetch inside useEffect React hook
 		console.log('submitting art');
@@ -375,11 +499,28 @@ function App(props) {
 				console.error(error);
 			});
 	}
+	
+	
+	
+	
+	
 
-	const navAnimation = {
-		transform: `rotate(${scrollValue / 20}deg)`,
-		position: 'absolute',
-	};
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// animate={{ backgroundColor: ["#60F", "#09F", "#FA0"] }} transition={{ type: 'tween', duration: 2}}
+	
+	
+
+
+	
 
 	// d="
 	//                  M 100, 100
@@ -394,8 +535,8 @@ function App(props) {
 	// c0-26.3-21.4-47.7-47.7-47.7V50z"
 
 	return (
-		<div className='wrapper'>
-			<div className='general-nav-position-and-size'>
+		<motion.div className='wrapper' style={colorAnimation} >
+			<div className="general-nav-position-and-size">
 				<NavCircle navAnimation={navAnimation} />
 			</div>
 
@@ -458,41 +599,6 @@ function App(props) {
 										name='user'>
 										user
 									</h2>
-									{/* <h2
-										className={completedUsername ? 'hidden' : 'userButton2'}
-										name='user'>
-										user
-									</h2>
-									<h2
-										className={completedUsername ? 'hidden' : 'userButton2'}
-										name='user'>
-										user
-									</h2>
-									<h2
-										className={completedUsername ? 'hidden' : 'userButton2'}
-										name='user'>
-										user
-									</h2>
-									<h2
-										className={completedUsername ? 'hidden' : 'userButton2'}
-										name='user'>
-										user
-									</h2>
-									<h2
-										className={completedUsername ? 'hidden' : 'userButton2'}
-										name='user'>
-										user
-									</h2>
-									<h2
-										className={completedUsername ? 'hidden' : 'userButton2'}
-										name='user'>
-										user
-									</h2>
-									<h2
-										className={completedUsername ? 'hidden' : 'userButton2'}
-										name='user'>
-										user
-									</h2> */}
 
 									{/* USERNAME HEADER */}
 									<h2
@@ -604,11 +710,12 @@ function App(props) {
 								handleChange={handleChange}
 								// submitArt={submitArt}
 							/>
+							<h2 className="signOutButton" onClick={signOut}>sign out</h2>
 						</>
 					);
 				}}
 			/>
-		</div>
+		</motion.div>
 	);
 }
 

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 export default Colors;
 
 // function Colors(props) {
-// let colors = ['red', 'blue', 'yellow', 'green', 'purple', 'orange', 'brown', 'black', 'white', 'grey']
+// let colors = ['blue', 'red', 'green', 'yellow', 'purple', 'orange', 'brown', 'black', 'white', 'grey']
 
 // for(let i = 0; i<colors.length; i++) {
 
@@ -87,65 +87,66 @@ function Colors() {
 			'https://www.breakingbadapi.com/api/characters'
 		);
     const arts = await artsData.json();
-    console.log(arts);
+    // console.log(arts);
     
     arts.sort(() => Math.random() - 0.5);
     // console.log(colors);
-        
+		
+		let blue = []
     let red = []
-    let blue = []
-    let yellow  = []
-    let green = []
+		let green = []
+		let yellow  = []
     let purple = []
     let orange = []
     let brown = []
     let black = []
     let white = []
-    let gray = []
+		let gray = []
+		let mixed = []
     
     arts.map((art) => {
       switch(art.status) {
-        case 'Alive':
-          red.push(art)
-          break;
-        case '?':
+				case 'Alive':
           blue.push(art)
           break;
+				case '?':
+          red.push(art)
+					break;
         case 'Deceased':
-          yellow.push(art)
+          green.push(art)
           break;
         case 'Presumed dead':
-          green.push(art)
+          yellow.push(art)
           break;
         case 'purple':
-          green.push(art)
+          purple.push(art)
           break;
         case 'orange':
-          green.push(art)
+          orange.push(art)
           break;
         case 'brown':
-          green.push(art)
+          brown.push(art)
           break;
         case 'black':
-          green.push(art)
+          black.push(art)
           break;
         case 'white':
-          green.push(art)
+          white.push(art)
           break;   
-        case 'grey':
-          green.push(art)
+        case 'mixed':
+          mixed.push(art)
           break;
       }
     })
     
     setArts(arts);
     
-    console.log(red);
-    
-    setAlive(red)
+    // console.log(red);
     setUnkown(blue)
-    setDeceased(yellow)
-    setPresumedDead(green)
+    setAlive(red)
+		setPresumedDead(green)    
+		setDeceased(yellow)
+
   };
   
   function getRandomIntegers() {
@@ -170,13 +171,13 @@ function Colors() {
 			<div className='colorsGalleryHolder'>
         
 				<div className='colorCollageHolder' id="colorsGalleryEntrance">
-					<h2 className='entranceText'>
-						explore color gallery ⟶
-					</h2>
+					<motion.h2 className='entranceText' animate={{ color: ["#E02200",'#00B82D', "#2C3EAD", "#FA0",  '#9500B8', '#E04A00',] }} transition={{ type: 'tween', duration: 10, yoyo: Infinity}}>
+					 <motion.span style={{color: '#695F49'}}>♠</motion.span> ♦ ♣ ♥ explore color gallery ⟶
+					</motion.h2>
 				</div>
 
 				<div className='colorCollageHolder'>
-					<h3 className='color-collage-title'>red</h3>
+					<h3 className='color-collage-title'></h3>
 					{alive.slice(0, 5).map((alive, i) => (
 						<div
 							key={alive.char_id}
@@ -206,7 +207,7 @@ function Colors() {
 				</div>
 
 				<div className='colorCollageHolder'>
-					<h3 className='color-collage-title'>blue</h3>
+					<h3 className='color-collage-title'></h3>
 					{unknown.slice(0, 5).map((unknown, i) => (
 						<div
 							key={unknown.char_id}
@@ -236,7 +237,7 @@ function Colors() {
 				</div>
 
 				<div className='colorCollageHolder'>
-					<h3 className='color-collage-title'>yellow</h3>
+					<h3 className='color-collage-title'></h3>
 					{deceased.slice(0, 5).map((deceased, i) => (
 						<div
 							key={deceased.char_id}
@@ -266,7 +267,7 @@ function Colors() {
 				</div>
 
 				<div className='colorCollageHolder'>
-					<h3 className='color-collage-title'>green</h3>
+					<h3 className='color-collage-title'></h3>
 					{presumedDead.slice(0, 5).map((presumedDead, i) => (
 						<div
 							key={presumedDead.char_id}
@@ -296,7 +297,7 @@ function Colors() {
 				</div>
 
 				<div className='colorCollageHolder'>
-					<h3 className='color-collage-title'>red</h3>
+					<h3 className='color-collage-title'></h3>
 					{alive.slice(0, 5).map((alive, i) => (
 						<div
 							key={alive.char_id}
@@ -326,7 +327,7 @@ function Colors() {
 				</div>
 
 				<div className='colorCollageHolder'>
-					<h3 className='color-collage-title'>red</h3>
+					<h3 className='color-collage-title'></h3>
 					{alive.slice(0, 5).map((alive, i) => (
 						<div
 							key={alive.char_id}
@@ -356,7 +357,7 @@ function Colors() {
 				</div>
 
 				<div className='colorCollageHolder'>
-					<h3 className='color-collage-title'>red</h3>
+					<h3 className='color-collage-title'></h3>
 					{alive.slice(0, 5).map((alive, i) => (
 						<div
 							key={alive.char_id}
@@ -386,7 +387,7 @@ function Colors() {
 				</div>
 
 				<div className='colorCollageHolder'>
-					<h3 className='color-collage-title'>red</h3>
+					<h3 className='color-collage-title'></h3>
 					{alive.slice(0, 5).map((alive, i) => (
 						<div
 							key={alive.char_id}
@@ -416,7 +417,7 @@ function Colors() {
 				</div>
 
 				<div className='colorCollageHolder'>
-					<h3 className='color-collage-title'>red</h3>
+					<h3 className='color-collage-title'></h3>
 					{alive.slice(0, 5).map((alive, i) => (
 						<div
 							key={alive.char_id}
@@ -446,7 +447,7 @@ function Colors() {
 				</div>
         
 				<div className='colorCollageHolder'>
-					<h3 className='color-collage-title'>red</h3>
+					<h3 className='color-collage-title'></h3>
 					{alive.slice(0, 5).map((alive, i) => (
 						<div
 							key={alive.char_id}
