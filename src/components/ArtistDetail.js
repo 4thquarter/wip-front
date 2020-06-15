@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { BACKENDURL } from '../config';
+import { motion } from 'framer-motion';
 import '../css/ArtistDetail.css';
 
 const ArtistDetail = ({ match }) => {
@@ -38,14 +39,51 @@ const ArtistDetail = ({ match }) => {
 			.catch(console.error);
 	};
 
+	const entranceText = {
+		position: 'fixed',
+		top: '50%',
+		left: '50%',
+		transform: 'translate(-50%, -50%)',
+		width: '250px',
+		height: '100px',
+		color: '#B6AB92',
+		letterSpacing: '2px',
+		fontWeight: '800',
+		fontStyle: 'normal',
+		fontFamily:
+			"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+	};
+
 	if (deleted) {
-		return <Redirect to='/artists' />;
+		return <Redirect to='/pieces' />;
 	}
 	if (error) {
-		return <div>Sorry, the artist is out on spiritual retreat.</div>;
+		return (
+			<div style={entranceText}>
+				Sorry, the artist is out on a spiritual retreat.
+			</div>
+		);
 	}
 	if (!artist) {
-		return <div>Searching for the Artist...</div>;
+		return (
+			<div>
+				<motion.h2
+					style={entranceText}
+					animate={{
+						color: [
+							'#E02200',
+							'#00B82D',
+							'#2C3EAD',
+							'#FA0',
+							'#9500B8',
+							'#E04A00',
+						],
+					}}
+					transition={{ type: 'tween', duration: 7, yoyo: Infinity }}>
+					☯☠♠<motion.span style={{ color: '#695F49' }}>LOADING</motion.span>♠☠☯
+				</motion.h2>
+			</div>
+		);
 	}
 
 	return (
