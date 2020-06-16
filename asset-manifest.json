@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/wip-front/static/css/main.71d2f6ce.chunk.css",
-    "main.js": "/wip-front/static/js/main.7544e278.chunk.js",
-    "main.js.map": "/wip-front/static/js/main.7544e278.chunk.js.map",
+    "main.js": "/wip-front/static/js/main.5996472c.chunk.js",
+    "main.js.map": "/wip-front/static/js/main.5996472c.chunk.js.map",
     "runtime-main.js": "/wip-front/static/js/runtime-main.9b9f8315.js",
     "runtime-main.js.map": "/wip-front/static/js/runtime-main.9b9f8315.js.map",
     "static/js/2.ad94b396.chunk.js": "/wip-front/static/js/2.ad94b396.chunk.js",
     "static/js/2.ad94b396.chunk.js.map": "/wip-front/static/js/2.ad94b396.chunk.js.map",
     "index.html": "/wip-front/index.html",
-    "precache-manifest.51c2f1bf60e6036c573c0ae2677424fd.js": "/wip-front/precache-manifest.51c2f1bf60e6036c573c0ae2677424fd.js",
+    "precache-manifest.a7b1fe20682852e4819b7c4a84e5ab4f.js": "/wip-front/precache-manifest.a7b1fe20682852e4819b7c4a84e5ab4f.js",
     "service-worker.js": "/wip-front/service-worker.js",
     "static/css/main.71d2f6ce.chunk.css.map": "/wip-front/static/css/main.71d2f6ce.chunk.css.map",
     "static/js/2.ad94b396.chunk.js.LICENSE.txt": "/wip-front/static/js/2.ad94b396.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.9b9f8315.js",
     "static/js/2.ad94b396.chunk.js",
     "static/css/main.71d2f6ce.chunk.css",
-    "static/js/main.7544e278.chunk.js"
+    "static/js/main.5996472c.chunk.js"
   ]
 }
