@@ -719,6 +719,21 @@ svg {
 	width: 10vw;
 	height: 10vh;
 	right: 2vh;
+	border: none;
+	transform-origin: 50% 50%;
+}
+
+.scrollBackButton:hover {
+	cursor: pointer;
+	outline: none;
+}
+
+.scrollBackButton:focus {
+	outline: none;
+}
+
+.scrollBackButton:active {
+	outline: none;
 }
 
 

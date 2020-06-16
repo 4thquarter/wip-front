@@ -108,6 +108,7 @@ function Colors(props) {
 					if (piece.media[0]) {
 					white.push(piece);
 					}
+					break;
 				case 'mixed':
 					if (piece.media[0]) {
 					mixed.push(piece);
@@ -480,10 +481,67 @@ function Colors(props) {
 				</div>
 				
 				<motion.button 
+				animate={{
+					backgroundColor: [
+						'#E02200',
+						'#00B82D',
+						'#2C3EAD',
+						'#FA0',
+						'#9500B8',
+						'#E04A00',
+					],
+				}}
+				transition={{ 
+					backgroundColor: {type: 'tween', duration: 8, yoyo: Infinity},
+					// default: duration: 2
+				}}
+				whileHover={{ scale: 1.9, rotate: -180, duration: 2 }}
+		 	  whileTap={{
+			    scale: 0.8,
+			    rotate: -180,
+			    borderRadius: "100%"
+			  }}
 				
 				className="scrollBackButton" 
-				onClick={props.scrollToLeft}>
-					----
+				onClick={props.scrollToLeft}
+				>
+					
+						<motion.span 
+						animate={{
+							color: [
+								'#E02200',
+								'#00B82D',
+								'#2C3EAD',
+								'#FA0',
+								'#9500B8',
+								'#E04A00',
+							],
+						}}
+						transition={{ 
+							type: 'tween', duration: 1, yoyo: Infinity 
+						}}>
+							▧ ▨
+						</motion.span>
+						
+						<br />
+						
+						<motion.span 
+						animate={{
+							color: [
+								'#E02200',
+								'#00B82D',
+								'#2C3EAD',
+								'#FA0',
+								'#9500B8',
+								'#E04A00',
+							],
+						}}
+						transition={{ 
+							type: 'tween', duration: 1, yoyo: Infinity 
+						}}>
+							▧ ▨
+						</motion.span>
+					
 				</motion.button>
 				
 			</div>
