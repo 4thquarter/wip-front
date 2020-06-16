@@ -20,17 +20,17 @@ function NavCircle(props) {
 
 	return (
 		<div>
-			<svg className='header' width='200px' height='200px' viewBox='100 100'>
-				<path
-					id='curve'
-					fill='none'
-					d='
-			M 100, 100
-			m -75, 0
-			a 75,75 0 1,0 150,0
-			a 75,75 0 1,0 -150,0
-			'
-				/>
+		<svg className='header' width='200px' height='200px' viewBox='100 100'>
+			<path
+				id='curve'
+				fill='none'
+				d='
+          M 100, 100
+          m -75, 0
+          a 75,75 0 1,0 150,0
+          a 75,75 0 1,0 -150,0
+          '
+			/>
 
 				<text width='500' className='circleTextSquare' style={props.navAnimation}>
 					<textPath
@@ -78,21 +78,22 @@ function NavCircle(props) {
 							</a>
 						</tspan>
 
-						<tspan x='355' dy='0'>
-							<a
-								className='navlink'
-								id='nav4'
-								onClick={(e) => {
-									e.preventDefault();
-									history.push('/artists');
-								}}>
-								{/* –––– artists ––––– */}
-								││ artists ◰ ◱ ▲
-							</a>
-						</tspan>
-					</textPath>
-				</text>
-			</svg>
+					<tspan x='355' dy='0'>
+						<a
+							className='navlink'
+							id='nav4'
+							onClick={(e) => {
+								e.preventDefault();
+								history.push('/artists');
+							}}>
+							{/* –––– artists ––––– */}
+							││ artists ◰ ◱ ▲
+						</a>
+					</tspan>
+				</textPath>
+			</text>
+		</svg>
+
 		</div>
 	);
 }

@@ -64,7 +64,10 @@ const ArtistDetail = ({ match }) => {
 				setDeleted(true);
 			})
 			.catch(console.error);
-	};
+			
+			window.location.pathname = (`/${localStorage.getItem('username')}`)
+			};
+			
 
 	const entranceText = {
 		position: 'fixed',
@@ -92,44 +95,6 @@ const ArtistDetail = ({ match }) => {
 		);
 	}
 
-	// let artworkMedia = (
-	// 	<div>
-	// 		no pieces found under this artist.
-	// 	</div>
-	// )
-
-	// if (setArtistIsSet) {
-	// 	const artworkMediaIsTrue = artist[0].artwork[0].media[0];
-
-	// 	if (artworkMediaIsTrue) {
-	// 		artworkMedia = artist[0].artwork.map((artwork) => (
-	// 			<motion.div
-	// 				key={artwork.id}
-	// 				animate={{ opacity: [0, 1] }}
-	// 				transition={{
-	// 					delay: 2,
-	// 					duration: 0.5,
-	// 				}}>
-	// 				<a
-	// 					className='artist-piece'
-	// 					id='nav1'
-	// 					style={{ cursor: 'pointer' }}
-	// 					onClick={(e) => {
-	// 						e.preventDefault();
-	// 						history.push(`/pieces/${artwork.id}`);
-	// 					}}>
-	// 					<motion.img
-	// 						whileHover={{ scale: 1.1, duration: 0.5 }}
-	// 						whileTap={{ scale: 0.9 }}
-	// 						className='artist-piece-image'
-	// 						src={artwork.media[0].media_url}
-	// 						alt={artwork.media[0].name}
-	// 					/>
-	// 				</a>
-	// 			</motion.div>
-	// 		));
-	// 	}
-	// }
 
 	if (!artist) {
 		return (
@@ -259,6 +224,45 @@ const ArtistDetail = ({ match }) => {
 
 export default ArtistDetail;
 
+	// let artworkMedia = (
+	// 	<div>
+	// 		no pieces found under this artist.
+	// 	</div>
+	// )
+
+	// if (setArtistIsSet) {
+	// 	const artworkMediaIsTrue = artist[0].artwork[0].media[0];
+
+	// 	if (artworkMediaIsTrue) {
+	// 		artworkMedia = artist[0].artwork.map((artwork) => (
+	// 			<motion.div
+	// 				key={artwork.id}
+	// 				animate={{ opacity: [0, 1] }}
+	// 				transition={{
+	// 					delay: 2,
+	// 					duration: 0.5,
+	// 				}}>
+	// 				<a
+	// 					className='artist-piece'
+	// 					id='nav1'
+	// 					style={{ cursor: 'pointer' }}
+	// 					onClick={(e) => {
+	// 						e.preventDefault();
+	// 						history.push(`/pieces/${artwork.id}`);
+	// 					}}>
+	// 					<motion.img
+	// 						whileHover={{ scale: 1.1, duration: 0.5 }}
+	// 						whileTap={{ scale: 0.9 }}
+	// 						className='artist-piece-image'
+	// 						src={artwork.media[0].media_url}
+	// 						alt={artwork.media[0].name}
+	// 					/>
+	// 				</a>
+	// 			</motion.div>
+	// 		));
+	// 	}
+	// }
+	
 // import React, { useState, useEffect } from 'react';
 // import { Link } from 'react-router-dom';
 

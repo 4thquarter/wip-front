@@ -45,31 +45,37 @@ function User(props) {
 			</option>
 		);
 	});
-
-	let userArtist = null;
-
-	if (props.userArtist[0] != 'signedOut') {
-		console.log('yee');
-
-		userArtist = props.userArtist.map((artist) => {
-			return (
-				<a
-					className='artistLink'
-					onClick={(e) => {
-						e.preventDefault();
-						history.push(`/artists/${artist.id}`);
-					}}
-					style={{ cursor: 'pointer' }}>
-					<h1 key={artist.id} className='artistHeader'>
-						{artist.name}
-					</h1>
-				</a>
-			);
-		});
-		return userArtist;
-	} else {
-		// console.log('noo');
-	}
+	
+	let userArtist = null
+	
+	// const artistHeader = props.userArtist[0] != 'signedOut' ? :
+	
+	// if (props.userArtist[0] != 'signedOut') {
+	// 	console.log('yee');
+		
+	// 	userArtist = props.userArtist.map((artist) => {
+	// 	return (<a
+	// 	className='artistLink'
+	// 	onClick={(e) => {
+	// 		e.preventDefault();
+	// 		history.push(`/artists/${artist.id}`);
+	// 	}}
+	// 	style={{cursor: 'pointer'}}>
+			
+	// 		<h1 key={artist.id} className='artistHeader'>{artist.name}</h1>
+			
+	// 	</a>
+	// 	)
+	// });
+	// 	return userArtist
+	// };
+	
+	
+  return (
+    <>
+		<div className='artistHeadersContainer'>{userArtist}</div>
+		<div className='submitArtContainer'>
+					<p className={props.error ? 'error' : 'hidden'}>{props.error}</p>
 
 	return (
 		<>
