@@ -4,7 +4,11 @@ import { BACKENDURL } from '../config';
 import PieceForm from './PieceForm.js';
 import '../css/PieceCreate.css'
 
+<<<<<<< HEAD
 const PieceCreate = ({props, match}) => {
+=======
+const PieceCreate = () => {
+>>>>>>> deploy test 1
 	const initialPieceState = {
 		title: '',
 		artist: match.params.id,
@@ -157,6 +161,7 @@ const PieceCreate = ({props, match}) => {
 				<h2 className='page-title'>add a piece</h2>
 				{error && <p>Something went wrong... Please try again!</p>}
 			</div>
+<<<<<<< HEAD
 			<div className='submitArt'>
 				<form autoComplete='yeeyee' className="pieceForm">
 					<input
@@ -214,6 +219,13 @@ const PieceCreate = ({props, match}) => {
 					</button>
 				</form>
 			</div>
+=======
+			<PieceForm
+				piece={piece}
+				handleChange={handleChange}
+				handleSubmit={handleSubmit}
+			/>
+>>>>>>> deploy test 1
 		</>
 	);
 };
