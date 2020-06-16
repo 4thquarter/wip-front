@@ -857,6 +857,7 @@ function App() {
 						);
 					}}
 				/>
+<<<<<<< HEAD
 				<Route
 					path='/mediums'
 					exact={true}
@@ -868,6 +869,8 @@ function App() {
 						);
 					}}
 				/>
+=======
+>>>>>>> created artists gallery
 				
 			</Switch>
 			<Route
