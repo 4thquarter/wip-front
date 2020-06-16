@@ -12,11 +12,11 @@ import Colors from './components/Colors';
 // import Mediums from './components/Mediums';
 // import Artists from './components/Artists';
 // import ArtistCreate from './components/ArtistCreate';
-import ArtistDetail from './components/ArtistDetail';
+// import ArtistDetail from './components/ArtistDetail';
 // import ArtistEdit from './components/ArtistEdit';
 // import ArtistForm from '.components/ArtistForm';
-import PieceCreate from './components/PieceCreate';
-import PieceDetail from './components/PieceDetail';
+// import PieceCreate from './components/PieceCreate';
+// import PieceDetail from './components/PieceDetail';
 // import PieceEdit from './components/PieceEdit';
 
 
@@ -720,10 +720,7 @@ function App() {
 	
 	
 	
-	{/* <Route exact path='/artists' component={Artists} /> */}
-	{/* <Route exact path='/artists/create' component={ArtistCreate} /> */}
-	{/* <Route exact path='/artists/:id/edit' component={ArtistEdit} /> */}
-	{/* <Route exact path='/pieces/:id/edit' component={PieceEdit} /> */}
+
 
 	
 
@@ -757,12 +754,7 @@ function App() {
 						);
 					}}
 				/>
-				<Route exact path='/mediums' 
-				// component={Mediums} 
-				/>
-				<Route exact path='/artists/:id' component={ArtistDetail} />
-				<Route exact path='/artists/:id/add_piece' component={PieceCreate} />
-				<Route exact path='/pieces/:id' component={PieceDetail} />
+				
 			</Switch>
 			<Route
 				path='/usersign'
@@ -838,3 +830,14 @@ function App() {
 }
 
 export default App;
+
+{/* <Route exact path='/mediums' 
+				// component={Mediums} 
+				/> */}
+				{/* <Route exact path='/artists/:id' component={ArtistDetail} /> */}
+				{/* <Route exact path='/artists/:id/add_piece' component={PieceCreate} /> */}
+				{/* <Route exact path='/pieces/:id' component={PieceDetail} /> */}
+	{/* <Route exact path='/artists' component={Artists} /> */}
+	{/* <Route exact path='/artists/create' component={ArtistCreate} /> */}
+	{/* <Route exact path='/artists/:id/edit' component={ArtistEdit} /> */}
+	{/* <Route exact path='/pieces/:id/edit' component={PieceEdit} /> */}
