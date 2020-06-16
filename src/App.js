@@ -10,7 +10,8 @@ import Welcome from './components/Welcome';
 import NavCircle from './components/NavCircle';
 import Colors from './components/Colors';
 import Mediums from './components/Mediums';
-// import Artists from './components/Artists';
+import Artists from './components/Artists';
+
 import ArtistDetail from './components/ArtistDetail';
 import PieceCreate from './components/PieceCreate';
 import PieceDetail from './components/PieceDetail';
@@ -201,7 +202,7 @@ function App() {
 			let w =  window.innerWidth
 			// console.log(w > scrollValue)
 			
-			if (path = '/colors') {
+			if (path === '/colors') {
 				// console.log('colors');
 				
 				switch(true) {
@@ -760,6 +761,17 @@ function App() {
 						return (
 							<>
 								<Colors scrollToLeft={scrollToLeft}/>
+							</>
+						);
+					}}
+				/>
+				<Route
+					path='/artists'
+					exact={true}
+					render={() => {
+						return (
+							<>
+								<Artists scrollToLeft={scrollToLeft}/>
 							</>
 						);
 					}}
