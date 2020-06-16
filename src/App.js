@@ -234,11 +234,11 @@ function App(props) {
 	
 	const scrollToLeft = () => {
 		const c = document.documentElement.scrollLeft || document.body.scrollLeft;
-		console.log(c);
+		// console.log(c);
 		
 		if (c > 0) {
 			window.requestAnimationFrame(scrollToLeft);
-			window.scrollTo(c - c / 24, 0);
+			window.scrollTo(c - c / 20, 0);
 		}
 	};
 	
