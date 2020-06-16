@@ -3,8 +3,8 @@ import React from 'react';
 const ArtistForm = ({ artist, handleSubmit, handleChange }) => {
 	return (
 		<>
-			<div className='submitArt'>
-                <form className='artist-form' onSubmit={handleSubmit}>
+			<div className='submitArtContainer'>
+          <form className='artist-form' onSubmit={handleSubmit}>
 
 					<label htmlFor='name' className='form-title'>
 						name / pseudonym
@@ -14,7 +14,7 @@ const ArtistForm = ({ artist, handleSubmit, handleChange }) => {
 						placeholder='name / pseudonym'
 						defaultValue={artist.name}
 						name='name'
-						onChange={handleChange}
+						onChange={props.handleChange}
 						required
 						id='name'
 					/>
@@ -27,7 +27,7 @@ const ArtistForm = ({ artist, handleSubmit, handleChange }) => {
 						placeholder='email address'
 						defaultValue={artist.email}
 						name='email'
-						onChange={handleChange}
+						onChange={props.handleChange}
 						required
 						id='email'
 					/>
@@ -40,7 +40,7 @@ const ArtistForm = ({ artist, handleSubmit, handleChange }) => {
 						placeholder='info / bio'
 						defaultValue={artist.information}
 						name='information'
-						onChange={handleChange}
+						onChange={props.handleChange}
 						required
 						id='information'
 					/>
@@ -53,7 +53,7 @@ const ArtistForm = ({ artist, handleSubmit, handleChange }) => {
 						placeholder='(city, state / country)'
 						defaultValue={artist.location}
 						name='location'
-						onChange={handleChange}
+						onChange={props.handleChange}
 						required
 						id='location'
 					/>

@@ -1,6 +1,9 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom'
 
 function User(props) {
+	
+	let history = useHistory()
 	
   let colors = ['red', 'blue', 'yellow', 'green', 'purple', 'orange', 'brown', 'black', 'white', 'gray', 'mixed']
   let mediums = ['music', 'garment', 'painting', 'sculpture', 'photo', 'writing', 'drawing', 'graphic', 'website', 'mixed']
@@ -13,54 +16,94 @@ function User(props) {
 		return <option value={medium._id} key={medium._id} >{medium}</option>;
 	});
 	
+	let userArtist = null
+	
+	if (props.userArtist[0] != 'signedOut') {
+		console.log('yee');
+		
+		userArtist = props.userArtist.map((artist) => {
+		return (<a
+		className='artistLink'
+		onClick={(e) => {
+			e.preventDefault();
+			history.push(`/artists/${artist.id}`);
+		}}
+		style={{cursor: 'pointer'}}>
+			
+			<h1 key={artist.id} className='artistHeader'>{artist.name}</h1>
+			
+		</a>
+		)
+	});
+		return userArtist
+	} else {
+		// console.log('noo');
+		
+	}
+	
+	
   return (
     <>
-			<div className='submitArt'>
-				<form autoComplete="yeeyee">
-          
+		<div className='artistHeadersContainer'>{userArtist}</div>
+		<div className='submitArtContainer'>
+					<p className={props.error ? 'error' : 'hidden'}>{props.error}</p>
+
+          <form className='artist-form'>
+
 					<input
-						className="inputBox"
+						className='inputBox'
+						placeholder='name / pseudonym'
+						name='name'
 						onChange={props.handleChange}
-						type='text'
-						id='title'
-						name='title'
-						autoComplete="yeeyee"
-						placeholder='title'
+						required
+						id='name'
+					/>
+
+					<input
+						className='inputBox'
+						placeholder='email'
+						name='email'
+						onChange={props.handleChange}
+						required
+						id='email'
+					/>
+
+					<input
+						className='inputBox'
+						placeholder='info / bio'
+						name='information'
+						onChange={props.handleChange}
+						required
+						id='information'
+					/>
+
+					<input
+						className='inputBox'
+						placeholder='location'
+						name='location'
+						onChange={props.handleChange}
+						required
+						id='location'
+					/>
+
+					<input
+						className='inputBox'
+						placeholder='website / portfolio'
+						name='website'
+						onChange={props.handleChange}
+						required
+						id='website'
 					/>
 					
-					<input
-						className="inputBox"
-						onChange={props.handleChange}
-						type='text'
-						id='artist'
-						name='artist'
-						placeholder='artist'
-					/>
-          
-          <select
-						name='colorSelect'
-						id='colorSelect'
-						onChange={props.handleChange}
-						className="select"
-						>
-						{colorChoices}
-					</select>
-          
-          <select
-						name='mediumSelect'
-						id='mediumSelect'
-						onChange={props.handleChange}
-						className="select"
-						>
-						{mediumChoices}
-					</select>
-					
-					<button className="artSubmit" onClick={props.submitArt} type='submit' name='submit'>
+
+					<button className="artSubmit" onClick={props.submitArtist} type='submit' name='submit'>
 						===>
 					</button>
-          
+					
 				</form>
 			</div>
+			
+			
 		</>
   )
 }

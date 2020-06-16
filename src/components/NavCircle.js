@@ -44,7 +44,8 @@ function NavCircle(props) {
 							id='nav1'
 							onClick={(e) => {
 								e.preventDefault();
-								history.push('/user');
+								history.push(
+									props.completedUsername ? '/' + props.completedUsername : '/usersign');
 							}}>
 							{/* ––––– user ––––– */}
 							││ user∜ ∝ ∞ ∟
