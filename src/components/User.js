@@ -30,6 +30,7 @@ function User(props) {
 		'mixed',
 	];
 
+<<<<<<< HEAD
 	// const colorChoices = colors.map((color) => {
 	// 	return (
 	// 		<option value={color._id} key={color._id}>
@@ -78,6 +79,57 @@ function User(props) {
 				<p className={props.error ? 'error' : 'hidden'}>{props.error}</p>
 				<p className={props.userArtists[2] ? 'hidden' : 'newArtistHeader'}>NEW ARTIST</p>
 				<form className={props.userArtists[2] ? 'hidden' : 'artist-form'}>
+=======
+	const colorChoices = colors.map((color) => {
+		return (
+			<option value={color._id} key={color._id}>
+				{color}
+			</option>
+		);
+	});
+
+	const mediumChoices = mediums.map((medium) => {
+		return (
+			<option value={medium._id} key={medium._id}>
+				{medium}
+			</option>
+		);
+	});
+
+
+	let userArtist = null;
+
+	if (props.userArtist[0] != 'signedOut') {
+		console.log('yee');
+
+		userArtist = props.userArtist.map((artist) => {
+			return (
+				<a
+					className='artistLink'
+					onClick={(e) => {
+						e.preventDefault();
+						history.push(`/artists/${artist.id}`);
+					}}
+					style={{ cursor: 'pointer' }}>
+					<h1 key={artist.id} className='artistHeader'>
+						{artist.name}
+					</h1>
+				</a>
+			);
+		});
+		return userArtist;
+	} else {
+		// console.log('noo');
+	}
+
+	return (
+		<>
+			<div className='artistHeadersContainer'>{userArtist}</div>
+			<div className='submitArtContainer'>
+				<p className={props.error ? 'error' : 'hidden'}>{props.error}</p>
+
+				<form className='artist-form'>
+>>>>>>> linted
 					<input
 						className='inputBox'
 						placeholder='name / pseudonym'
