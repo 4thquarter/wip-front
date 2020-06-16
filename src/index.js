@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from "react-router-dom";
 
-import useHorizontal from '@oberon-amsterdam/horizontal';
-
 
 import './index.css';
 import App from './App';

@@ -36,10 +36,7 @@ function User(props) {
 		)
 	});
 		return userArtist
-	} else {
-		// console.log('noo');
-		
-	}
+	};
 	
 	
   return (

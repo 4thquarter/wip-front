@@ -27,7 +27,7 @@ import User from './components/User';
 
 import About from './components/About';
 
-function App(props) {
+function App() {
 	// useHorizontal();
 
 	// const refContainer = useRef(0);
@@ -722,29 +722,13 @@ function App(props) {
 	
 	
 	
-	
-	
-	
-	
-	
-	// animate={{ backgroundColor: ["#60F", "#09F", "#FA0"] }} transition={{ type: 'tween', duration: 2}}
-	
-	
-
+	{/* <Route exact path='/artists' component={Artists} /> */}
+	{/* <Route exact path='/artists/create' component={ArtistCreate} /> */}
+	{/* <Route exact path='/artists/:id/edit' component={ArtistEdit} /> */}
+	{/* <Route exact path='/pieces/:id/edit' component={PieceEdit} /> */}
 
 	
 
-	// d="
-	//                  M 100, 100
-	//                  m -75, 0
-	//                  a 75,75 0 1,0 150,0
-	//                  a 75,75 0 1,0 -150,0
-	//                  "
-
-	// 	d="M150.7,50v2c12.1,0,23,4.9,30.9,12.8c7.9,7.9,12.8,18.8,12.8,30.9c0,12.1-4.9,23-12.8,30.9
-	// c-7.9,7.9-18.8,12.8-30.9,12.8c-12.1,0-23-4.9-30.9-12.8c-7.9-7.9-12.8-18.8-12.8-30.9c0-12.1,4.9-23,12.8-30.9
-	// c7.9-7.9,18.8-12.8,30.9-12.8V50v-2C124.4,48,103,69.3,103,95.6c0,26.3,21.4,47.7,47.7,47.7c26.3,0,47.7-21.4,47.7-47.7
-	// c0-26.3-21.4-47.7-47.7-47.7V50z"
 
 	return (
 		<motion.div className='wrapper' style={colorAnimation} >
@@ -776,13 +760,9 @@ function App(props) {
 					}}
 				/>
 				<Route exact path='/mediums' component={Mediums} />
-				{/* <Route exact path='/artists' component={Artists} /> */}
-				{/* <Route exact path='/artists/create' component={ArtistCreate} /> */}
 				<Route exact path='/artists/:id' component={ArtistDetail} />
-				{/* <Route exact path='/artists/:id/edit' component={ArtistEdit} /> */}
 				<Route exact path='/artists/:id/add_piece' component={PieceCreate} />
 				<Route exact path='/pieces/:id' component={PieceDetail} />
-				{/* <Route exact path='/pieces/:id/edit' component={PieceEdit} /> */}
 			</Switch>
 			<Route
 				path='/usersign'
