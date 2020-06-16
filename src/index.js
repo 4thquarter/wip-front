@@ -46,14 +46,14 @@ import * as serviceWorker from './serviceWorker';
 //   }
 // });
 
+  // <React.StrictMode>
+  // </React.StrictMode>,
 
 
 ReactDOM.render(
-  <React.StrictMode>
     <BrowserRouter>
       <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+    </BrowserRouter>,
   document.getElementById('root')
 );
 
