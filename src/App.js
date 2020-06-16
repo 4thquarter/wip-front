@@ -9,15 +9,19 @@ import Welcome from './components/Welcome';
 
 import NavCircle from './components/NavCircle';
 import Colors from './components/Colors';
-// import Mediums from './components/Mediums';
+import Mediums from './components/Mediums';
 // import Artists from './components/Artists';
-// import ArtistCreate from './components/ArtistCreate';
-// import ArtistDetail from './components/ArtistDetail';
-// import ArtistEdit from './components/ArtistEdit';
+import ArtistDetail from './components/ArtistDetail';
+import PieceCreate from './components/PieceCreate';
+import PieceDetail from './components/PieceDetail';
+
+
 // import ArtistForm from '.components/ArtistForm';
-// import PieceCreate from './components/PieceCreate';
-// import PieceDetail from './components/PieceDetail';
+
 // import PieceEdit from './components/PieceEdit';
+// import ArtistEdit from './components/ArtistEdit';
+
+// import ArtistCreate from './components/ArtistCreate';
 
 
 import SignIn from './components/SignIn';
@@ -730,7 +734,12 @@ function App() {
 			<div className="general-nav-position-and-size">
 				<NavCircle navAnimation={navAnimation} completedUsername={completedUsername}/>
 			</div>
-
+			<Route exact path='/mediums' 
+				component={Mediums} 
+				/>
+				<Route exact path='/artists/:id' component={ArtistDetail} /> 
+				<Route exact path='/artists/:id/add_piece' component={PieceCreate} />
+				<Route exact path='/pieces/:id' component={PieceDetail} />
 			<Switch>
 				<Route
 					path='/'
@@ -837,6 +846,7 @@ export default App;
 				{/* <Route exact path='/artists/:id' component={ArtistDetail} /> */}
 				{/* <Route exact path='/artists/:id/add_piece' component={PieceCreate} /> */}
 				{/* <Route exact path='/pieces/:id' component={PieceDetail} /> */}
+				
 	{/* <Route exact path='/artists' component={Artists} /> */}
 	{/* <Route exact path='/artists/create' component={ArtistCreate} /> */}
 	{/* <Route exact path='/artists/:id/edit' component={ArtistEdit} /> */}
