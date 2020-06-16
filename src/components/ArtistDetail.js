@@ -34,10 +34,10 @@ const ArtistDetail = ({ match }) => {
 				}
 			})
 			.then((response) => {
-				console.log(response.artwork[0].media[0]);
 				setArtist([response]);
 				setArtistName([response.name]);
-				setArtistId([response.id]);
+				setArtistId([response.id]);localStorage.setItem('latestArtistId', response.id);
+				console.log(localStorage.getItem('latestArtistId'))
 			})
 			// .then(() => {
 			// 	setArtistIsSet(true);
