@@ -1,55 +1,83 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 
 function User(props) {
-	
-	let history = useHistory()
-	
-  let colors = ['red', 'blue', 'yellow', 'green', 'purple', 'orange', 'brown', 'black', 'white', 'gray', 'mixed']
-  let mediums = ['music', 'garment', 'painting', 'sculpture', 'photo', 'writing', 'drawing', 'graphic', 'website', 'mixed']
-	
+	let history = useHistory();
+
+	let colors = [
+		'red',
+		'blue',
+		'yellow',
+		'green',
+		'purple',
+		'orange',
+		'brown',
+		'black',
+		'white',
+		'gray',
+		'mixed',
+	];
+	let mediums = [
+		'music',
+		'garment',
+		'painting',
+		'sculpture',
+		'photo',
+		'writing',
+		'drawing',
+		'graphic',
+		'website',
+		'mixed',
+	];
+
 	const colorChoices = colors.map((color) => {
-		return <option value={color._id} key={color._id}>{color}</option>;
+		return (
+			<option value={color._id} key={color._id}>
+				{color}
+			</option>
+		);
 	});
-	
+
 	const mediumChoices = mediums.map((medium) => {
-		return <option value={medium._id} key={medium._id} >{medium}</option>;
+		return (
+			<option value={medium._id} key={medium._id}>
+				{medium}
+			</option>
+		);
 	});
-	
-	let userArtist = null
-	
+
+	let userArtist = null;
+
 	if (props.userArtist[0] != 'signedOut') {
 		console.log('yee');
-		
+
 		userArtist = props.userArtist.map((artist) => {
-		return (<a
-		className='artistLink'
-		onClick={(e) => {
-			e.preventDefault();
-			history.push(`/artists/${artist.id}`);
-		}}
-		style={{cursor: 'pointer'}}>
-			
-			<h1 key={artist.id} className='artistHeader'>{artist.name}</h1>
-			
-		</a>
-		)
-	});
-		return userArtist
+			return (
+				<a
+					className='artistLink'
+					onClick={(e) => {
+						e.preventDefault();
+						history.push(`/artists/${artist.id}`);
+					}}
+					style={{ cursor: 'pointer' }}>
+					<h1 key={artist.id} className='artistHeader'>
+						{artist.name}
+					</h1>
+				</a>
+			);
+		});
+		return userArtist;
 	} else {
 		// console.log('noo');
-		
 	}
-	
-	
-  return (
-    <>
-		<div className='artistHeadersContainer'>{userArtist}</div>
-		<div className='submitArtContainer'>
-					<p className={props.error ? 'error' : 'hidden'}>{props.error}</p>
 
-          <form className='artist-form'>
+	return (
+		<>
+			<div className='artistHeadersContainer'>{userArtist}</div>
+			<div className='submitArtContainer'>
+				<p className={props.error ? 'error' : 'hidden'}>{props.error}</p>
 
+				<form className='artist-form'>
 					<input
 						className='inputBox'
 						placeholder='name / pseudonym'
@@ -94,18 +122,18 @@ function User(props) {
 						required
 						id='website'
 					/>
-					
 
-					<button className="artSubmit" onClick={props.submitArtist} type='submit' name='submit'>
-						===>
+					<button
+						className='artSubmit'
+						onClick={props.submitArtist}
+						type='submit'
+						name='submit'>
+						===
 					</button>
-					
 				</form>
 			</div>
-			
-			
 		</>
-  )
+	);
 }
 
 export default User;
