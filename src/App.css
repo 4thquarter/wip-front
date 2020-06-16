@@ -174,13 +174,20 @@ h2 {
 /* SIGN UP AND IN */
 
 
+.signInWrapper {
+	width: 1
+}
+
+
 .signUpHeader {
+	margin-top: 10vw;
 	margin-left: 80vw;
 	/* position: fixed;
 	right: 2px; */
 }
 
 .signInHeader {
+	margin-top: 10vw;
 	margin-left: 80vw;
 	/* position: absolute;
 	right: 20px; */
@@ -273,31 +280,32 @@ h2 {
 	font-weight: 800;
 }
 
-.signOutButton {
-	transform: rotate(270deg);
-	position: fixed;
-	right: 2px;
-	bottom: 200px;
-}
 
-.signOutButton:hover {
-	cursor: pointer;
-	color: #695F49;
-}
 
 
 
 
 /* USER PROFILE PAGE */
 
+
+
 .usernameHeader {
+	margin-top: 10vw;
 	margin-left: 80vw;
 }
 
-.submitArt {
-	
+.submitArtContainer {
+	position: absolute;
+	left: 8px;
+	bottom: 20px;
 }
 
+
+.artistHeader {
+	position: fixed;
+	top: 45%;
+	left: 40%;
+}
 
 .artsContainer {
 	position: absolute;
@@ -306,36 +314,6 @@ h2 {
 	line-height: 30px;
 }
 
-.needsContainer {
-	position: absolute;
-	left: 72%;
-	top: 28%;
-}
-
-.tierarts {
-	line-height: 20px;
-}
-
-.newartDescription {
-	background: transparent;
-	border: 2px solid #B6AB92;
-	border-right: none;
-	border-left: none;
-	border-top: none;
-	margin-left: 8px;
-	height: 20px;
-	font-size: 8pt
-}
-
-.newartDescription:focus {
-	outline: 0;
-	background: transparent;
-}
-
-.newartDescription:focus::placeholder {
-	color: transparent;
-	outline: 0
-}
 
 .select {
 	appearance: none;
@@ -408,7 +386,18 @@ h2 {
 	outline: 0;
 }
 
+.signOutButton {
+	transform: rotate(270deg);
+	position: fixed;
+	right: 2px;
+	bottom: 200px;
+	font-weight: 800;
+}
 
+.signOutButton:hover {
+	cursor: pointer;
+	color: #695F49;
+}
 
 
 

@@ -3,6 +3,7 @@ import React from 'react';
 function SignIn(props) {
 	return (
 		<>
+			<div className='signInWrapper'>
 			<div className='signIn'>
 				<p className={props.isUserFound ? 'hidden' : 'isUserFound'}>user not found!</p>
 				<p className={props.error ? 'error' : 'hidden'}>{props.error}</p>
@@ -39,6 +40,7 @@ function SignIn(props) {
 					</button>
 					
 				</form>
+			</div>
 			</div>
 		</>
 	);

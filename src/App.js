@@ -54,7 +54,16 @@ function App(props) {
 	const [hideSignIn, setHideSignIn] = useState(true);
 	const [hideSignUp, setHideSignUp] = useState(true);
 	const [hideSignOut, setHideSignOut] = useState(true);
+	
+	const [userArtist, setUserArtist] = useState([])
 
+	// hooks for adding artist
+	const [name, setName] = useState(null)
+	const [information, setInformation] = useState(null)
+	const [location, setLocation] = useState(null)
+	const [website, setWebsite] = useState(null)
+	
+	
 	//hooks for adding art
 	const [title, setTitle] = useState(null);
 	const [artist, setArtist] = useState(null);
@@ -76,7 +85,7 @@ function App(props) {
 	
 	
 	useEffect(() => {
-		console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
+		// console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
 
 		window.addEventListener('scroll', onScroll);
 
@@ -92,8 +101,14 @@ function App(props) {
 					console.log(access)
 		let username = localStorage.getItem('username')
 					console.log(username);
+		let userArtistId = localStorage.getItem('userArtistId')
+					console.log(userArtistId);
+					setUserArtist([...userArtist, userArtistId])
+					
 		if (username != 'signedOut') {
 			setcompletedUsername(username)
+		} else {
+			setUserArtist(['signedOut'])
 		}
 		
 		
@@ -162,7 +177,7 @@ function App(props) {
 	
 
 	function onAttemptedScroll(e) {
-		let y = (e.deltaY)/1.5;
+		let y = (e.deltaY)*(.8);
 		// console.log(y);
 
 		if (window.screen.width > 500) {
@@ -275,7 +290,7 @@ function App(props) {
 		const artistsFetched = await fetch(url)
 			.then((response) => response.json())
 			.then(async (data) => {
-				console.log(data)
+				// console.log(data)
 				const sortedData = await data.sort(() => Math.random() - 0.5);
 				setArtistData(sortedData);
 				return sortedData;
@@ -291,7 +306,7 @@ function App(props) {
 			});
 
 		if (artistsFetched) {
-			console.log('fetched');
+			// console.log('fetched');
 			
 			// getItemData();
 			// getNeedData();
@@ -304,7 +319,7 @@ function App(props) {
 		const artworkFetched = await fetch(url)
 			.then((response) => response.json())
 			.then(async (data) => {
-				console.log(data)
+				// console.log(data)
 				const sortedData = await data.sort(() => Math.random() - 0.5);
 				setArtData(sortedData);
 				return sortedData;
@@ -320,7 +335,7 @@ function App(props) {
 			});
 
 		if (artworkFetched) {
-			console.log('fetched');
+			// console.log('fetched');
 			
 			// getItemData();
 			// getNeedData();
@@ -367,7 +382,20 @@ function App(props) {
 			case 'confirmPassword':
 				setconfirmPassword(event.target.value);
 				break;
-
+				
+			case 'name':
+				setName(event.target.value)
+				break;
+			case 'information':
+				setInformation(event.target.value)
+				break;
+			case 'location':
+				setLocation(event.target.value)
+				break;
+			case 'website':
+				setWebsite(event.target.value)
+				break;
+				
 			default:
 				console.log('switch is broke');
 		}
@@ -559,6 +587,7 @@ function App(props) {
 	function signOut() {
 		localStorage.setItem('accessToken', 'signedOut')
 		localStorage.setItem('username', 'signedOut')
+		localStorage.setItem('userArtistId', 'signedOut')
 		setcompletedUsername(null)
 		setcompletedEmail(null)
 		history.push('/')
@@ -573,6 +602,62 @@ function App(props) {
 	
 	
 	
+	function submitArtist(event) {
+		// POST request using fetch inside useEffect React hook
+		event.preventDefault()
+		console.log('submitting artist');
+
+		const newArtistInformation = {
+			name: name,
+			email: information,
+			information: email,
+			location: location,
+			artist_website: website,
+			artist_media: 'none',
+			owner: 1,
+		};
+		
+		console.log(newArtistInformation);
+		
+
+		const requestOptions = {
+			method: 'POST',
+			headers: { 
+				'Content-type': 'application/json',
+				Authorization: `Bearer ${localStorage.getItem('accessToken')}`, 
+			},
+			body: JSON.stringify(newArtistInformation),
+		};
+
+		console.log(requestOptions);
+
+		fetch('https://q4backend.herokuapp.com/artists/', requestOptions)
+			.then((response) => {
+				if (response.status >= 200 && response.status <= 299) {
+					return response.json();
+				} else {
+					console.log(response.json());
+					setError('invalid artist.');
+					throw Error(response.statusText);
+				}
+			})
+			.then((data) => {
+				console.log(data)
+				let userArtist = data
+				localStorage.setItem('userArtistId', data.id)
+				// for(let i=0; i<=allUserArtists.length; i++) {
+				// 	localStorage.setItem(`userArtist${i}`, `${allUserArtists[i]}`)
+				// }
+				setUserArtist([userArtist])
+				
+			})
+			.then(() => {
+				setError(null);
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	}
 	
 	
 	
@@ -665,7 +750,7 @@ function App(props) {
 	return (
 		<motion.div className='wrapper' style={colorAnimation} >
 			<div className="general-nav-position-and-size">
-				<NavCircle navAnimation={navAnimation} />
+				<NavCircle navAnimation={navAnimation} completedUsername={completedUsername}/>
 			</div>
 
 			<Switch>
@@ -700,58 +785,6 @@ function App(props) {
 				<Route exact path='/pieces/:id' component={PieceDetail} />
 				{/* <Route exact path='/pieces/:id/edit' component={PieceEdit} /> */}
 			</Switch>
-
-			<Route
-				path='/user'
-				exact={true}
-				render={() => {
-					return (
-						<>
-							{/* USER BUTTON */}
-							<div className='user'>
-								<Link
-									to={completedUsername ? `${completedUsername}` : 'usersign'}>
-									{/* GENERIC USER HEADER */}
-									<h2
-										className={completedUsername ? 'hidden' : 'userButton1'}
-										name='user'>
-										user
-									</h2>
-									<h2
-										className={completedUsername ? 'hidden' : 'userButton1'}
-										name='user'>
-										user
-									</h2>
-									<h2
-										className={completedUsername ? 'hidden' : 'userButton1'}
-										name='user'>
-										user
-									</h2>
-									<h2
-										className={completedUsername ? 'hidden' : 'userButton1'}
-										name='user'>
-										user
-									</h2>
-									<h2
-										className={completedUsername ? 'hidden' : 'userButton1'}
-										name='user'>
-										user
-									</h2>
-
-									{/* USERNAME HEADER */}
-									<h2
-										className={completedUsername ? 'userButton' : 'hidden'}
-										name='completedUsername'>
-										{completedUsername}
-									</h2>
-								</Link>
-							</div>
-
-							{/* <Arts artData={artData} error={error} /> */}
-						</>
-					);
-				}}
-			/>
 			<Route
 				path='/usersign'
 				render={() => {
@@ -771,41 +804,11 @@ function App(props) {
 				}}
 			/>
 			<Route
-				path='/Art/:title'
-				render={(routerProps) => {
-					return (
-						<>
-							<Link to='/'>
-								<h1 className='header' id='artHeader'>
-									"Harvard Art"
-								</h1>
-							</Link>
-							<Art match={routerProps.match} artData={artData} />
-						</>
-					);
-				}}
-			/>
-			<Route
-				path='/about'
-				render={() => {
-					return (
-						<>
-							<Link to='/'>
-								<h1 className='header'>"Harvard Art"</h1>
-							</Link>
-							<About />
-						</>
-					);
-				}}
-			/>
-			<Route
 				path='/signup'
 				render={() => {
 					return (
 						<>
-							<Link to='/'>
-								<h1 className='signUpHeader'>[wip] // sign up</h1>
-							</Link>
+							<h1 className='signUpHeader'>[wip] // sign up</h1>
 							<SignUp
 								handleChange={handleChange}
 								checkSubmit={checkSubmit}
@@ -822,9 +825,7 @@ function App(props) {
 				render={() => {
 					return (
 						<>
-							<Link to='/'>
-								<h1 className='signInHeader'>[wip] // sign in</h1>
-							</Link>
+							<h1 className='signInHeader'>[wip] // sign in</h1>
 							<SignIn
 								handleChange={handleChange}
 								checkSubmit={checkSubmit}
@@ -841,12 +842,12 @@ function App(props) {
 				render={() => {
 					return (
 						<>
-							<Link to='/'>
-								<h1 className='usernameHeader'>[wip] // {completedUsername}</h1>
-							</Link>
+							<h1 className='usernameHeader'>[wip] // {completedUsername}</h1>
 							<User
 								handleChange={handleChange}
-								// submitArt={submitArt}
+								submitArtist={submitArtist}
+								userArtist={userArtist}
+								error={error}
 							/>
 							<h2 className="signOutButton" onClick={signOut}>sign out</h2>
 						</>

@@ -1,6 +1,6 @@
 // import React, { Component } from "react";
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { BACKENDURL } from '../config';
 
@@ -16,6 +16,8 @@ function Colors(props) {
 		getRandomIntegers();
 		fetchColors();
 	}, []);
+	
+	const history = useHistory();
 
 	const [pieces, setPieces] = useState([]);
 	const [blue, setBlue] = useState([]);
@@ -181,12 +183,13 @@ function Colors(props) {
 								marginLeft: `${randomIntegers[0][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
-							<Link
+							<a
 								className='image-link'
-								style={{
-									
+								onClick={(e) => {
+									e.preventDefault();
+									history.push(`/pieces/${blue.id}`);
 								}}
-								to={`/pieces/${blue.id}`}>
+								style={{cursor: 'pointer'}}>
 								<motion.img
 									whileHover={{ scale: 1.1, duration: .5 }}
 									whileTap={{ scale: 0.9 }}
@@ -196,7 +199,7 @@ function Colors(props) {
 									src={blue.media[0].media_url}
 									alt={blue.name}
 								/>
-							</Link>
+							</a>
 						</div>
 					))}
 				</div>
@@ -212,12 +215,13 @@ function Colors(props) {
 								marginLeft: `${randomIntegers[1][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
-							<Link
+							<a
 								className='image-link'
-								style={{
-									
+								onClick={(e) => {
+									e.preventDefault();
+									history.push(`/pieces/${blue.id}`);
 								}}
-								to={`/pieces/${red.id}`}>
+								style={{cursor: 'pointer'}}>
 								<motion.img
 									whileHover={{ scale: 1.1, duration: .5 }}
 									whileTap={{ scale: 0.9 }}
@@ -227,7 +231,7 @@ function Colors(props) {
 									src={red.media[0].media_url}
 									alt={red.name}
 								/>
-							</Link>
+							</a>
 						</div>
 					))}
 				</div>
@@ -243,12 +247,13 @@ function Colors(props) {
 								marginLeft: `${randomIntegers[2][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
-							<Link
+							<a
 								className='image-link'
-								style={{
-									
+								onClick={(e) => {
+									e.preventDefault();
+									history.push(`/pieces/${blue.id}`);
 								}}
-								to={`/pieces/${green.id}`}>
+								style={{cursor: 'pointer'}}>
 								<motion.img
 									whileHover={{ scale: 1.1, duration: .5 }}
 									whileTap={{ scale: 0.9 }}
@@ -258,7 +263,7 @@ function Colors(props) {
 									src={green.media[0].media_url}
 									alt={green.name}
 								/>
-							</Link>
+							</a>
 						</div>
 					))}
 				</div>
@@ -274,12 +279,13 @@ function Colors(props) {
 								marginLeft: `${randomIntegers[3][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
-							<Link
+							<a
 								className='image-link'
-								style={{
-									
+								onClick={(e) => {
+									e.preventDefault();
+									history.push(`/pieces/${blue.id}`);
 								}}
-								to={`/pieces/${yellow.id}`}>
+								style={{cursor: 'pointer'}}>
 								<motion.img
 									whileHover={{ scale: 1.1, duration: .5 }}
 									whileTap={{ scale: 0.9 }}
@@ -289,7 +295,7 @@ function Colors(props) {
 									src={yellow.media[0].media_url}
 									alt={yellow.name}
 								/>
-							</Link>
+							</a>
 						</div>
 					))}
 				</div>
@@ -305,12 +311,13 @@ function Colors(props) {
 								marginLeft: `${randomIntegers[4][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
-							<Link
+							<a
 								className='image-link'
-								style={{
-									
+								onClick={(e) => {
+									e.preventDefault();
+									history.push(`/pieces/${blue.id}`);
 								}}
-								to={`/pieces/${purple.id}`}>
+								style={{cursor: 'pointer'}}>
 								<motion.img
 									whileHover={{ scale: 1.1, duration: .5 }}
 									whileTap={{ scale: 0.9 }}
@@ -320,7 +327,7 @@ function Colors(props) {
 									src={purple.media[0].media_url}
 									alt={purple.name}
 								/>
-							</Link>
+							</a>
 						</div>
 					))}
 				</div>
@@ -336,12 +343,13 @@ function Colors(props) {
 								marginLeft: `${randomIntegers[5][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
-							<Link
+							<a
 								className='image-link'
-								style={{
-									
+								onClick={(e) => {
+									e.preventDefault();
+									history.push(`/pieces/${blue.id}`);
 								}}
-								to={`/pieces/${orange.id}`}>
+								style={{cursor: 'pointer'}}>
 								<motion.img
 									whileHover={{ scale: 1.1, duration: .5 }}
 									whileTap={{ scale: 0.9 }}
@@ -351,7 +359,7 @@ function Colors(props) {
 									src={orange.media[0].media_url}
 									alt={orange.name}
 								/>
-							</Link>
+							</a>
 						</div>
 					))}
 				</div>
@@ -367,12 +375,13 @@ function Colors(props) {
 								marginLeft: `${randomIntegers[6][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
-							<Link
+							<a
 								className='image-link'
-								style={{
-									
+								onClick={(e) => {
+									e.preventDefault();
+									history.push(`/pieces/${blue.id}`);
 								}}
-								to={`/pieces/${brown.id}`}>
+								style={{cursor: 'pointer'}}>
 								<motion.img
 									whileHover={{ scale: 1.1, duration: .5 }}
 									whileTap={{ scale: 0.9 }}
@@ -382,7 +391,7 @@ function Colors(props) {
 									src={brown.media[0].media_url}
 									alt={brown.name}
 								/>
-							</Link>
+							</a>
 						</div>
 					))}
 				</div>
@@ -398,12 +407,13 @@ function Colors(props) {
 								marginLeft: `${randomIntegers[7][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
-							<Link
+							<a
 								className='image-link'
-								style={{
-									
+								onClick={(e) => {
+									e.preventDefault();
+									history.push(`/pieces/${blue.id}`);
 								}}
-								to={`/pieces/${black.id}`}>
+								style={{cursor: 'pointer'}}>
 								<motion.img
 									whileHover={{ scale: 1.1, duration: .5 }}
 									whileTap={{ scale: 0.9 }}
@@ -413,7 +423,7 @@ function Colors(props) {
 									src={black.media[0].media_url}
 									alt={black.name}
 								/>
-							</Link>
+							</a>
 						</div>
 					))}
 				</div>
@@ -429,12 +439,13 @@ function Colors(props) {
 								marginLeft: `${randomIntegers[8][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
-							<Link
+							<a
 								className='image-link'
-								style={{
-									
+								onClick={(e) => {
+									e.preventDefault();
+									history.push(`/pieces/${blue.id}`);
 								}}
-								to={`/pieces/${white.id}`}>
+								style={{cursor: 'pointer'}}>
 								<motion.img
 									whileHover={{ scale: 1.1, duration: .5 }}
 									whileTap={{ scale: 0.9 }}
@@ -444,7 +455,7 @@ function Colors(props) {
 									src={white.media[0].media_url}
 									alt={white.name}
 								/>
-							</Link>
+							</a>
 						</div>
 					))}
 				</div>
@@ -460,12 +471,13 @@ function Colors(props) {
 								marginLeft: `${randomIntegers[9][i]}%`,
 								// marginTop: `${randomIntegers[i]}%`,
 							}}>
-							<Link
+							<a
 								className='image-link'
-								style={{
-									
+								onClick={(e) => {
+									e.preventDefault();
+									history.push(`/pieces/${blue.id}`);
 								}}
-								to={`/pieces/${mixed.id}`}>
+								style={{cursor: 'pointer'}}>
 								<motion.img
 									whileHover={{ scale: 1.1, duration: .5 }}
 									whileTap={{ scale: 0.9 }}
@@ -475,7 +487,7 @@ function Colors(props) {
 									src={mixed.media[0].media_url}
 									alt={mixed.name}
 								/>
-							</Link>
+							</a>
 						</div>
 					))}
 				</div>
