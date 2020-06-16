@@ -20,17 +20,18 @@ function NavCircle(props) {
 
 	return (
 		<div>
-		<svg className='header' width='200px' height='200px' viewBox='100 100'>
-			<path
-				id='curve'
-				fill='none'
-				d='
-          M 100, 100
-          m -75, 0
-          a 75,75 0 1,0 150,0
-          a 75,75 0 1,0 -150,0
-          '
-			/>
+
+			<svg className='header' width='200px' height='200px' viewBox='100 100'>
+				<path
+					id='curve'
+					fill='none'
+					d='
+			M 100, 100
+			m -75, 0
+			a 75,75 0 1,0 150,0
+			a 75,75 0 1,0 -150,0
+			'
+				/>
 
 				<text width='500' className='circleTextSquare' style={props.navAnimation}>
 					<textPath
@@ -61,7 +62,7 @@ function NavCircle(props) {
 									history.push('/colors');
 								}}>
 								{/* -––– colors ––––- */}
-								││ colors♕☯☭
+								││ colors♕☯☭☠
 							</a>
 						</tspan>
 

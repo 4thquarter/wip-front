@@ -72,7 +72,6 @@ const PieceCreate = () => {
 				piece={piece}
 				handleChange={handleChange}
 				handleSubmit={handleSubmit}
-
 			/>
 		</>
 	);
