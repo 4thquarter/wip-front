@@ -1,11 +1,10 @@
 import React from 'react';
 
-const ArtistForm = ({ artist, handleSubmit, handleChange }) => {
+const ArtistForm = ({ props, artist, handleSubmit, handleChange }) => {
 	return (
 		<>
 			<div className='submitArtContainer'>
-          <form className='artist-form' onSubmit={handleSubmit}>
-
+				<form className='artist-form' onSubmit={handleSubmit}>
 					<label htmlFor='name' className='form-title'>
 						name / pseudonym
 					</label>
@@ -74,7 +73,6 @@ const ArtistForm = ({ artist, handleSubmit, handleChange }) => {
 					<button className='submit-button' type='submit'>
 						Submit
 					</button>
-
 				</form>
 			</div>
 		</>
