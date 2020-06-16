@@ -1,49 +1,73 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { BACKENDURL } from '../config';
-import { motion, } from 'framer-motion';
+import { motion } from 'framer-motion';
 import '../css/PieceDetail.css';
 // import '../css/Welcome.css';
 
 const PieceDetail = ({ match }) => {
 	window.scrollTo(0, 0);
 
-
-
 	const [deleted, setDeleted] = useState(false);
 	const [error, setError] = useState(false);
 	const [piece, setPiece] = useState(null);
+	const [artist, setArtist] = useState(null);
+
+	// useEffect(() => {
+	// 	const artUrl = `${BACKENDURL}/artwork/${match.params.id}`;
+	// 	const artistUrl = `${BACKENDURL}/artist/${match.params.id}`;
+	// 	let response = null;
+	// 	fetch(artUrl, artistUrl)
+	// 		.then((res) => {
+	// 			if (res.status >= 200 && res.status <= 299) {
+	// 				// console.log(requestOptions)
+	// 				let response = res.json();
+	// 				// console.log(data)
+	// 				return response;
+	// 			} else {
+	// 				// console.log(response.json())
+	// 				setError('not found.');
+	// 				throw Error(res.statusText);
+	// 			}
+	// 		})
+	// 		.then((response) => {
+	// 			setPiece([response]);
+	// 		})
+	// 		.catch((error) => {
+	// 			console.error(error);
+	// 		});
+
+	// 	console.log(response);
+	// 	// eslint-disable-next-line
+	// }, []);
 
 	useEffect(() => {
-		const url = `${BACKENDURL}/artwork/${match.params.id}`;
-		let response = null;
-		fetch(url)
-			.then((res) => {
-				if (res.status >= 200 && res.status <= 299) {
-					// console.log(requestOptions)
-					let response = res.json();
-					// console.log(data)
-					return response;
-				} else {
-					// console.log(response.json())
-					setError('not found.');
-					throw Error(res.statusText);
-				}
-			})
-			.then((response) => {
-				setPiece([response]);
-			})
-			.catch((error) => {
-				console.error(error);
-			});
-
-		console.log(response);
-		// eslint-disable-next-line
+		fetchPieceDetail();
 	}, []);
 
-	const onDeletedPiece = (e) => {
+	async function fetchPieceDetail() {
 		const url = `${BACKENDURL}/artwork/${match.params.id}`;
-		fetch(url, { method: 'DELETE' })
+		const pieceData = await fetch(url)
+			.then((response) => response.json())
+			.catch(function (error) {
+				setError(error);
+			});
+		const artistId = pieceData.artist;
+		console.log(`THIS IS ${artistId}`);
+		const artistData = await fetch(`${BACKENDURL}/artists/${artistId}`).then(
+			async (response) => {
+				const res = await response.json();
+				console.log(res.name);
+				return res.name;
+			}
+		);
+		setArtist(artistData);
+	}
+
+	const onDeletedPiece = (e) => {
+		const artUrl = `${BACKENDURL}/artwork/${match.params.id}`;
+		fetch(artUrl, { method: 'DELETE' })
 			.then((res) => {
 				setDeleted(true);
 			})
@@ -100,66 +124,57 @@ const PieceDetail = ({ match }) => {
 			<div className='details-container'>
 				<div className='piece-main-image-w1'>
 					<motion.div className='piece-main-image-w2'>
-						<motion.img						
+						<motion.img
 							className='piece-main-image'
 							src={piece[0].media[0].media_url}
 							alt={piece[0].media[0].name}
 						/>
-						
+
 						<span className='piece-information'>
 							<br />
 							<br />
-							
+
 							<div className='piece-information-text-wrapper'>
-							
-							<span className='piece-title'>
-								{piece[0].title}
-								<span className='blinker'>
-									_
+								<span className='piece-title'>
+									{piece[0].title}
+									<span className='blinker'>_</span>
 								</span>
-							</span>
-							
-							<br />
-							<br />
-							<Link
-								className='piece-information-artist-link'
-								to={`/artists/${piece[0].artist.id}`}>
-								<i>{piece[0].artist.name}</i>
-							</Link>
-							<br />
-							<br />
-							<i>{piece[0].medium}</i>
-							<br />
-							<br />
-							<br />
-							{piece[0].description}
-							<br />
-							<br />
-							<br />
-							<Link
-								className='anchor-to-fix'
-								to={`/pieces/${match.params.id}/edit`}>
-								<button 
-								className='details-update-button' 
-								id="piece-button1"
-								>
-									edit</button>
-							</Link>
-							<button
-								className='details-delete-button'
-								onClick={onDeletedPiece}
-								id="piece-button2"
-								>
-								delete
-							</button>
-							<br />
-							<br />
-							<br />
-							
-						</div>
-						
+
+								<br />
+								<br />
+								<Link
+									className='piece-information-artist-link'
+									to={`/artists/${piece[0].artist.id}`}>
+									<i>{piece[0].artist.name}</i>
+								</Link>
+								<br />
+								<br />
+								<i>{piece[0].medium}</i>
+								<br />
+								<br />
+								<br />
+								{piece[0].description}
+								<br />
+								<br />
+								<br />
+								<Link
+									className='anchor-to-fix'
+									to={`/pieces/${match.params.id}/edit`}>
+									<button className='details-update-button' id='piece-button1'>
+										edit
+									</button>
+								</Link>
+								<button
+									className='details-delete-button'
+									onClick={onDeletedPiece}
+									id='piece-button2'>
+									delete
+								</button>
+								<br />
+								<br />
+								<br />
+							</div>
 						</span>
-						
 					</motion.div>
 				</div>
 			</div>
