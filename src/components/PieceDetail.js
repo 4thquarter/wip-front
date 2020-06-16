@@ -26,7 +26,7 @@ const PieceDetail = ({ match }) => {
 					return response;
 				} else {
 					// console.log(response.json())
-					setError('not found.')
+					setError('not found.');
 					throw Error(res.statusText);
 				}
 			})
