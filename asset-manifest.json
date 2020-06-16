@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/wip-front/static/css/main.71d2f6ce.chunk.css",
+    "main.js": "/wip-front/static/js/main.60485d5c.chunk.js",
+    "main.js.map": "/wip-front/static/js/main.60485d5c.chunk.js.map",
+    "runtime-main.js": "/wip-front/static/js/runtime-main.9b9f8315.js",
+    "runtime-main.js.map": "/wip-front/static/js/runtime-main.9b9f8315.js.map",
+    "static/js/2.ad94b396.chunk.js": "/wip-front/static/js/2.ad94b396.chunk.js",
+    "static/js/2.ad94b396.chunk.js.map": "/wip-front/static/js/2.ad94b396.chunk.js.map",
+    "index.html": "/wip-front/index.html",
+    "precache-manifest.98e3c35178fbb7948ef227359809645f.js": "/wip-front/precache-manifest.98e3c35178fbb7948ef227359809645f.js",
+    "service-worker.js": "/wip-front/service-worker.js",
+    "static/css/main.71d2f6ce.chunk.css.map": "/wip-front/static/css/main.71d2f6ce.chunk.css.map",
+    "static/js/2.ad94b396.chunk.js.LICENSE.txt": "/wip-front/static/js/2.ad94b396.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9b9f8315.js",
+    "static/js/2.ad94b396.chunk.js",
+    "static/css/main.71d2f6ce.chunk.css",
+    "static/js/main.60485d5c.chunk.js"
+  ]
+}
