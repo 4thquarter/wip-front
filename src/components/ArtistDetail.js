@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Route, Link, Redirect, useHistory } from 'react-router-dom';
 import { BACKENDURL } from '../config';
 import { motion } from 'framer-motion';
+import PieceCreate from './PieceCreate';
 import '../css/ArtistDetail.css';
 
 const ArtistDetail = ({ match }) => {
@@ -12,6 +13,8 @@ const ArtistDetail = ({ match }) => {
 	const [deleted, setDeleted] = useState(false);
 	const [error, setError] = useState(false);
 	const [artist, setArtist] = useState(null);
+	const [artistName, setArtistName] = useState(null);
+	const [artistId, setArtistId] = useState(null);
 	// const [artistIsSet, setArtistIsSet] = useState(false);
 
 	useEffect(() => {
@@ -31,8 +34,10 @@ const ArtistDetail = ({ match }) => {
 				}
 			})
 			.then((response) => {
-				console.log(response.artwork[0].media[0])
+				console.log(response.artwork[0].media[0]);
 				setArtist([response]);
+				setArtistName([response.name]);
+				setArtistId([response.id]);
 			})
 			// .then(() => {
 			// 	setArtistIsSet(true);
@@ -187,11 +192,15 @@ const ArtistDetail = ({ match }) => {
 					<br />
 					<br />
 					<br />
-
 					{/* <li className='details-property'></li> */}
 					<li className={artist[0].information ? 'details-value' : 'hidden'}>
 						{artist[0].information}
+						{artist[0].id}
 					</li>
+					<br />
+					<br />
+					<br />
+					{/* <PieceCreate artistName={artistName} artistId={artistId}/> */}
 				</ul>
 				<div className='details-hor-gallery'>
 					{/* {artworkMedia} */}
@@ -212,8 +221,8 @@ const ArtistDetail = ({ match }) => {
 									history.push(`/pieces/${artwork.id}`);
 								}}>
 								<motion.img
-								  whileHover={{ scale: 1.1, duration: .5 }}
-									whileTap={{ scale: 0.9, duration: .2 }}
+									whileHover={{ scale: 1.1, duration: 0.5 }}
+									whileTap={{ scale: 0.9, duration: 0.2 }}
 									className='artist-piece-image'
 									src={artwork.media[0].media_url}
 									alt={artwork.media[0].name}
@@ -222,11 +231,26 @@ const ArtistDetail = ({ match }) => {
 						</motion.div>
 					))}
 				</div>
+				{/* <Route exact path='/pieces/create' /> */}
+				{/* <PieceCreate artistName={artistName} artistId={artistId} /> */}
+				{/* <Route exact path='/artists/:id/create' component={PieceCreate} /> */}
+
+				<Link
+					className='anchor-to-fix'
+					to={`/artists/${artistId}/add_piece`}
+					artistId={artistId}
+					artistName={artistName}
+					// component={PieceCreate}
+					// artistName={artistName}
+					// artistId={artistId}
+				>
+					<button className='details-add-piece-button'>add piece</button>
+				</Link>
 				<Link className='anchor-to-fix' to={`/artists/${match.params.id}/edit`}>
-					<button className='details-update-button'>edit</button>
+					<button className='details-update-button'>edit artist</button>
 				</Link>
 				<button className='details-delete-button' onClick={onDeletedArtist}>
-					delete
+					delete artist
 				</button>
 			</div>
 		</div>

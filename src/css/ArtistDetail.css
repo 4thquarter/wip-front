@@ -89,6 +89,22 @@
 	
 }
 
+.details-add-piece-button {
+	position: fixed;
+	bottom: 11vh;
+	right: 15vh;
+	margin-top: 3px;
+	padding: 5px;
+	background: transparent;
+	color: #B6AB92;
+	border: 2px solid #B6AB92;
+	font-weight: bolder;
+	font-size: 9pt;
+	width: 60px;
+	height: 60px;
+	border-radius: 90%;
+}
+
 .details-update-button {
 	position: fixed;
 	bottom: 5vh;
@@ -121,7 +137,7 @@
 	border-radius: 90%;
 }
 
-
+.details-add-piece-button:hover,
 .details-update-button:hover,
 .details-delete-button:hover {
 	background-color: red;
@@ -129,6 +145,7 @@
 	cursor: pointer;
 }
 
+.details-add-piece-button:active,
 .details-update-button:active,
 .details-delete-button:active {
 	background-color: grey;

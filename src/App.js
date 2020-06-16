@@ -15,10 +15,9 @@ import Mediums from './components/Mediums';
 import ArtistDetail from './components/ArtistDetail';
 // import ArtistEdit from './components/ArtistEdit';
 // import ArtistForm from '.components/ArtistForm';
-// import PieceCreate from './components/PieceCreate';
+import PieceCreate from './components/PieceCreate';
 import PieceDetail from './components/PieceDetail';
 // import PieceEdit from './components/PieceEdit';
-// import PieceForm from 'components/PieceForm';
 
 import Art from './components/Art.js';
 
@@ -696,7 +695,7 @@ function App(props) {
 				{/* <Route exact path='/artists/create' component={ArtistCreate} /> */}
 				<Route exact path='/artists/:id' component={ArtistDetail} />
 				{/* <Route exact path='/artists/:id/edit' component={ArtistEdit} /> */}
-				{/* <Route exact path='/pieces/create' component={PieceCreate} /> */}
+				<Route exact path='/artists/:id/add_piece' component={PieceCreate} />
 				<Route exact path='/pieces/:id' component={PieceDetail} />
 				{/* <Route exact path='/pieces/:id/edit' component={PieceEdit} /> */}
 			</Switch>
