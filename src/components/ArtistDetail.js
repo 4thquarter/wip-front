@@ -5,15 +5,14 @@ import { motion } from 'framer-motion';
 import '../css/ArtistDetail.css';
 
 const ArtistDetail = ({ match }) => {
-	
 	const history = useHistory();
 
-	
 	window.scrollTo(0, 0);
 
 	const [deleted, setDeleted] = useState(false);
 	const [error, setError] = useState(false);
 	const [artist, setArtist] = useState(null);
+	// const [artistIsSet, setArtistIsSet] = useState(false);
 
 	useEffect(() => {
 		const url = `${BACKENDURL}/artists/${match.params.id}`;
@@ -27,13 +26,16 @@ const ArtistDetail = ({ match }) => {
 					return response;
 				} else {
 					// console.log(response.json())
-					setError('not found.')
+					setError('not found.');
 					throw Error(res.statusText);
 				}
 			})
 			.then((response) => {
 				setArtist([response]);
 			})
+			// .then(() => {
+			// 	setArtistIsSet(true);
+			// })
 			.catch((error) => {
 				console.error(error);
 			});
@@ -44,7 +46,14 @@ const ArtistDetail = ({ match }) => {
 
 	const onDeletedArtist = (e) => {
 		const url = `${BACKENDURL}/artists/${match.params.id}`;
-		fetch(url, { method: 'DELETE' })
+
+		fetch(url, {
+			method: 'DELETE',
+			headers: {
+				// 'content-type': 'application/json',
+				Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+			},
+		})
 			.then((res) => {
 				setDeleted(true);
 			})
@@ -76,11 +85,51 @@ const ArtistDetail = ({ match }) => {
 			</div>
 		);
 	}
+
+	// let artworkMedia = (
+	// 	<div>
+	// 		no pieces found under this artist.
+	// 	</div>
+	// )
+
+	// if (setArtistIsSet) {
+	// 	const artworkMediaIsTrue = artist[0].artwork[0].media[0];
+
+	// 	if (artworkMediaIsTrue) {
+	// 		artworkMedia = artist[0].artwork.map((artwork) => (
+	// 			<motion.div
+	// 				key={artwork.id}
+	// 				animate={{ opacity: [0, 1] }}
+	// 				transition={{
+	// 					delay: 2,
+	// 					duration: 0.5,
+	// 				}}>
+	// 				<a
+	// 					className='artist-piece'
+	// 					id='nav1'
+	// 					style={{ cursor: 'pointer' }}
+	// 					onClick={(e) => {
+	// 						e.preventDefault();
+	// 						history.push(`/pieces/${artwork.id}`);
+	// 					}}>
+	// 					<motion.img
+	// 						whileHover={{ scale: 1.1, duration: 0.5 }}
+	// 						whileTap={{ scale: 0.9 }}
+	// 						className='artist-piece-image'
+	// 						src={artwork.media[0].media_url}
+	// 						alt={artwork.media[0].name}
+	// 					/>
+	// 				</a>
+	// 			</motion.div>
+	// 		));
+	// 	}
+	// }
+
 	if (!artist) {
 		return (
-			<div className="details">
+			<div className='details'>
 				<motion.h2
-					className="loading"
+					className='loading'
 					style={entranceText}
 					animate={{
 						color: [
@@ -92,9 +141,11 @@ const ArtistDetail = ({ match }) => {
 							'#E04A00',
 						],
 					}}
-					transition={{ 
-						type: 'tween', duration: 7, yoyo: Infinity 
-						}}>
+					transition={{
+						type: 'tween',
+						duration: 7,
+						yoyo: Infinity,
+					}}>
 					☯☠♠<motion.span style={{ color: '#695F49' }}>LOADING</motion.span>♠☠☯
 				</motion.h2>
 			</div>
@@ -114,48 +165,58 @@ const ArtistDetail = ({ match }) => {
 				</span>
 				<img src={artist[0].media[0]} className='details-image' alt='' />
 				<ul className='details-text-1'>
+					{/* <li className='details-property'></li> */}
+					<li className='details-value'>{artist[0].name}</li>
+
+					<br />
+					<br />
 
 					{/* <li className='details-property'></li> */}
 					<li className='details-value'>{artist[0].location}</li>
-
-					{/* <li className='details-property'></li> */}
-					<li className={artist[0].information ? 'details-value' : 'hidden'}>{artist[0].information}</li>
+					<br />
 
 					{/* <li className='details-property'></li> */}
 					<li className='details-value'>{artist[0].email}</li>
+					<br />
 
 					{/* <li className='details-property'></li> */}
-					<li className='details-value'>{artist[0].artist_website}</li>
-					
+					<li to={artist[0].artist_website} className='details-value'>
+						{artist[0].artist_website}
+					</li>
+					<br />
+					<br />
+					<br />
+
+					{/* <li className='details-property'></li> */}
+					<li className={artist[0].information ? 'details-value' : 'hidden'}>
+						{artist[0].information}
+					</li>
 				</ul>
 				<div className='details-hor-gallery'>
+					{/* {artworkMedia} */}
 					{artist[0].artwork.map((artwork) => (
-						<motion.div 
-						key={artwork.id}
-						animate={{ opacity: [0, 1] }}
-						transition={{ 
-							delay: 2,
-							duration: .5
-						}}>
-							
-							<a
-							className='artist-piece'
-							id='nav1'
-							style={{cursor: 'pointer'}}
-							onClick={(e) => {
-								e.preventDefault();
-								history.push(`/pieces/${artwork.id}`);
+						<motion.div
+							key={artwork.id}
+							animate={{ opacity: [0, 1] }}
+							transition={{
+								delay: 2,
+								duration: 0.5,
 							}}>
-								
-								<motion.img 
-								  whileHover={{ scale: 1.1, duration: .5 }}
+							<a
+								className='artist-piece'
+								id='nav1'
+								style={{ cursor: 'pointer' }}
+								onClick={(e) => {
+									e.preventDefault();
+									history.push(`/pieces/${artwork.id}`);
+								}}>
+								<motion.img
+									whileHover={{ scale: 1.1, duration: 0.5 }}
 									whileTap={{ scale: 0.9 }}
-									
-									className="artist-piece-image"
+									className='artist-piece-image'
 									src={artwork.media[0].media_url}
 									alt={artwork.media[0].name}
 								/>
-								
 							</a>
 						</motion.div>
 					))}

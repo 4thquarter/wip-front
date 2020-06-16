@@ -24,7 +24,7 @@ const PieceDetail = ({ match }) => {
 					return response;
 				} else {
 					// console.log(response.json())
-					setError('not found.')
+					setError('not found.');
 					throw Error(res.statusText);
 				}
 			})
@@ -130,17 +130,14 @@ const PieceDetail = ({ match }) => {
 							<Link
 								className='anchor-to-fix'
 								to={`/pieces/${match.params.id}/edit`}>
-								<button 
-								className='details-update-button' 
-								id="piece-button"
-								>
-									Edit</button>
+								<button className='details-update-button' id='piece-button'>
+									Edit
+								</button>
 							</Link>
 							<button
 								className='details-delete-button'
 								onClick={onDeletedPiece}
-								id="piece-button"
-								>
+								id='piece-button'>
 								Delete
 							</button>
 							<br />
