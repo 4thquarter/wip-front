@@ -18,7 +18,7 @@ const PieceDetail = ({ match }) => {
 	// 	const artUrl = `${BACKENDURL}/artwork/${match.params.id}`;
 	// 	const artistUrl = `${BACKENDURL}/artist/${match.params.id}`;
 	// 	let response = null;
-	// 	fetch(artUrl, artistUrl)
+	// 	fetch(url)
 	// 		.then((res) => {
 	// 			if (res.status >= 200 && res.status <= 299) {
 	// 				// console.log(requestOptions)
@@ -48,21 +48,25 @@ const PieceDetail = ({ match }) => {
 
 	async function fetchPieceDetail() {
 		const url = `${BACKENDURL}/artwork/${match.params.id}`;
-		const pieceData = await fetch(url)
+		const piece = await fetch(url)
 			.then((response) => response.json())
+			// .then((response) => {
+			// 	setPiece([response]);
+			// })
 			.catch(function (error) {
 				setError(error);
 			});
-		const artistId = pieceData.artist;
+		const artistId = piece.artist;
 		console.log(`THIS IS ${artistId}`);
-		const artistData = await fetch(`${BACKENDURL}/artists/${artistId}`).then(
+		const artist = await fetch(`${BACKENDURL}/artists/${artistId}`).then(
 			async (response) => {
 				const res = await response.json();
 				console.log(res.name);
 				return res.name;
 			}
 		);
-		setArtist(artistData);
+		setArtist(artist);
+		setPiece(piece);
 	}
 
 	const onDeletedPiece = (e) => {
@@ -126,8 +130,8 @@ const PieceDetail = ({ match }) => {
 					<motion.div className='piece-main-image-w2'>
 						<motion.img
 							className='piece-main-image'
-							src={piece[0].media[0].media_url}
-							alt={piece[0].media[0].name}
+							src={piece.media[0].media_url}
+							alt={piece.media[0].name}
 						/>
 
 						<span className='piece-information'>
@@ -136,7 +140,7 @@ const PieceDetail = ({ match }) => {
 
 							<div className='piece-information-text-wrapper'>
 								<span className='piece-title'>
-									{piece[0].title}
+									{piece.title}
 									<span className='blinker'>_</span>
 								</span>
 
@@ -144,16 +148,16 @@ const PieceDetail = ({ match }) => {
 								<br />
 								<Link
 									className='piece-information-artist-link'
-									to={`/artists/${piece[0].artist.id}`}>
-									<i>{piece[0].artist.name}</i>
+									to={`/artists/${piece.artist}`}>
+									<i>{artist}</i>
 								</Link>
 								<br />
 								<br />
-								<i>{piece[0].medium}</i>
+								<i>{piece.medium}</i>
 								<br />
 								<br />
 								<br />
-								{piece[0].description}
+								{piece.description}
 								<br />
 								<br />
 								<br />
