@@ -45,31 +45,32 @@ function User(props) {
 			</option>
 		);
 	});
-	
-	let userArtist = null
-	
-	// const artistHeader = props.userArtist[0] != 'signedOut' ? :
-	
+
+
+	let userArtist = null;
+
 	if (props.userArtist[0] != 'signedOut') {
 		console.log('yee');
-		
+
 		userArtist = props.userArtist.map((artist) => {
-		return (<a
-		className='artistLink'
-		onClick={(e) => {
-			e.preventDefault();
-			history.push(`/artists/${artist.id}`);
-		}}
-		style={{cursor: 'pointer'}}>
-			
-			<h1 key={artist.id} className='artistHeader'>{artist.name}</h1>
-			
-		</a>
-		)
-	});
-		return userArtist
-	};
-	
+			return (
+				<a
+					className='artistLink'
+					onClick={(e) => {
+						e.preventDefault();
+						history.push(`/artists/${artist.id}`);
+					}}
+					style={{ cursor: 'pointer' }}>
+					<h1 key={artist.id} className='artistHeader'>
+						{artist.name}
+					</h1>
+				</a>
+			);
+		});
+		return userArtist;
+	} else {
+		// console.log('noo');
+	}
 
 	return (
 		<>

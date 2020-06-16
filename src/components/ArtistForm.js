@@ -13,7 +13,7 @@ const ArtistForm = ({ artist, handleSubmit, handleChange }) => {
             placeholder="name / pseudonym"
             defaultValue={artist.name}
             name="name"
-            onChange={props.handleChange}
+            onChange={handleChange}
             required
             id="name"
           />
@@ -26,7 +26,7 @@ const ArtistForm = ({ artist, handleSubmit, handleChange }) => {
             placeholder="email address"
             defaultValue={artist.email}
             name="email"
-            onChange={props.handleChange}
+            onChange={handleChange}
             required
             id="email"
           />
@@ -39,7 +39,7 @@ const ArtistForm = ({ artist, handleSubmit, handleChange }) => {
             placeholder="info / bio"
             defaultValue={artist.information}
             name="information"
-            onChange={props.handleChange}
+            onChange={handleChange}
             required
             id="information"
           />
@@ -52,7 +52,7 @@ const ArtistForm = ({ artist, handleSubmit, handleChange }) => {
             placeholder="(city, state / country)"
             defaultValue={artist.location}
             name="location"
-            onChange={props.handleChange}
+            onChange={handleChange}
             required
             id="location"
           />
@@ -69,7 +69,6 @@ const ArtistForm = ({ artist, handleSubmit, handleChange }) => {
             required
             id="website"
           />
-    
           <button className="submit-button" type="submit">
             Submit
           </button>
