@@ -20,7 +20,7 @@ function NavCircle(props) {
 
 	return (
 		<div>
-		<svg className='header' width='200px' height='200px' viewBox='0 0 100 100'>
+		<svg className='header' width='200px' height='200px' viewBox='100 100'>
 			<path
 				id='curve'
 				fill='none'

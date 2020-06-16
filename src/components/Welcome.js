@@ -33,7 +33,7 @@ const Welcome = () => {
 				</div>
 				<div className='welcome-nav-outlining'>
 					<motion.svg
-						xmlns='http://www.w3.org/2000/svg'width='200px' height='200px' viewBox='0 0 100 100'
+						xmlns='http://www.w3.org/2000/svg'width='200px' height='200px' viewBox='100 100'
 						className='item'>
 						<motion.path
 							d='
