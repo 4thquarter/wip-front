@@ -35,9 +35,7 @@ function SignIn(props) {
 						placeholder='who are you?'
 					/>
 					
-					<button className="signInButton" onClick={props.checkSubmit} type='submit' name='signIn'>
-						===>
-					</button>
+					<button className="signInButton" onClick={props.checkSubmit} type='submit' name='signIn'>===</button>
 					
 				</form>
 			</div>

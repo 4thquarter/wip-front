@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { BACKENDURL } from '../config';
 import PieceForm from './PieceForm.js';
 
-const PieceCreate = ({ artistName, artistId }) => {
+const PieceCreate = () => {
 	const initialPieceState = {
 		title: '',
 		artist: '',
@@ -65,7 +65,7 @@ const PieceCreate = ({ artistName, artistId }) => {
 				<span className='blinker'>_</span>
 			</span>
 			<div className='create-form-header'>
-				<h2 className='page-title'>{artistName}add a piece</h2>
+				<h2 className='page-title'>add a piece</h2>
 				{error && <p>Something went wrong... Please try again!</p>}
 			</div>
 			<PieceForm
@@ -73,6 +73,7 @@ const PieceCreate = ({ artistName, artistId }) => {
 				handleChange={handleChange}
 				handleSubmit={handleSubmit}
         artistId={artistId}
+
 			/>
 		</>
 	);

@@ -32,51 +32,51 @@ function NavCircle(props) {
           '
 			/>
 
-			<text width='500' className='circleTextSquare' style={props.navAnimation}>
-				<textPath
-					href='#curve'
-					className='circleText'
-					id='ct1'
-					pointerEvents='visiblePoint'>
-					<tspan x='0' dy='0' pointerEvents='visiblePoint' id='tspan'>
-						<a
-							className='navlink'
-							id='nav1'
-							onClick={(e) => {
-								e.preventDefault();
-								history.push(
-									props.completedUsername ? '/' + props.completedUsername : '/usersign');
-							}}>
-							{/* ––––– user ––––– */}
-							││ user∜ ∝ ∞ ∟
-						</a>
-					</tspan>
+				<text width='500' className='circleTextSquare' style={props.navAnimation}>
+					<textPath
+						href='#curve'
+						className='circleText'
+						id='ct1'
+						pointerEvents='visiblePoint'>
+						<tspan x='0' dy='0' pointerEvents='visiblePoint' id='tspan'>
+							<a
+								className='navlink'
+								id='nav1'
+								onClick={(e) => {
+									e.preventDefault();
+									history.push(
+										props.completedUsername ? '/' + props.completedUsername : '/usersign');
+								}}>
+								{/* ––––– user ––––– */}
+								││ user∜ ∝ ∞ ∟
+							</a>
+						</tspan>
 
-					<tspan x='115' dy='0'>
-						<a
-							className='navlink'
-							id='nav2'
-							onClick={(e) => {
-								e.preventDefault();
-								history.push('/colors');
-							}}>
-							{/* -––– colors ––––- */}
-							││ colors♕☯☭☠
-						</a>
-					</tspan>
+						<tspan x='115' dy='0'>
+							<a
+								className='navlink'
+								id='nav2'
+								onClick={(e) => {
+									e.preventDefault();
+									history.push('/colors');
+								}}>
+								{/* -––– colors ––––- */}
+								││ colors♕☯☭☠
+							</a>
+						</tspan>
 
-					<tspan x='225' dy='0'>
-						<a
-							className='navlink'
-							id='nav3'
-							onClick={(e) => {
-								e.preventDefault();
-								history.push('/mediums');
-							}}>
-							{/* –––– mediums –––– */}
-							││ mediums⋬ ⋭ ⋮
-						</a>
-					</tspan>
+						<tspan x='225' dy='0'>
+							<a
+								className='navlink'
+								id='nav3'
+								onClick={(e) => {
+									e.preventDefault();
+									history.push('/mediums');
+								}}>
+								{/* –––– mediums –––– */}
+								││ mediums⋬ ⋭ ⋮
+							</a>
+						</tspan>
 
 					<tspan x='355' dy='0'>
 						<a
@@ -93,6 +93,7 @@ function NavCircle(props) {
 				</textPath>
 			</text>
 		</svg>
+
 		</div>
 	);
 }
