@@ -549,6 +549,10 @@ svg {
 
 /* ARTISTS GALLERY */
 
+#artistsGalleryEntrance {
+  background-color: transparent;
+  margin-left: 75vw;
+}
 
 .collage-title {
 	/* transform: rotate(270deg); */
