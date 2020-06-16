@@ -219,7 +219,7 @@ function Colors(props) {
 								className='image-link'
 								onClick={(e) => {
 									e.preventDefault();
-									history.push(`/pieces/${blue.id}`);
+									history.push(`/pieces/${red.id}`);
 								}}
 								style={{cursor: 'pointer'}}>
 								<motion.img
@@ -251,7 +251,7 @@ function Colors(props) {
 								className='image-link'
 								onClick={(e) => {
 									e.preventDefault();
-									history.push(`/pieces/${blue.id}`);
+									history.push(`/pieces/${green.id}`);
 								}}
 								style={{cursor: 'pointer'}}>
 								<motion.img
@@ -283,7 +283,7 @@ function Colors(props) {
 								className='image-link'
 								onClick={(e) => {
 									e.preventDefault();
-									history.push(`/pieces/${blue.id}`);
+									history.push(`/pieces/${yellow.id}`);
 								}}
 								style={{cursor: 'pointer'}}>
 								<motion.img
@@ -315,7 +315,7 @@ function Colors(props) {
 								className='image-link'
 								onClick={(e) => {
 									e.preventDefault();
-									history.push(`/pieces/${blue.id}`);
+									history.push(`/pieces/${purple.id}`);
 								}}
 								style={{cursor: 'pointer'}}>
 								<motion.img
@@ -347,7 +347,7 @@ function Colors(props) {
 								className='image-link'
 								onClick={(e) => {
 									e.preventDefault();
-									history.push(`/pieces/${blue.id}`);
+									history.push(`/pieces/${orange.id}`);
 								}}
 								style={{cursor: 'pointer'}}>
 								<motion.img
@@ -379,7 +379,7 @@ function Colors(props) {
 								className='image-link'
 								onClick={(e) => {
 									e.preventDefault();
-									history.push(`/pieces/${blue.id}`);
+									history.push(`/pieces/${brown.id}`);
 								}}
 								style={{cursor: 'pointer'}}>
 								<motion.img
@@ -411,7 +411,7 @@ function Colors(props) {
 								className='image-link'
 								onClick={(e) => {
 									e.preventDefault();
-									history.push(`/pieces/${blue.id}`);
+									history.push(`/pieces/${black.id}`);
 								}}
 								style={{cursor: 'pointer'}}>
 								<motion.img
@@ -443,7 +443,7 @@ function Colors(props) {
 								className='image-link'
 								onClick={(e) => {
 									e.preventDefault();
-									history.push(`/pieces/${blue.id}`);
+									history.push(`/pieces/${white.id}`);
 								}}
 								style={{cursor: 'pointer'}}>
 								<motion.img
@@ -475,7 +475,7 @@ function Colors(props) {
 								className='image-link'
 								onClick={(e) => {
 									e.preventDefault();
-									history.push(`/pieces/${blue.id}`);
+									history.push(`/pieces/${mixed.id}`);
 								}}
 								style={{cursor: 'pointer'}}>
 								<motion.img

@@ -19,81 +19,81 @@ function NavCircle(props) {
 	// };
 
 	return (
-		// <div>
-		<svg className='header' width='200px' height='200px' viewBox='100 100'>
-			<path
-				id='curve'
-				fill='none'
-				d='
-          M 100, 100
-          m -75, 0
-          a 75,75 0 1,0 150,0
-          a 75,75 0 1,0 -150,0
-          '
-			/>
+		<div>
+			<svg className='header' width='200px' height='200px' viewBox='100 100'>
+				<path
+					id='curve'
+					fill='none'
+					d='
+			M 100, 100
+			m -75, 0
+			a 75,75 0 1,0 150,0
+			a 75,75 0 1,0 -150,0
+			'
+				/>
 
-			<text width='500' className='circleTextSquare' style={props.navAnimation}>
-				<textPath
-					href='#curve'
-					className='circleText'
-					id='ct1'
-					pointerEvents='visiblePoint'>
-					<tspan x='0' dy='0' pointerEvents='visiblePoint' id='tspan'>
-						<a
-							className='navlink'
-							id='nav1'
-							onClick={(e) => {
-								e.preventDefault();
-								history.push(
-									props.completedUsername ? '/' + props.completedUsername : '/usersign');
-							}}>
-							{/* ––––– user ––––– */}
-							││ user∜ ∝ ∞ ∟
-						</a>
-					</tspan>
+				<text width='500' className='circleTextSquare' style={props.navAnimation}>
+					<textPath
+						href='#curve'
+						className='circleText'
+						id='ct1'
+						pointerEvents='visiblePoint'>
+						<tspan x='0' dy='0' pointerEvents='visiblePoint' id='tspan'>
+							<a
+								className='navlink'
+								id='nav1'
+								onClick={(e) => {
+									e.preventDefault();
+									history.push(
+										props.completedUsername ? '/' + props.completedUsername : '/usersign');
+								}}>
+								{/* ––––– user ––––– */}
+								││ user∜ ∝ ∞ ∟
+							</a>
+						</tspan>
 
-					<tspan x='115' dy='0'>
-						<a
-							className='navlink'
-							id='nav2'
-							onClick={(e) => {
-								e.preventDefault();
-								history.push('/colors');
-							}}>
-							{/* -––– colors ––––- */}
-							││ colors♕☯☭☠
-						</a>
-					</tspan>
+						<tspan x='115' dy='0'>
+							<a
+								className='navlink'
+								id='nav2'
+								onClick={(e) => {
+									e.preventDefault();
+									history.push('/colors');
+								}}>
+								{/* -––– colors ––––- */}
+								││ colors♕☯☭☠
+							</a>
+						</tspan>
 
-					<tspan x='225' dy='0'>
-						<a
-							className='navlink'
-							id='nav3'
-							onClick={(e) => {
-								e.preventDefault();
-								history.push('/mediums');
-							}}>
-							{/* –––– mediums –––– */}
-							││ mediums⋬ ⋭ ⋮
-						</a>
-					</tspan>
+						<tspan x='225' dy='0'>
+							<a
+								className='navlink'
+								id='nav3'
+								onClick={(e) => {
+									e.preventDefault();
+									history.push('/mediums');
+								}}>
+								{/* –––– mediums –––– */}
+								││ mediums⋬ ⋭ ⋮
+							</a>
+						</tspan>
 
-					<tspan x='355' dy='0'>
-						<a
-							className='navlink'
-							id='nav4'
-							onClick={(e) => {
-								e.preventDefault();
-								history.push('/artists');
-							}}>
-							{/* –––– artists ––––– */}
-							││ artists ◰ ◱ ▲
-						</a>
-					</tspan>
-				</textPath>
-			</text>
-		</svg>
-		// </div>
+						<tspan x='355' dy='0'>
+							<a
+								className='navlink'
+								id='nav4'
+								onClick={(e) => {
+									e.preventDefault();
+									history.push('/artists');
+								}}>
+								{/* –––– artists ––––– */}
+								││ artists ◰ ◱ ▲
+							</a>
+						</tspan>
+					</textPath>
+				</text>
+			</svg>
+		</div>
 	);
 }
 
