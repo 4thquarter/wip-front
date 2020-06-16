@@ -25,8 +25,6 @@ import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import User from './components/User';
 
-import About from './components/About';
-
 function App(props) {
 	// useHorizontal();
 
