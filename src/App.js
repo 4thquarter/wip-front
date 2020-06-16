@@ -735,12 +735,9 @@ function App() {
 			<div className="general-nav-position-and-size">
 				<NavCircle navAnimation={navAnimation} completedUsername={completedUsername}/>
 			</div>
-			<Route exact path='/mediums' 
-				component={Mediums} 
-			/>
-			<Route exact path='/artists/:id' component={ArtistDetail} /> 
-			<Route exact path='/artists/:id/add_piece' component={PieceCreate} />
-			<Route exact path='/pieces/:id' component={PieceDetail} />
+				<Route exact path='/artists/:id' component={ArtistDetail} /> 
+				<Route exact path='/artists/:id/add_piece' component={PieceCreate} />
+				<Route exact path='/pieces/:id' component={PieceDetail} />
 			<Switch>
 				<Route
 					path='/'
@@ -771,6 +768,17 @@ function App() {
 						return (
 							<>
 								<Artists scrollToLeft={scrollToLeft}/>
+							</>
+						);
+					}}
+				/>
+				<Route
+					path='/mediums'
+					exact={true}
+					render={() => {
+						return (
+							<>
+								<Mediums scrollToLeft={scrollToLeft}/>
 							</>
 						);
 					}}
