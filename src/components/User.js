@@ -70,12 +70,6 @@ function User(props) {
 		return userArtist
 	};
 	
-	
-  return (
-    <>
-		<div className='artistHeadersContainer'>{userArtist}</div>
-		<div className='submitArtContainer'>
-					<p className={props.error ? 'error' : 'hidden'}>{props.error}</p>
 
 	return (
 		<>

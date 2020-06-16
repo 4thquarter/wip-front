@@ -555,7 +555,7 @@ function App() {
 					dataVariable = data;
 					setPostId(data.id);
 					setUserId(data._id);
-
+					setError(false);
 					setIsUserFound(true);
 				} else {
 					// console.log('bad user');
