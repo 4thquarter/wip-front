@@ -33,7 +33,7 @@ function App(props) {
 
 	// const refContainer = useRef(0);
 	const [artistData, setArtistData] = useState([])
-	const [artData, setartData] = useState([]);
+	const [artData, setArtData] = useState([]);
 	const [error, setError] = useState(null);
 
 	// hooks for login and sign up
@@ -84,6 +84,7 @@ function App(props) {
 		
 		
 		getArtistData()
+		getArtData()
 		
 		// window.addEventListener('mousemove', onMouseMove)
 		
@@ -145,6 +146,127 @@ function App(props) {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// ON SCROLL EVENTS
+	
+	
+
+	function onAttemptedScroll(e) {
+		let y = (e.deltaY)/1.5;
+		// console.log(y);
+
+		if (window.screen.width > 500) {
+			// console.log('big screen')
+			window.scrollBy(y, 0);
+		} else {
+			return;
+		}
+	}
+
+
+	function onScroll(event) {    
+    if (window.screen.width > 500) {
+      const scrollValue = window.scrollX;
+			setScrollValue(scrollValue);
+			
+			let path = window.location.pathname
+			
+			let w =  window.innerWidth
+			// console.log(w > scrollValue)
+			
+			if (path = '/colors') {
+				// console.log('colors');
+				
+				switch(true) {
+					case scrollValue < w: 
+					// console.log('black');
+					setColorValue('black')
+					break;
+					case scrollValue > w * 1.2 && scrollValue < w * 3.5:
+					setColorValue('rgb(255, 170, 0)'); //BLUE WITH   YELLOW
+					break;
+					case scrollValue > w * 3.5 && scrollValue < w * 5.5:
+					setColorValue('#2245AD'); //RED WITH   BLUE
+					break;
+					case scrollValue > w * 5.5 && scrollValue < w * 7:
+					setColorValue('#FF8100'); //GREEN WITH    ORANGE
+					break;
+					case scrollValue > w * 7 && scrollValue < w * 8.5:
+					setColorValue('#40077D'); //YELLOW WITH   PURPLE
+					break;
+					case scrollValue > w * 9 && scrollValue < w * 11:
+					setColorValue('#FA1001'); //PURPLE WITH     RED
+					break;
+					case scrollValue > w * 11 && scrollValue < w * 13:
+					setColorValue('#24874E'); //ORANGE WITH   GREEN
+					break;
+					case scrollValue > w * 13 && scrollValue < w * 14.5:
+					setColorValue('#FFE8CB'); //BROWN WITH   PARCHMENT
+					break;
+					case scrollValue > w * 14.5 && scrollValue < w * 16:
+					setColorValue('white'); //BLACK WITH   WHITE
+					break;
+					case scrollValue > w * 16.5 && scrollValue < w * 17.5:
+					setColorValue('black'); //WHITE WITH   BLACK
+					break;
+					case scrollValue > w * 17.5 && scrollValue < w * 19.5:
+					setColorValue('black'); //MIXED WITH   BLACK
+					break;
+				}
+				}
+			} else {
+      const scrollValueY = window.scrollY
+			setScrollValue(scrollValueY);
+    };
+    // console.log(`onScroll, window.scrollX: ${scrollValue}`)
+	}
+	
+	
+	const scrollToLeft = () => {
+		const c = document.documentElement.scrollLeft || document.body.scrollLeft;
+		console.log(c);
+		
+		if (c > 0) {
+			window.requestAnimationFrame(scrollToLeft);
+			window.scrollTo(c - c / 24, 0);
+		}
+	};
+	
+	
+	
+	
+	
+	const colorAnimation = {
+		backgroundColor: `${colorValue}`,
+	};
+	
+		const navAnimation = {
+		transform: `rotate(${scrollValue / 20}deg)`,
+		position: 'absolute',
+	};
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// GETTING ARTIST AND ART DATA
 	
 	
@@ -169,6 +291,35 @@ function App(props) {
 			});
 
 		if (artistsFetched) {
+			console.log('fetched');
+			
+			// getItemData();
+			// getNeedData();
+			// setNewItemTier(tierData[0]._id);
+		}
+	}
+	
+	async function getArtData() {
+		const url = `https://q4backend.herokuapp.com/artwork/`;
+		const artworkFetched = await fetch(url)
+			.then((response) => response.json())
+			.then(async (data) => {
+				console.log(data)
+				const sortedData = await data.sort(() => Math.random() - 0.5);
+				setArtData(sortedData);
+				return sortedData;
+			})
+			.then((data) => {
+				// setNewItemTier(data[0]._id);
+				// setNewNeedTier(data[0]._id);
+				// console.log(data);
+				return true;
+			})
+			.catch(function (error) {
+				setError(error);
+			});
+
+		if (artworkFetched) {
 			console.log('fetched');
 			
 			// getItemData();
@@ -399,111 +550,6 @@ function App(props) {
 			});
 	}
 
-	function onScroll() {
-		if (window.screen.width > 500) {
-			const scrollValue = window.scrollX;
-			setScrollValue(scrollValue);
-		} else {
-			const scrollValueY = window.scrollY;
-			setScrollValue(scrollValueY);
-		}
-		// console.log(`onScroll, window.scrollX: ${scrollValue}`)
-	}
-
-	function onAttemptedScroll(e) {
-		let y = e.deltaY;
-		// console.log(y);
-
-		if (window.screen.width > 500) {
-			// console.log('big screen')
-			window.scrollBy(y, 0);
-		} else {
-			return;
-		}
-	}
-
-
-	function onScroll(event) {    
-    if (window.screen.width > 500) {
-      const scrollValue = window.scrollX;
-			setScrollValue(scrollValue);
-			
-			let path = window.location.pathname
-			
-			let w =  window.innerWidth
-			// console.log(w > scrollValue)
-			
-			if (path = '/colors') {
-				// console.log('colors');
-				
-				switch(true) {
-					case scrollValue < w: 
-					// console.log('black');
-					setColorValue('black')
-					break;
-					case scrollValue > w * 1.2 && scrollValue < w * 3.5:
-					setColorValue('rgb(255, 170, 0)'); //BLUE WITH   YELLOW
-					break;
-					case scrollValue > w * 3.5 && scrollValue < w * 5.5:
-					setColorValue('#2245AD'); //RED WITH   BLUE
-					break;
-					case scrollValue > w * 5.5 && scrollValue < w * 7:
-					setColorValue('#FF8100'); //GREEN WITH    ORANGE
-					break;
-					case scrollValue > w * 7 && scrollValue < w * 8.5:
-					setColorValue('#40077D'); //YELLOW WITH   PURPLE
-					break;
-					case scrollValue > w * 9 && scrollValue < w * 11:
-					setColorValue('#FA1001'); //PURPLE WITH     RED
-					break;
-					case scrollValue > w * 11 && scrollValue < w * 13:
-					setColorValue('#24874E'); //ORANGE WITH   GREEN
-					break;
-					case scrollValue > w * 13 && scrollValue < w * 14.5:
-					setColorValue('#FFE8CB'); //BROWN WITH   PARCHMENT
-					break;
-					case scrollValue > w * 14.5 && scrollValue < w * 16:
-					setColorValue('white'); //BLACK WITH   WHITE
-					break;
-					case scrollValue > w * 16.5 && scrollValue < w * 17.5:
-					setColorValue('black'); //WHITE WITH   BLACK
-					break;
-					case scrollValue > w * 17.5 && scrollValue < w * 19.5:
-					setColorValue('black'); //MIXED WITH   BLACK
-					break;
-				}
-				}
-			} else {
-      const scrollValueY = window.scrollY
-			setScrollValue(scrollValueY);
-    };
-    // console.log(`onScroll, window.scrollX: ${scrollValue}`)
-	}
-	
-	
-	const colorAnimation = {
-		backgroundColor: `${colorValue}`,
-	};
-	
-		const navAnimation = {
-		transform: `rotate(${scrollValue / 20}deg)`,
-		position: 'absolute',
-	};
-	
-  
-  function onAttemptedScroll(e) {
-    let y = e.deltaY;
-    // console.log(y);
-    
-    if (window.screen.width > 500) {
-      // console.log('big screen')
-      window.scrollBy(y, 0)
-    } else {
-      return
-    }
-  }
-	
-
 	
 	
 	
@@ -634,7 +680,17 @@ function App(props) {
 						);
 					}}
 				/>
-				<Route exact path='/colors' component={Colors} />
+				<Route
+					path='/colors'
+					exact={true}
+					render={() => {
+						return (
+							<>
+								<Colors scrollToLeft={scrollToLeft}/>
+							</>
+						);
+					}}
+				/>
 				<Route exact path='/mediums' component={Mediums} />
 				{/* <Route exact path='/artists' component={Artists} /> */}
 				{/* <Route exact path='/artists/create' component={ArtistCreate} /> */}

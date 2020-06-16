@@ -31,6 +31,7 @@ const ArtistDetail = ({ match }) => {
 				}
 			})
 			.then((response) => {
+				console.log(response.artwork[0].media[0])
 				setArtist([response]);
 			})
 			// .then(() => {
@@ -211,8 +212,8 @@ const ArtistDetail = ({ match }) => {
 									history.push(`/pieces/${artwork.id}`);
 								}}>
 								<motion.img
-									whileHover={{ scale: 1.1, duration: 0.5 }}
-									whileTap={{ scale: 0.9 }}
+								  whileHover={{ scale: 1.1, duration: .5 }}
+									whileTap={{ scale: 0.9, duration: .2 }}
 									className='artist-piece-image'
 									src={artwork.media[0].media_url}
 									alt={artwork.media[0].name}
