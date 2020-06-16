@@ -9,7 +9,7 @@ import Welcome from './components/Welcome';
 
 import NavCircle from './components/NavCircle';
 import Colors from './components/Colors';
-import Mediums from './components/Mediums';
+// import Mediums from './components/Mediums';
 // import Artists from './components/Artists';
 // import ArtistCreate from './components/ArtistCreate';
 import ArtistDetail from './components/ArtistDetail';
@@ -19,14 +19,12 @@ import PieceCreate from './components/PieceCreate';
 import PieceDetail from './components/PieceDetail';
 // import PieceEdit from './components/PieceEdit';
 
-import Art from './components/Art.js';
 
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import User from './components/User';
 
-import About from './components/About';
-
+// 
 function App() {
 	// useHorizontal();
 

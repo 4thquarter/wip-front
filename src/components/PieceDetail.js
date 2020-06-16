@@ -93,35 +93,35 @@ const PieceDetail = ({ match }) => {
 			"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
 	};
 
-	if (deleted) {
-		return <Redirect to='/pieces' />;
-	}
-	if (error) {
-		return (
-			<div style={entranceText}>Sorry, this piece is not in the gallery.</div>
-		);
-	}
-	if (!piece) {
-		return (
-			<div>
-				<motion.h2
-					style={entranceText}
-					animate={{
-						color: [
-							'#E02200',
-							'#00B82D',
-							'#2C3EAD',
-							'#FA0',
-							'#9500B8',
-							'#E04A00',
-						],
-					}}
-					transition={{ type: 'tween', duration: 7, yoyo: Infinity }}>
-					☯☠♠<motion.span style={{ color: '#695F49' }}>LOADING</motion.span>♠☠☯
-				</motion.h2>
-			</div>
-		);
-	}
+	// if (deleted) {
+	// 	return <Redirect to='/pieces' />;
+	// }
+	// if (error) {
+	// 	return (
+	// 		<div style={entranceText}>Sorry, this piece is not in the gallery.</div>
+	// 	);
+	// }
+	// if (!piece) {
+	// 	return (
+	// 		<div>
+	// 			<motion.h2
+	// 				style={entranceText}
+	// 				animate={{
+	// 					color: [
+	// 						'#E02200',
+	// 						'#00B82D',
+	// 						'#2C3EAD',
+	// 						'#FA0',
+	// 						'#9500B8',
+	// 						'#E04A00',
+	// 					],
+	// 				}}
+	// 				transition={{ type: 'tween', duration: 7, yoyo: Infinity }}>
+	// 				☯☠♠<motion.span style={{ color: '#695F49' }}>LOADING</motion.span>♠☠☯
+	// 			</motion.h2>
+	// 		</div>
+	// 	);
+	// }
 
 	return (
 		<div className='details'>

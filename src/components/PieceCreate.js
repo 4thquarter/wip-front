@@ -51,9 +51,9 @@ const PieceCreate = ({ artistName, artistId }) => {
 			});
 	};
 
-	if (createdId) {
-		return <Redirect to={`/pieces/${createdId}`} />;
-	}
+	// if (createdId) {
+	// 	return <Redirect to={`/pieces/${createdId}`} />;
+	// }
 	return (
 		<>
 			<span className='page-title'>

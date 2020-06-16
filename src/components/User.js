@@ -18,25 +18,27 @@ function User(props) {
 	
 	let userArtist = null
 	
-	if (props.userArtist[0] != 'signedOut') {
-		console.log('yee');
+	// const artistHeader = props.userArtist[0] != 'signedOut' ? :
+	
+	// if (props.userArtist[0] != 'signedOut') {
+	// 	console.log('yee');
 		
-		userArtist = props.userArtist.map((artist) => {
-		return (<a
-		className='artistLink'
-		onClick={(e) => {
-			e.preventDefault();
-			history.push(`/artists/${artist.id}`);
-		}}
-		style={{cursor: 'pointer'}}>
+	// 	userArtist = props.userArtist.map((artist) => {
+	// 	return (<a
+	// 	className='artistLink'
+	// 	onClick={(e) => {
+	// 		e.preventDefault();
+	// 		history.push(`/artists/${artist.id}`);
+	// 	}}
+	// 	style={{cursor: 'pointer'}}>
 			
-			<h1 key={artist.id} className='artistHeader'>{artist.name}</h1>
+	// 		<h1 key={artist.id} className='artistHeader'>{artist.name}</h1>
 			
-		</a>
-		)
-	});
-		return userArtist
-	};
+	// 	</a>
+	// 	)
+	// });
+	// 	return userArtist
+	// };
 	
 	
   return (

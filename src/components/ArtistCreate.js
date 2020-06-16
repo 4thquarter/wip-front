@@ -52,6 +52,7 @@ const StrainCreate = () => {
 		return <Redirect to={`/strains/${createdId}`} />;
 	} 
 	
+	
 	return (
 		<>
 			<div className='create-form-header'>

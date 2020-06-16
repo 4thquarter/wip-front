@@ -84,82 +84,44 @@ const ArtistDetail = ({ match }) => {
 			"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
 	};
 
-	if (deleted) {
-		return <Redirect to='/pieces' />;
-	}
-	if (error) {
-		return (
-			<div style={entranceText}>
-				Sorry, the artist is out on a spiritual retreat.
-			</div>
-		);
-	}
-
-	// let artworkMedia = (
-	// 	<div>
-	// 		no pieces found under this artist.
-	// 	</div>
-	// )
-
-	// if (setArtistIsSet) {
-	// 	const artworkMediaIsTrue = artist[0].artwork[0].media[0];
-
-	// 	if (artworkMediaIsTrue) {
-	// 		artworkMedia = artist[0].artwork.map((artwork) => (
-	// 			<motion.div
-	// 				key={artwork.id}
-	// 				animate={{ opacity: [0, 1] }}
-	// 				transition={{
-	// 					delay: 2,
-	// 					duration: 0.5,
-	// 				}}>
-	// 				<a
-	// 					className='artist-piece'
-	// 					id='nav1'
-	// 					style={{ cursor: 'pointer' }}
-	// 					onClick={(e) => {
-	// 						e.preventDefault();
-	// 						history.push(`/pieces/${artwork.id}`);
-	// 					}}>
-	// 					<motion.img
-	// 						whileHover={{ scale: 1.1, duration: 0.5 }}
-	// 						whileTap={{ scale: 0.9 }}
-	// 						className='artist-piece-image'
-	// 						src={artwork.media[0].media_url}
-	// 						alt={artwork.media[0].name}
-	// 					/>
-	// 				</a>
-	// 			</motion.div>
-	// 		));
-	// 	}
+	// if (deleted) {
+	// 	return <Redirect to='/pieces' />;
+	// }
+	// if (error) {
+	// 	return (
+	// 		<div style={entranceText}>
+	// 			Sorry, the artist is out on a spiritual retreat.
+	// 		</div>
+	// 	);
 	// }
 
-	if (!artist) {
-		return (
-			<div className='details'>
-				<motion.h2
-					className='loading'
-					style={entranceText}
-					animate={{
-						color: [
-							'#E02200',
-							'#00B82D',
-							'#2C3EAD',
-							'#FA0',
-							'#9500B8',
-							'#E04A00',
-						],
-					}}
-					transition={{
-						type: 'tween',
-						duration: 7,
-						yoyo: Infinity,
-					}}>
-					☯☠♠<motion.span style={{ color: '#695F49' }}>LOADING</motion.span>♠☠☯
-				</motion.h2>
-			</div>
-		);
-	}
+
+	// if (!artist) {
+	// 	return (
+	// 		<div className='details'>
+	// 			<motion.h2
+	// 				className='loading'
+	// 				style={entranceText}
+	// 				animate={{
+	// 					color: [
+	// 						'#E02200',
+	// 						'#00B82D',
+	// 						'#2C3EAD',
+	// 						'#FA0',
+	// 						'#9500B8',
+	// 						'#E04A00',
+	// 					],
+	// 				}}
+	// 				transition={{
+	// 					type: 'tween',
+	// 					duration: 7,
+	// 					yoyo: Infinity,
+	// 				}}>
+	// 				☯☠♠<motion.span style={{ color: '#695F49' }}>LOADING</motion.span>♠☠☯
+	// 			</motion.h2>
+	// 		</div>
+	// 	);
+	// }
 
 	return (
 		<div className='details'>
@@ -262,6 +224,45 @@ const ArtistDetail = ({ match }) => {
 
 export default ArtistDetail;
 
+	// let artworkMedia = (
+	// 	<div>
+	// 		no pieces found under this artist.
+	// 	</div>
+	// )
+
+	// if (setArtistIsSet) {
+	// 	const artworkMediaIsTrue = artist[0].artwork[0].media[0];
+
+	// 	if (artworkMediaIsTrue) {
+	// 		artworkMedia = artist[0].artwork.map((artwork) => (
+	// 			<motion.div
+	// 				key={artwork.id}
+	// 				animate={{ opacity: [0, 1] }}
+	// 				transition={{
+	// 					delay: 2,
+	// 					duration: 0.5,
+	// 				}}>
+	// 				<a
+	// 					className='artist-piece'
+	// 					id='nav1'
+	// 					style={{ cursor: 'pointer' }}
+	// 					onClick={(e) => {
+	// 						e.preventDefault();
+	// 						history.push(`/pieces/${artwork.id}`);
+	// 					}}>
+	// 					<motion.img
+	// 						whileHover={{ scale: 1.1, duration: 0.5 }}
+	// 						whileTap={{ scale: 0.9 }}
+	// 						className='artist-piece-image'
+	// 						src={artwork.media[0].media_url}
+	// 						alt={artwork.media[0].name}
+	// 					/>
+	// 				</a>
+	// 			</motion.div>
+	// 		));
+	// 	}
+	// }
+	
 // import React, { useState, useEffect } from 'react';
 // import { Link } from 'react-router-dom';
 
