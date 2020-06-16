@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/wip-front/static/css/main.71d2f6ce.chunk.css",
-    "main.js": "/wip-front/static/js/main.06f661f6.chunk.js",
-    "main.js.map": "/wip-front/static/js/main.06f661f6.chunk.js.map",
+    "main.js": "/wip-front/static/js/main.f4c7e572.chunk.js",
+    "main.js.map": "/wip-front/static/js/main.f4c7e572.chunk.js.map",
     "runtime-main.js": "/wip-front/static/js/runtime-main.9b9f8315.js",
     "runtime-main.js.map": "/wip-front/static/js/runtime-main.9b9f8315.js.map",
-    "static/js/2.ad94b396.chunk.js": "/wip-front/static/js/2.ad94b396.chunk.js",
-    "static/js/2.ad94b396.chunk.js.map": "/wip-front/static/js/2.ad94b396.chunk.js.map",
+    "static/js/2.7b3d8917.chunk.js": "/wip-front/static/js/2.7b3d8917.chunk.js",
+    "static/js/2.7b3d8917.chunk.js.map": "/wip-front/static/js/2.7b3d8917.chunk.js.map",
     "index.html": "/wip-front/index.html",
-    "precache-manifest.4fc94a049fdb2898925e3b486c4839ef.js": "/wip-front/precache-manifest.4fc94a049fdb2898925e3b486c4839ef.js",
+    "precache-manifest.50c050438febb159ce02d83bbeabd3b7.js": "/wip-front/precache-manifest.50c050438febb159ce02d83bbeabd3b7.js",
     "service-worker.js": "/wip-front/service-worker.js",
     "static/css/main.71d2f6ce.chunk.css.map": "/wip-front/static/css/main.71d2f6ce.chunk.css.map",
-    "static/js/2.ad94b396.chunk.js.LICENSE.txt": "/wip-front/static/js/2.ad94b396.chunk.js.LICENSE.txt"
+    "static/js/2.7b3d8917.chunk.js.LICENSE.txt": "/wip-front/static/js/2.7b3d8917.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9b9f8315.js",
-    "static/js/2.ad94b396.chunk.js",
+    "static/js/2.7b3d8917.chunk.js",
     "static/css/main.71d2f6ce.chunk.css",
-    "static/js/main.06f661f6.chunk.js"
+    "static/js/main.f4c7e572.chunk.js"
   ]
 }
