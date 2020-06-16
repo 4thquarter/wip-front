@@ -64,7 +64,10 @@ const ArtistDetail = ({ match }) => {
 				setDeleted(true);
 			})
 			.catch(console.error);
-	};
+			
+			window.location.pathname = (`/${localStorage.getItem('username')}`)
+			};
+			
 
 	const entranceText = {
 		position: 'fixed',

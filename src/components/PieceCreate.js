@@ -72,7 +72,7 @@ const PieceCreate = ({ artistName, artistId }) => {
 				piece={piece}
 				handleChange={handleChange}
 				handleSubmit={handleSubmit}
-                artistId={artistId}
+        artistId={artistId}
 			/>
 		</>
 	);
