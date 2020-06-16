@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { BACKENDURL } from '../config';
-import { motion } from 'framer-motion';
+import { motion, } from 'framer-motion';
 import '../css/PieceDetail.css';
 // import '../css/Welcome.css';
 
 const PieceDetail = ({ match }) => {
 	window.scrollTo(0, 0);
+
+
 
 	const [deleted, setDeleted] = useState(false);
 	const [error, setError] = useState(false);
@@ -97,19 +99,26 @@ const PieceDetail = ({ match }) => {
 		<div className='details'>
 			<div className='details-container'>
 				<div className='piece-main-image-w1'>
-					<div className='piece-main-image-w2'>
-						<img
+					<motion.div className='piece-main-image-w2'>
+						<motion.img						
 							className='piece-main-image'
 							src={piece[0].media[0].media_url}
 							alt={piece[0].media[0].name}
 						/>
+						
 						<span className='piece-information'>
 							<br />
 							<br />
+							
+							<div className='piece-information-text-wrapper'>
+							
 							<span className='piece-title'>
-								{piece[0].media[0].name}
-								<span className='blinker'>_</span>
+								{piece[0].title}
+								<span className='blinker'>
+									_
+								</span>
 							</span>
+							
 							<br />
 							<br />
 							<Link
@@ -132,22 +141,26 @@ const PieceDetail = ({ match }) => {
 								to={`/pieces/${match.params.id}/edit`}>
 								<button 
 								className='details-update-button' 
-								id="piece-button"
+								id="piece-button1"
 								>
-									Edit</button>
+									edit</button>
 							</Link>
 							<button
 								className='details-delete-button'
 								onClick={onDeletedPiece}
-								id="piece-button"
+								id="piece-button2"
 								>
-								Delete
+								delete
 							</button>
 							<br />
 							<br />
 							<br />
+							
+						</div>
+						
 						</span>
-					</div>
+						
+					</motion.div>
 				</div>
 			</div>
 		</div>

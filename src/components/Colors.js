@@ -9,66 +9,25 @@ export default Colors;
 // function Colors(props) {
 // let colors = ['blue', 'red', 'green', 'yellow', 'purple', 'orange', 'brown', 'black', 'white', 'grey']
 
-// for(let i = 0; i<colors.length; i++) {
 
-// }
 
-// let list = props.artData.map((item) => {
-//   if (item.primaryimageurl !== null && item.peoplecount !==0) {
-//     return (
-// <div className="colors" key={item.title}>
-//   <Link to={"/Colors/" + item.title}>
-//     <img
-//       className="galleryPiece"
-//       src={item.primaryimageurl}
-//       alt={item.title}
-//     ></img>
-//   </Link>
-// </div>
-//     );
-//   }
-// });
-
-// return (
-// 	<>
-// 		<h3 className='page-title'>Mediums</h3>
-//     {props.artData.map((item) => {
-//       if (item.primaryimageurl !== null && item.peoplecount !==0) {
-//         // <div className="colors" key={item.title}>
-//         //   <Link to={"/Colors/" + item.title}>
-//         //     <img
-//         //       className="galleryPiece"
-//         //       src={item.primaryimageurl}
-//         //       alt={item.title}
-//         //     ></img>
-//         //   </Link>
-//         // </div>
-//       }
-//     })}
-// 	</>
-// );
-
-//   return (
-//   <div className="Colors">
-//     {list}
-//     <div className="error">
-//       {props.error}
-//     </div>
-//   </div>
-//   )
-// }
-
-function Colors() {
+function Colors(props) {
 	useEffect(() => {
 		getRandomIntegers();
 		fetchColors();
 	}, []);
 
 	const [pieces, setPieces] = useState([]);
-	const [alive, setAlive] = useState([]);
-	const [unknown, setUnkown] = useState([]);
-	const [deceased, setDeceased] = useState([]);
-	const [presumedDead, setPresumedDead] = useState([]);
+	const [blue, setBlue] = useState([]);
+	const [red, setRed] = useState([]);
+	const [green, setGreen] = useState([]);
+	const [yellow, setYellow] = useState([]);
+	const [purple, setPurple] = useState([]);
+	const [orange, setOrange] = useState([]);
+	const [brown, setBrown] = useState([]);
+	const [black, setBlack] = useState([]);
+	const [white, setWhite] = useState([]);
+	const [mixed, setMixed] = useState([]);
 
 	const [randomIntegers, setRandomIntegers] = useState([]);
 
@@ -82,7 +41,7 @@ function Colors() {
 
 	const fetchColors = async () => {
 		const piecesData = await fetch(
-			'https://www.breakingbadapi.com/api/characters'
+			'https://q4backend.herokuapp.com/artwork/'
 			// `${BACKENDURL}/pieces`
 		);
 		const pieces = await piecesData.json();
@@ -104,36 +63,55 @@ function Colors() {
 		let mixed = [];
 
 		pieces.map((piece) => {
-			switch (piece.status) {
-				case 'Alive':
+			switch (piece.primary_palette) {
+				case 'blue':
+					if (piece.media[0]) {
 					blue.push(piece);
+					}
 					break;
-				case '?':
+				case 'red':
+					if (piece.media[0]) {
 					red.push(piece);
+					}
 					break;
-				case 'Deceased':
+				case 'green':
+					if (piece.media[0]) {
 					green.push(piece);
+					}
 					break;
-				case 'Presumed dead':
+				case 'yellow':
+					if (piece.media[0]) {
 					yellow.push(piece);
+					}
 					break;
 				case 'purple':
+					if (piece.media[0]) {
 					purple.push(piece);
+					}
 					break;
 				case 'orange':
+					if (piece.media[0]) {
 					orange.push(piece);
+					}
 					break;
 				case 'brown':
+					if (piece.media[0]) {
 					brown.push(piece);
+					}
 					break;
 				case 'black':
+					if (piece.media[0]) {
 					black.push(piece);
+					}
 					break;
 				case 'white':
+					if (piece.media[0]) {
 					white.push(piece);
-					break;
+					}
 				case 'mixed':
+					if (piece.media[0]) {
 					mixed.push(piece);
+					}
 					break;
 			}
 		});
@@ -141,10 +119,16 @@ function Colors() {
 		setPieces(pieces);
 
 		// console.log(red);
-		setUnkown(blue);
-		setAlive(red);
-		setPresumedDead(green);
-		setDeceased(yellow);
+		setBlue(blue);
+		setRed(red);
+		setGreen(green);
+		setYellow(yellow);
+		setPurple(purple);
+		setOrange(orange);
+		setBrown(brown);
+		setBlack(black);
+		setWhite(white);
+		setMixed(mixed)
 	};
 
 	function getRandomIntegers() {
@@ -187,9 +171,9 @@ function Colors() {
 
 				<div className='colorCollageHolder'>
 					<h3 className='color-collage-title'></h3>
-					{alive.slice(0, 5).map((alive, i) => (
+					{blue.slice(0, 5).map((blue, i) => (
 						<div
-							key={alive.id}
+							key={blue.id}
 							className='color-collage'
 							id={`cc${i + 1}`}
 							style={{
@@ -199,14 +183,17 @@ function Colors() {
 							<Link
 								className='image-link'
 								style={{
-									filter: 'sepia(100%) saturate(300%) hue-rotate(-30deg)',
+									
 								}}
-								to={`/colors/${alive.id}`}>
-								<img
-									key={alive.id}
+								to={`/pieces/${blue.id}`}>
+								<motion.img
+									whileHover={{ scale: 1.1, duration: .5 }}
+									whileTap={{ scale: 0.9 }}
+								
+									key={blue.id}
 									className='image-in-collage'
-									src={alive.img}
-									alt={alive.name}
+									src={blue.media[0].media_url}
+									alt={blue.name}
 								/>
 							</Link>
 						</div>
@@ -215,9 +202,9 @@ function Colors() {
 
 				<div className='colorCollageHolder'>
 					<h3 className='color-collage-title'></h3>
-					{unknown.slice(0, 5).map((unknown, i) => (
+					{red.slice(0, 5).map((red, i) => (
 						<div
-							key={unknown.id}
+							key={red.id}
 							className='color-collage'
 							id={`cc${i + 1}`}
 							style={{
@@ -227,14 +214,17 @@ function Colors() {
 							<Link
 								className='image-link'
 								style={{
-									filter: 'sepia(100%) saturate(300%) hue-rotate(140deg)',
+									
 								}}
-								to={`/pieces/${unknown.id}`}>
-								<img
-									key={unknown.id}
+								to={`/pieces/${red.id}`}>
+								<motion.img
+									whileHover={{ scale: 1.1, duration: .5 }}
+									whileTap={{ scale: 0.9 }}
+								
+									key={red.id}
 									className='image-in-collage'
-									src={unknown.img}
-									alt={unknown.name}
+									src={red.media[0].media_url}
+									alt={red.name}
 								/>
 							</Link>
 						</div>
@@ -243,9 +233,9 @@ function Colors() {
 
 				<div className='colorCollageHolder'>
 					<h3 className='color-collage-title'></h3>
-					{deceased.slice(0, 5).map((deceased, i) => (
+					{green.slice(0, 5).map((green, i) => (
 						<div
-							key={deceased.id}
+							key={green.id}
 							className='color-collage'
 							id={`cc${i + 1}`}
 							style={{
@@ -255,14 +245,17 @@ function Colors() {
 							<Link
 								className='image-link'
 								style={{
-									filter: 'sepia(100%) saturate(300%) hue-rotate(5deg)',
+									
 								}}
-								to={`/pieces/${deceased.id}`}>
-								<img
-									key={deceased.id}
+								to={`/pieces/${green.id}`}>
+								<motion.img
+									whileHover={{ scale: 1.1, duration: .5 }}
+									whileTap={{ scale: 0.9 }}
+									
+									key={green.id}
 									className='image-in-collage'
-									src={deceased.img}
-									alt={deceased.name}
+									src={green.media[0].media_url}
+									alt={green.name}
 								/>
 							</Link>
 						</div>
@@ -271,9 +264,9 @@ function Colors() {
 
 				<div className='colorCollageHolder'>
 					<h3 className='color-collage-title'></h3>
-					{presumedDead.slice(0, 5).map((presumedDead, i) => (
+					{yellow.slice(0, 5).map((yellow, i) => (
 						<div
-							key={presumedDead.id}
+							key={yellow.id}
 							className='color-collage'
 							id={`cc${i + 1}`}
 							style={{
@@ -283,14 +276,17 @@ function Colors() {
 							<Link
 								className='image-link'
 								style={{
-									filter: 'sepia(100%) saturate(300%) hue-rotate(40deg)',
+									
 								}}
-								to={`/pieces/${presumedDead.id}`}>
-								<img
-									key={presumedDead.id}
+								to={`/pieces/${yellow.id}`}>
+								<motion.img
+									whileHover={{ scale: 1.1, duration: .5 }}
+									whileTap={{ scale: 0.9 }}
+									
+									key={yellow.id}
 									className='image-in-collage'
-									src={presumedDead.img}
-									alt={presumedDead.name}
+									src={yellow.media[0].media_url}
+									alt={yellow.name}
 								/>
 							</Link>
 						</div>
@@ -299,9 +295,9 @@ function Colors() {
 
 				<div className='colorCollageHolder'>
 					<h3 className='color-collage-title'></h3>
-					{alive.slice(0, 5).map((alive, i) => (
+					{purple.slice(0, 5).map((purple, i) => (
 						<div
-							key={alive.id}
+							key={purple.id}
 							className='color-collage'
 							id={`cc${i + 1}`}
 							style={{
@@ -311,14 +307,17 @@ function Colors() {
 							<Link
 								className='image-link'
 								style={{
-									filter: 'sepia(100%) saturate(300%) hue-rotate(-30deg)',
+									
 								}}
-								to={`/pieces/${alive.id}`}>
-								<img
-									key={alive.id}
+								to={`/pieces/${purple.id}`}>
+								<motion.img
+									whileHover={{ scale: 1.1, duration: .5 }}
+									whileTap={{ scale: 0.9 }}
+								
+									key={purple.id}
 									className='image-in-collage'
-									src={alive.img}
-									alt={alive.name}
+									src={purple.media[0].media_url}
+									alt={purple.name}
 								/>
 							</Link>
 						</div>
@@ -327,9 +326,9 @@ function Colors() {
 
 				<div className='colorCollageHolder'>
 					<h3 className='color-collage-title'></h3>
-					{alive.slice(0, 5).map((alive, i) => (
+					{orange.slice(0, 5).map((orange, i) => (
 						<div
-							key={alive.id}
+							key={orange.id}
 							className='color-collage'
 							id={`cc${i + 1}`}
 							style={{
@@ -339,14 +338,17 @@ function Colors() {
 							<Link
 								className='image-link'
 								style={{
-									filter: 'sepia(100%) saturate(300%) hue-rotate(-30deg)',
+									
 								}}
-								to={`/pieces/${alive.id}`}>
-								<img
-									key={alive.id}
+								to={`/pieces/${orange.id}`}>
+								<motion.img
+									whileHover={{ scale: 1.1, duration: .5 }}
+									whileTap={{ scale: 0.9 }}
+									
+									key={orange.id}
 									className='image-in-collage'
-									src={alive.img}
-									alt={alive.name}
+									src={orange.media[0].media_url}
+									alt={orange.name}
 								/>
 							</Link>
 						</div>
@@ -355,9 +357,9 @@ function Colors() {
 
 				<div className='colorCollageHolder'>
 					<h3 className='color-collage-title'></h3>
-					{alive.slice(0, 5).map((alive, i) => (
+					{brown.slice(0, 5).map((brown, i) => (
 						<div
-							key={alive.id}
+							key={brown.id}
 							className='color-collage'
 							id={`cc${i + 1}`}
 							style={{
@@ -367,14 +369,17 @@ function Colors() {
 							<Link
 								className='image-link'
 								style={{
-									filter: 'sepia(100%) saturate(300%) hue-rotate(-30deg)',
+									
 								}}
-								to={`/pieces/${alive.id}`}>
-								<img
-									key={alive.id}
+								to={`/pieces/${brown.id}`}>
+								<motion.img
+									whileHover={{ scale: 1.1, duration: .5 }}
+									whileTap={{ scale: 0.9 }}
+									
+									key={brown.id}
 									className='image-in-collage'
-									src={alive.img}
-									alt={alive.name}
+									src={brown.media[0].media_url}
+									alt={brown.name}
 								/>
 							</Link>
 						</div>
@@ -383,9 +388,9 @@ function Colors() {
 
 				<div className='colorCollageHolder'>
 					<h3 className='color-collage-title'></h3>
-					{alive.slice(0, 5).map((alive, i) => (
+					{black.slice(0, 5).map((black, i) => (
 						<div
-							key={alive.id}
+							key={black.id}
 							className='color-collage'
 							id={`cc${i + 1}`}
 							style={{
@@ -395,14 +400,17 @@ function Colors() {
 							<Link
 								className='image-link'
 								style={{
-									filter: 'sepia(100%) saturate(300%) hue-rotate(-30deg)',
+									
 								}}
-								to={`/pieces/${alive.id}`}>
-								<img
-									key={alive.id}
+								to={`/pieces/${black.id}`}>
+								<motion.img
+									whileHover={{ scale: 1.1, duration: .5 }}
+									whileTap={{ scale: 0.9 }}
+									
+									key={black.id}
 									className='image-in-collage'
-									src={alive.img}
-									alt={alive.name}
+									src={black.media[0].media_url}
+									alt={black.name}
 								/>
 							</Link>
 						</div>
@@ -411,9 +419,9 @@ function Colors() {
 
 				<div className='colorCollageHolder'>
 					<h3 className='color-collage-title'></h3>
-					{alive.slice(0, 5).map((alive, i) => (
+					{white.slice(0, 5).map((white, i) => (
 						<div
-							key={alive.id}
+							key={white.id}
 							className='color-collage'
 							id={`cc${i + 1}`}
 							style={{
@@ -423,14 +431,17 @@ function Colors() {
 							<Link
 								className='image-link'
 								style={{
-									filter: 'sepia(100%) saturate(300%) hue-rotate(-30deg)',
+									
 								}}
-								to={`/pieces/${alive.id}`}>
-								<img
-									key={alive.id}
+								to={`/pieces/${white.id}`}>
+								<motion.img
+									whileHover={{ scale: 1.1, duration: .5 }}
+									whileTap={{ scale: 0.9 }}
+									
+									key={white.id}
 									className='image-in-collage'
-									src={alive.img}
-									alt={alive.name}
+									src={white.media[0].media_url}
+									alt={white.name}
 								/>
 							</Link>
 						</div>
@@ -439,9 +450,9 @@ function Colors() {
 
 				<div className='colorCollageHolder'>
 					<h3 className='color-collage-title'></h3>
-					{alive.slice(0, 5).map((alive, i) => (
+					{mixed.slice(0, 5).map((mixed, i) => (
 						<div
-							key={alive.id}
+							key={mixed.id}
 							className='color-collage'
 							id={`cc${i + 1}`}
 							style={{
@@ -451,19 +462,30 @@ function Colors() {
 							<Link
 								className='image-link'
 								style={{
-									filter: 'sepia(100%) saturate(300%) hue-rotate(-30deg)',
+									
 								}}
-								to={`/pieces/${alive.id}`}>
-								<img
-									key={alive.id}
+								to={`/pieces/${mixed.id}`}>
+								<motion.img
+									whileHover={{ scale: 1.1, duration: .5 }}
+									whileTap={{ scale: 0.9 }}
+									
+									key={mixed.id}
 									className='image-in-collage'
-									src={alive.img}
-									alt={alive.name}
+									src={mixed.media[0].media_url}
+									alt={mixed.name}
 								/>
 							</Link>
 						</div>
 					))}
 				</div>
+				
+				<motion.button 
+				
+				className="scrollBackButton" 
+				onClick={props.scrollToLeft}>
+					----
+				</motion.button>
+				
 			</div>
 		</>
 	);

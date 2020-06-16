@@ -32,6 +32,7 @@ const ArtistDetail = ({ match }) => {
 				}
 			})
 			.then((response) => {
+				console.log(response.artwork[0].media[0])
 				setArtist([response]);
 			})
 			.catch((error) => {
@@ -149,7 +150,7 @@ const ArtistDetail = ({ match }) => {
 								
 								<motion.img 
 								  whileHover={{ scale: 1.1, duration: .5 }}
-									whileTap={{ scale: 0.9 }}
+									whileTap={{ scale: 0.9, duration: .2 }}
 									
 									className="artist-piece-image"
 									src={artwork.media[0].media_url}
