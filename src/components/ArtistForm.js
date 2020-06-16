@@ -69,7 +69,6 @@ const ArtistForm = ({ artist, handleSubmit, handleChange }) => {
             required
             id="website"
           />
-
           <button className="submit-button" type="submit">
             Submit
           </button>
@@ -77,6 +76,7 @@ const ArtistForm = ({ artist, handleSubmit, handleChange }) => {
       </div>
     </>
   );
+
 };
 
 export default ArtistForm;
