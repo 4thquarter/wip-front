@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ArtistForm = ({ artist, handleSubmit, handleChange }) => {
+const ArtistForm = ({ artist, handleSubmit, handleChange }) => {
 	return (
 		<>
 			<div className='submitArt'>
@@ -74,7 +74,7 @@ function ArtistForm = ({ artist, handleSubmit, handleChange }) => {
 					<button className='submit-button' type='submit'>
 						Submit
 					</button>
-					
+
 				</form>
 			</div>
 		</>

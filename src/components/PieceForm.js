@@ -1,3 +1,90 @@
+import React from 'react';
+
+const PieceForm = ({ piece, artistId, handleSubmit, handleChange }) => {
+	return (
+		<>
+			<div className='submitArt'>
+				<form className='piece-form' onSubmit={handleSubmit}>
+
+					<label htmlFor='title' className='form-title'>
+						title
+					</label>
+					<input
+						className='inputBox'
+						placeholder='title'
+						onChange={handleChange}
+						defaultValue={piece.title}
+						name='title'
+						required
+						id='title'
+					/>
+
+					<label htmlFor='artist' className='form-title'>
+						artist
+					</label>
+					<input
+						className='inputBox'
+						placeholder='artist address'
+						defaultValue={piece.artist}
+						name='artist'
+						onChange={handleChange}
+						required
+						id='artist'
+					/>
+
+					<label htmlFor='information' className='form-title'>
+						info / bio
+					</label>
+					<input
+						className='inputBox'
+						placeholder='info / bio'
+						defaultValue={piece.information}
+						name='information'
+						onChange={handleChange}
+						required
+						id='information'
+					/>
+
+					<label htmlFor='location' className='form-title'>
+						location
+					</label>
+					<input
+						className='inputBox'
+						placeholder='(city, state / country)'
+						defaultValue={piece.location}
+						name='location'
+						onChange={handleChange}
+						required
+						id='location'
+					/>
+
+					<label htmlFor='website' className='form-title'>
+						site
+					</label>
+					<input
+						className='inputBox'
+						placeholder='website address / portfolio'
+						defaultValue={piece.artist_website}
+						name='website'
+						onChange={handleChange}
+						required
+						id='website'
+					/>
+
+					<button className='submit-button' type='submit'>
+						Submit
+					</button>
+				</form>
+			</div>
+		</>
+	);
+};
+
+export default PieceForm;
+
+
+
+
 {
 	/* <form autoComplete='yeeyee'>
 					<input
