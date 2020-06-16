@@ -19,7 +19,7 @@ function NavCircle(props) {
 	// };
 
 	return (
-		// <div>
+		<div>
 		<svg className='header' width='200px' height='200px' viewBox='0 0 100 100'>
 			<path
 				id='curve'
@@ -93,7 +93,7 @@ function NavCircle(props) {
 				</textPath>
 			</text>
 		</svg>
-		// </div>
+		</div>
 	);
 }
 
