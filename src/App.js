@@ -798,6 +798,7 @@ function App() {
 			<div className="general-nav-position-and-size">
 				<NavCircle navAnimation={navAnimation} completedUsername={completedUsername}/>
 			</div>
+<<<<<<< HEAD
 			
 			<Route
 					path='/artists/:id'
@@ -823,6 +824,11 @@ function App() {
 			/>
 			<Route exact path='/pieces/:id' component={PieceDetail} />
 			
+=======
+				<Route exact path='/artists/:id' component={ArtistDetail} /> 
+				<Route exact path='/artists/:id/add_piece' component={PieceCreate} />
+				<Route exact path='/pieces/:id' component={PieceDetail} />
+>>>>>>> finished mediums gallery
 			<Switch>
 				<Route
 					path='/'
@@ -858,6 +864,9 @@ function App() {
 					}}
 				/>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> finished mediums gallery
 				<Route
 					path='/mediums'
 					exact={true}
@@ -869,8 +878,11 @@ function App() {
 						);
 					}}
 				/>
+<<<<<<< HEAD
 =======
 >>>>>>> created artists gallery
+=======
+>>>>>>> finished mediums gallery
 				
 			</Switch>
 			<Route
