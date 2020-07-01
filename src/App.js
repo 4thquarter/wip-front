@@ -97,7 +97,7 @@ function App() {
 		getArtistData()
 		getArtData()
 		
-		window.addEventListener('mousemove', onMouseMove)
+		// window.addEventListener('mousemove', onMouseMove)
 		
 		let access = localStorage.getItem('accessToken')
 					// console.log(access)
@@ -115,33 +115,33 @@ function App() {
 		
 		
 		// FOR PRODUCTION ONLY
-    function onMouseMove() {
-			for(let i=0; i<20; i++) {
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			console.log('|')
-			}
-			console.log('V')
-			console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020')
-			window.removeEventListener('mousemove', onMouseMove)
-		}
+    // function onMouseMove() {
+		// 	for(let i=0; i<20; i++) {
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	console.log('|')
+		// 	}
+		// 	console.log('V')
+		// 	console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020')
+		// 	window.removeEventListener('mousemove', onMouseMove)
+		// }
     
 		return history.listen((location) => {
 			// console.log(location.pathname);
