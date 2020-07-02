@@ -87,7 +87,11 @@ function App() {
 	
 	useEffect(() => {
 		// console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
+<<<<<<< HEAD
 		// console.log('app useffecting')
+=======
+		console.log('app useffecting')
+>>>>>>> deleted viewbox and started matching users/artists
 
 		window.addEventListener('scroll', onScroll);
 		window.addEventListener('wheel', onAttemptedScroll);
@@ -96,6 +100,7 @@ function App() {
 		
 		getArtistData()
 		getArtData()
+		getUserArtistData()
 		
 		// console.log(localStorage['userArtists'])
 		
@@ -350,7 +355,18 @@ function App() {
 		}
 	}
 	
+<<<<<<< HEAD
 
+=======
+	function getUserArtistData() {
+		for (let i=0; i<artistData.length; i++) {
+			if (artistData[0]) {
+			// console.log(artistData[i].owner)
+			return
+			}
+		}
+	}
+>>>>>>> deleted viewbox and started matching users/artists
 	
 	
 	
