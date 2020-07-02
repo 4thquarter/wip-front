@@ -33,12 +33,8 @@ const Welcome = () => {
 				</div>
 				<div className="welcome-nav-outlining">
 					<motion.svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="200px"
-						height="200px"
-						viewBox="100 100"
-						className="item"
-					>
+						xmlns='http://www.w3.org/2000/svg'width='200px' height='200px' 
+						className='item'>
 						<motion.path
 							d="M 100, 100m -75, 0a 75, 75 0 1,0 150,0a 75,75 0 1,0 -150,0"
 							variants={icon}
