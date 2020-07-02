@@ -88,6 +88,7 @@ function App() {
 	
 	useEffect(() => {
 		// console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
+		console.log('app useffecting')
 
 		window.addEventListener('scroll', onScroll);
 
@@ -96,6 +97,7 @@ function App() {
 		
 		getArtistData()
 		getArtData()
+		getUserArtistData()
 		
 		// window.addEventListener('mousemove', onMouseMove)
 		
@@ -267,7 +269,7 @@ function App() {
 		backgroundColor: `${colorValue}`,
 	};
 	
-		const navAnimation = {
+	const navAnimation = {
 		transform: `rotate(${scrollValue / 20}deg)`,
 		position: 'absolute',
 	};
@@ -342,6 +344,15 @@ function App() {
 			// getItemData();
 			// getNeedData();
 			// setNewItemTier(tierData[0]._id);
+		}
+	}
+	
+	function getUserArtistData() {
+		for (let i=0; i<artistData.length; i++) {
+			if (artistData[0]) {
+			// console.log(artistData[i].owner)
+			return
+			}
 		}
 	}
 	
