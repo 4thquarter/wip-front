@@ -58,6 +58,7 @@ function App() {
 	const [hideSignOut, setHideSignOut] = useState(true);
 	
 	const [userArtist, setUserArtist] = useState([])
+	const [userArtists, setUserArtists] = useState([])
 
 	// hooks for adding artist
 	const [name, setName] = useState(null)
@@ -91,15 +92,14 @@ function App() {
 		console.log('app useffecting')
 
 		window.addEventListener('scroll', onScroll);
-
 		window.addEventListener('wheel', onAttemptedScroll);
-		
+		// window.addEventListener('mousemove', onMouseMove)
+
 		
 		getArtistData()
 		getArtData()
 		getUserArtistData()
 		
-		// window.addEventListener('mousemove', onMouseMove)
 		
 		let access = localStorage.getItem('accessToken')
 					// console.log(access)
@@ -611,6 +611,24 @@ function App() {
 	
 	
 	
+	// 
+	// 
+	// 
+	// SUBMITTING ARTISTS AND ARTWORK
+	// 
+	// 
+	// 
+	// 
+	// 
+	// 
+	// 
+	// 
+	// 
+	// 
+	
+	
+	
+	
 	
 	
 	
@@ -731,6 +749,18 @@ function App() {
 	
 	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
