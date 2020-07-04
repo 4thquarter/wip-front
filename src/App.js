@@ -52,13 +52,13 @@ function App() {
 	const [userId, setUserId] = useState('');
 	const [completedUsername, setcompletedUsername] = useState(null);
 	const [completedEmail, setcompletedEmail] = useState(null);
+	const [userArtists, setUserArtists] = useState([])
+	const [userArtist, setUserArtist] = useState([])
 
 	const [hideSignIn, setHideSignIn] = useState(true);
 	const [hideSignUp, setHideSignUp] = useState(true);
 	const [hideSignOut, setHideSignOut] = useState(true);
 	
-	const [userArtist, setUserArtist] = useState([])
-	const [userArtists, setUserArtists] = useState([])
 
 	// hooks for adding artist
 	const [name, setName] = useState(null)
@@ -98,7 +98,6 @@ function App() {
 		
 		getArtistData()
 		getArtData()
-		getUserArtistData()
 		
 		
 		let access = localStorage.getItem('accessToken')
@@ -106,16 +105,20 @@ function App() {
 		let username = localStorage.getItem('username')
 					// console.log(username);
 		let email = localStorage.getItem('email')
-					console.log(email)
+					// console.log(email)
 		let userArtistId = localStorage.getItem('userArtistId')
 					// console.log(userArtistId);
 					setUserArtist([...userArtist, userArtistId])
+		let userArtists = JSON.parse(localStorage['userArtists'])
+					console.log(userArtists)
 					
 		if (username != 'signedOut') {
 			setcompletedUsername(username)
 			setcompletedEmail(email)
+			setUserArtists(userArtists)
 		} else {
 			setUserArtist(['signedOut'])
+			setUserArtists('signedOut')
 		}
 		
 		
@@ -302,23 +305,24 @@ function App() {
 				setArtistData(sortedData);
 				return sortedData;
 			})
-			.then((data) => {
-				// setNewItemTier(data[0]._id);
-				// setNewNeedTier(data[0]._id);
-				// console.log(data);
-				return true;
+			.then((data) => {	
+			const userArtists = []
+			for (let i=0; i<data.length; i++) {
+				if (data[0]) {
+					if (data[i].email === completedEmail) {
+						// console.log(data[i].owner)
+						userArtists.push(data[i])
+					}
+				}
+			}
+			// console.log(userArtists);
+			localStorage['userArtists'] = JSON.stringify(userArtists)
+			return true;
 			})
 			.catch(function (error) {
 				setError(error);
 			});
 
-		if (artistsFetched) {
-			// console.log('fetched');
-			
-			// getItemData();
-			// getNeedData();
-			// setNewItemTier(tierData[0]._id);
-		}
 	}
 	
 	async function getArtData() {
@@ -332,9 +336,7 @@ function App() {
 				return sortedData;
 			})
 			.then((data) => {
-				// setNewItemTier(data[0]._id);
-				// setNewNeedTier(data[0]._id);
-				// console.log(data);
+				// console.log('i wonder if this is running');
 				return true;
 			})
 			.catch(function (error) {
@@ -350,19 +352,7 @@ function App() {
 		}
 	}
 	
-	function getUserArtistData() {
-		const userArtists = []
-		for (let i=0; i<artistData.length; i++) {
-			if (artistData[0]) {
-				if (artistData[i].email === completedEmail) {
-					console.log(artistData[i].owner)
-					userArtists.push(artistData[i])
-				}
-			}
-		}
-		console.log(userArtists);
-		
-	}
+
 	
 	
 	
@@ -571,6 +561,20 @@ function App() {
 					console.log(access);
 					localStorage.setItem('username', `${username}`);
 					localStorage.setItem('email', `${email}`);
+					
+					const userArtists = []
+					for (let i=0; i<artistData.length; i++) {
+						if (artistData[0]) {
+							if (artistData[i].email === email) {
+								// console.log(data[i].owner)
+								userArtists.push(artistData[i])
+								}
+						}
+					}
+					// console.log(userArtists);
+					localStorage['userArtists'] = JSON.stringify(userArtists)
+					setUserArtists(userArtists)
+					
 					dataVariable = data;
 					setPostId(data.id);
 					setUserId(data._id);
@@ -675,13 +679,10 @@ function App() {
 			})
 			.then((data) => {
 				console.log(data)
-				let userArtist = data
+				let newUserArtist = data
 				localStorage.setItem('userArtistId', data.id)
-				// for(let i=0; i<=allUserArtists.length; i++) {
-				// 	localStorage.setItem(`userArtist${i}`, `${allUserArtists[i]}`)
-				// }
-				setUserArtist([userArtist])
-				
+				localStorage['userArtists'] = JSON.stringify([...userArtists, newUserArtist])
+				setUserArtists([...userArtists, newUserArtist])
 			})
 			.then(() => {
 				setError(null);
@@ -761,6 +762,7 @@ function App() {
 			localStorage.setItem('username', 'signedOut')
 			localStorage.setItem('email', 'signedOut')
 			localStorage.setItem('userArtistId', 'signedOut')
+			localStorage['userArtists'] = JSON.stringify('signedOut')
 			setcompletedUsername(null)
 			setcompletedEmail(null)
 			history.push('/')
@@ -788,9 +790,21 @@ function App() {
 			<div className="general-nav-position-and-size">
 				<NavCircle navAnimation={navAnimation} completedUsername={completedUsername}/>
 			</div>
-				<Route exact path='/artists/:id' component={ArtistDetail} /> 
-				<Route exact path='/artists/:id/add_piece' component={PieceCreate} />
-				<Route exact path='/pieces/:id' component={PieceDetail} />
+			
+			<Route
+					path='/artists/:id'
+					exact={true}
+					render={(props) => {
+						return (
+							<>
+								<ArtistDetail {...props} />
+							</>
+						);
+					}}
+			/>
+			<Route exact path='/artists/:id/add_piece' component={PieceCreate} />
+			<Route exact path='/pieces/:id' component={PieceDetail} />
+			
 			<Switch>
 				<Route
 					path='/'
@@ -899,6 +913,7 @@ function App() {
 							<User
 								handleChange={handleChange}
 								submitArtist={submitArtist}
+								userArtists={userArtists}
 								userArtist={userArtist}
 								error={error}
 							/>

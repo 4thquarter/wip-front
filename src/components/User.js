@@ -30,30 +30,30 @@ function User(props) {
 		'mixed',
 	];
 
-	const colorChoices = colors.map((color) => {
-		return (
-			<option value={color._id} key={color._id}>
-				{color}
-			</option>
-		);
-	});
+	// const colorChoices = colors.map((color) => {
+	// 	return (
+	// 		<option value={color._id} key={color._id}>
+	// 			{color}
+	// 		</option>
+	// 	);
+	// });
 
-	const mediumChoices = mediums.map((medium) => {
-		return (
-			<option value={medium._id} key={medium._id}>
-				{medium}
-			</option>
-		);
-	});
+	// const mediumChoices = mediums.map((medium) => {
+	// 	return (
+	// 		<option value={medium._id} key={medium._id}>
+	// 			{medium}
+	// 		</option>
+	// 	);
+	// });
 	
-	let userArtist = null
+	let userArtists = null
 	
 	// const artistHeader = props.userArtist[0] != 'signedOut' ? :
 	
-	if (props.userArtist[0] !== 'signedOut') {
-		console.log('yee');
+	if (props.userArtists[0]) {
+		// console.log('yee');
 		
-		userArtist = props.userArtist.map((artist) => {
+		userArtists = props.userArtists.map((artist) => {
 		return (<a
 		className='artistLink'
 		onClick={(e) => {
@@ -67,13 +67,12 @@ function User(props) {
 		</a>
 		)
 	});
-		return userArtist
-	};
+};
 	
 
 	return (
 		<>
-			<div className='artistHeadersContainer'>{userArtist}</div>
+			<div className='artistHeadersContainer'>{userArtists}</div>
 			<div className='submitArtContainer'>
 				<p className={props.error ? 'error' : 'hidden'}>{props.error}</p>
 				<p className='newArtistHeader'>NEW ARTIST</p>

@@ -37,7 +37,7 @@ const ArtistDetail = ({ match }) => {
 				setArtist([response]);
 				setArtistName([response.name]);
 				setArtistId([response.id]);localStorage.setItem('latestArtistId', response.id);
-				console.log(localStorage.getItem('latestArtistId'))
+				// console.log(localStorage.getItem('latestArtistId'))
 			})
 			// .then(() => {
 			// 	setArtistIsSet(true);
@@ -50,6 +50,8 @@ const ArtistDetail = ({ match }) => {
 		// eslint-disable-next-line
 	}, []);
 
+	
+	
 	const onDeletedArtist = (e) => {
 		const url = `${BACKENDURL}/artists/${match.params.id}`;
 
@@ -65,10 +67,12 @@ const ArtistDetail = ({ match }) => {
 			})
 			.catch(console.error);
 			
-			window.location.pathname = (`/${localStorage.getItem('username')}`)
+			history.push(`/${localStorage.getItem('username')}`)
 			};
 			
 
+			
+			
 	const entranceText = {
 		position: 'fixed',
 		top: '50%',
