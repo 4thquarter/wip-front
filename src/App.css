@@ -315,6 +315,13 @@ h2 {
 }
 
 
+
+.newArtistHeader {
+	color: red;
+	margin-left: 20px;
+	font-weight: 800;
+}
+
 .select {
 	appearance: none;
 	box-sizing: border-box;

@@ -105,12 +105,15 @@ function App() {
 					// console.log(access)
 		let username = localStorage.getItem('username')
 					// console.log(username);
+		let email = localStorage.getItem('email')
+					console.log(email)
 		let userArtistId = localStorage.getItem('userArtistId')
 					// console.log(userArtistId);
 					setUserArtist([...userArtist, userArtistId])
 					
 		if (username != 'signedOut') {
 			setcompletedUsername(username)
+			setcompletedEmail(email)
 		} else {
 			setUserArtist(['signedOut'])
 		}
@@ -348,12 +351,17 @@ function App() {
 	}
 	
 	function getUserArtistData() {
+		const userArtists = []
 		for (let i=0; i<artistData.length; i++) {
 			if (artistData[0]) {
-			// console.log(artistData[i].owner)
-			return
+				if (artistData[i].email === completedEmail) {
+					console.log(artistData[i].owner)
+					userArtists.push(artistData[i])
+				}
 			}
 		}
+		console.log(userArtists);
+		
 	}
 	
 	
@@ -562,6 +570,7 @@ function App() {
 					let access = localStorage.getItem('accessToken');
 					console.log(access);
 					localStorage.setItem('username', `${username}`);
+					localStorage.setItem('email', `${email}`);
 					dataVariable = data;
 					setPostId(data.id);
 					setUserId(data._id);
@@ -576,12 +585,17 @@ function App() {
 			})
 			.then(() => {
 				if (dataVariable) {
+					setEmail(null);
+					setUsername(null);
 					setPassword(null);
 					setconfirmPassword(null);
+					
 					setHideSignIn(true);
 					setHideSignOut(true);
 					history.push(`/${username}`);
 				} else {
+					setEmail(null);
+					setUsername(null);
 					setPassword(null);
 					setconfirmPassword(null);
 				}
@@ -592,20 +606,7 @@ function App() {
 	}
 
 	
-	
-	
-	
-	// SIGN OUT
-	
-	function signOut() {
-		localStorage.setItem('accessToken', 'signedOut')
-		localStorage.setItem('username', 'signedOut')
-		localStorage.setItem('userArtistId', 'signedOut')
-		setcompletedUsername(null)
-		setcompletedEmail(null)
-		history.push('/')
-		// window.location.pathname = '/'
-	}
+
 	
 	
 	
@@ -640,8 +641,8 @@ function App() {
 
 		const newArtistInformation = {
 			name: name,
-			email: information,
-			information: email,
+			email: completedEmail,
+			information: information,
 			location: location,
 			artist_website: website,
 			artist_media: 'none',
@@ -752,8 +753,19 @@ function App() {
 	
 	
 	
+
+		// SIGN OUT
 	
-	
+		function signOut() {
+			localStorage.setItem('accessToken', 'signedOut')
+			localStorage.setItem('username', 'signedOut')
+			localStorage.setItem('email', 'signedOut')
+			localStorage.setItem('userArtistId', 'signedOut')
+			setcompletedUsername(null)
+			setcompletedEmail(null)
+			history.push('/')
+			// window.location.pathname = '/'
+		}
 	
 	
 	

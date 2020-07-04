@@ -76,7 +76,7 @@ function User(props) {
 			<div className='artistHeadersContainer'>{userArtist}</div>
 			<div className='submitArtContainer'>
 				<p className={props.error ? 'error' : 'hidden'}>{props.error}</p>
-
+				<p className='newArtistHeader'>NEW ARTIST</p>
 				<form className='artist-form'>
 					<input
 						className='inputBox'
@@ -85,15 +85,6 @@ function User(props) {
 						onChange={props.handleChange}
 						required
 						id='name'
-					/>
-
-					<input
-						className='inputBox'
-						placeholder='email'
-						name='email'
-						onChange={props.handleChange}
-						required
-						id='email'
 					/>
 
 					<input
