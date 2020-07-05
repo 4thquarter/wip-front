@@ -110,7 +110,7 @@ function App() {
 					// console.log(userArtistId);
 					setUserArtist([...userArtist, userArtistId])
 		let userArtists = JSON.parse(localStorage['userArtists'])
-					console.log(userArtists)
+					// console.log(userArtists)
 					
 		if (username != 'signedOut') {
 			setcompletedUsername(username)
@@ -520,11 +520,9 @@ function App() {
 				setUserId(data._id);
 			})
 			.then(() => {
-				setPassword(null);
-				setconfirmPassword(null);
 				setHideSignIn(true);
-				history.push(`/${username}`);
 				setError(null);
+				signIn();
 			})
 			.catch((error) => {
 				console.error(error);

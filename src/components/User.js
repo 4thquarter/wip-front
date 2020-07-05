@@ -50,7 +50,7 @@ function User(props) {
 	
 	// const artistHeader = props.userArtist[0] != 'signedOut' ? :
 	
-	if (props.userArtists[0]) {
+	if (props.userArtists !== 'signedOut') {
 		// console.log('yee');
 		
 		userArtists = props.userArtists.map((artist, i) => {
