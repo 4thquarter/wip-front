@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import PieceCreate from './PieceCreate';
 import '../css/ArtistDetail.css';
 
-const ArtistDetail = ({ match }) => {
+const ArtistDetail = ({ match, deleteArtist }) => {
 	const history = useHistory();
 
 	window.scrollTo(0, 0);
@@ -37,7 +37,7 @@ const ArtistDetail = ({ match }) => {
 				setArtist([response]);
 				setArtistName([response.name]);
 				setArtistId([response.id]);localStorage.setItem('latestArtistId', response.id);
-				console.log(localStorage.getItem('latestArtistId'))
+				// console.log(localStorage.getItem('latestArtistId'))
 			})
 			// .then(() => {
 			// 	setArtistIsSet(true);
@@ -50,6 +50,8 @@ const ArtistDetail = ({ match }) => {
 		// eslint-disable-next-line
 	}, []);
 
+	
+	
 	const onDeletedArtist = (e) => {
 		const url = `${BACKENDURL}/artists/${match.params.id}`;
 
@@ -62,13 +64,16 @@ const ArtistDetail = ({ match }) => {
 		})
 			.then((res) => {
 				setDeleted(true);
+				deleteArtist(match.params.id)
+				history.push(`/${localStorage.getItem('username')}`)
 			})
 			.catch(console.error);
 			
-			window.location.pathname = (`/${localStorage.getItem('username')}`)
 			};
 			
 
+			
+			
 	const entranceText = {
 		position: 'fixed',
 		top: '50%',

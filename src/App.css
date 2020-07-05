@@ -301,10 +301,25 @@ h2 {
 }
 
 
+
+
 .artistHeader {
 	position: fixed;
-	top: 45%;
+	top: 40%;
 	left: 40%;
+	color: red;
+}
+
+#artistHeader1 {
+	left: 35%;
+}
+
+#artistHeader2 {
+	transform: rotateZ(55deg);
+}
+
+#artistHeader3 {
+	transform: rotateZ(200deg)
 }
 
 .artsContainer {
@@ -314,6 +329,13 @@ h2 {
 	line-height: 30px;
 }
 
+
+
+.newArtistHeader {
+	color: red;
+	margin-left: 20px;
+	font-weight: 800;
+}
 
 .select {
 	appearance: none;

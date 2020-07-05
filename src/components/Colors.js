@@ -44,7 +44,6 @@ function Colors(props) {
 	const fetchColors = async () => {
 		const piecesData = await fetch(
 			'https://q4backend.herokuapp.com/artwork/'
-			// `${BACKENDURL}/pieces`
 		);
 		const pieces = await piecesData.json();
 		// console.log(pieces);
