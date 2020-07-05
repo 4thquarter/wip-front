@@ -53,16 +53,16 @@ function User(props) {
 	if (props.userArtists[0]) {
 		// console.log('yee');
 		
-		userArtists = props.userArtists.map((artist) => {
+		userArtists = props.userArtists.map((artist, i) => {
 		return (<a
-		className='artistLink'
+		className={'artistLink'}
 		onClick={(e) => {
 			e.preventDefault();
 			history.push(`/artists/${artist.id}`);
 		}}
 		style={{cursor: 'pointer'}}>
 			
-			<h1 key={artist.id} className='artistHeader'>{artist.name}</h1>
+			<h1 key={artist.id} className='artistHeader' id={'artistHeader' + (i+1)}>{artist.name}</h1>
 			
 		</a>
 		)
