@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import PieceCreate from './PieceCreate';
 import '../css/ArtistDetail.css';
 
-const ArtistDetail = ({ match }) => {
+const ArtistDetail = ({ match, deleteArtist }) => {
 	const history = useHistory();
 
 	window.scrollTo(0, 0);
@@ -64,10 +64,11 @@ const ArtistDetail = ({ match }) => {
 		})
 			.then((res) => {
 				setDeleted(true);
+				deleteArtist(match.params.id)
+				history.push(`/${localStorage.getItem('username')}`)
 			})
 			.catch(console.error);
 			
-			history.push(`/${localStorage.getItem('username')}`)
 			};
 			
 

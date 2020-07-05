@@ -749,7 +749,19 @@ function App() {
 	
 	
 	
+	// DELETING ARTIST
 	
+	function deleteArtist(id) {
+		let number = parseInt(id, 10)
+		let newArtists = []
+		for (let i=0; i<userArtists.length; i++) {
+			if (userArtists[i].id != number) {
+				newArtists.push(userArtists[i])
+			}
+		}
+		setUserArtists(newArtists)
+		localStorage['userArtists'] = JSON.stringify(newArtists)
+	}
 
 	
 	
@@ -797,7 +809,7 @@ function App() {
 					render={(props) => {
 						return (
 							<>
-								<ArtistDetail {...props} />
+								<ArtistDetail {...props} deleteArtist={deleteArtist} />
 							</>
 						);
 					}}
