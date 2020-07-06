@@ -205,7 +205,7 @@ const ArtistDetail = ({ match, deleteArtist }) => {
 				{/* <PieceCreate artistName={artistName} artistId={artistId} /> */}
 				{/* <Route exact path='/artists/:id/create' component={PieceCreate} /> */}
 
-				<Link
+				{/* <Link
 					className='anchor-to-fix'
 					to={`/artists/${artistId}/add_piece`}
 					artistId={artistId}
@@ -213,12 +213,17 @@ const ArtistDetail = ({ match, deleteArtist }) => {
 					// component={PieceCreate}
 					// artistName={artistName}
 					// artistId={artistId}
-				>
+				> */}
+				<a
+				className={'artistLink'}
+				onClick={(e) => {
+					e.preventDefault();
+					history.push(`/artists/${artistId}/add_piece`);
+				}}
+				style={{cursor: 'pointer'}}>
 					<button className='details-add-piece-button'>add piece</button>
-				</Link>
-				<Link className='anchor-to-fix' to={`/artists/${match.params.id}/edit`}>
-					<button className='details-update-button'>edit artist</button>
-				</Link>
+				</a>
+				
 				<button className='details-delete-button' onClick={onDeletedArtist}>
 					delete artist
 				</button>
