@@ -86,8 +86,8 @@ function App() {
 	
 	
 	useEffect(() => {
-		console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
-		// console.log('app useffecting')
+		// console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
+		console.log('app useffecting')
 
 		window.addEventListener('scroll', onScroll);
 		window.addEventListener('wheel', onAttemptedScroll);
@@ -264,14 +264,13 @@ function App() {
 			window.requestAnimationFrame(scrollToLeft);
 			window.scrollTo(c - c / 20, 0);
 		}
-	};
-	
+	};	
 	
 	
 	
 	
 	const colorAnimation = {
-		backgroundColor: `${colorValue}`,
+		backgroundColor: window.location.pathname === '/colors' ? `${colorValue}` : 'black',
 	};
 	
 	const navAnimation = {

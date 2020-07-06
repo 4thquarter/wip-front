@@ -747,6 +747,11 @@ svg {
 
 
 
+
+
+
+
+
 /* COLOR GALLERY */
 
 
@@ -903,85 +908,6 @@ svg {
 
 
 
-/* GALLERY */
-
-
-.Arts {
-	display: flex;
-	margin-top: 8px;
-	margin-right: 8px;
-	margin-left: 200px;
-}
-
-.Art {
-	margin: 10px;
-	max-height: 750px;
-}
-
-.galleryPiece {
-	height: 100%;
-	/* width: 100%; */
-	/* max-height: 570px; */
-	/* object-fit: contain; */
-}
-
-
-
-
-
-/* ABOUT BUTTON */
-
-.about {
-	color: #ff4400;
-	position: fixed;
-	right: 30px;
-	bottom: 5px;
-	margin-top: 8px;
-	font-weight: 800;
-}
-
-.about:hover {
-	color: #7b2619;
-}
-
-.about:active {
-	transform: translateY(4px);
-}
-
-
-
-
-
-/* ABOUT PAGE */
-
-.aboutText {
-	position: absolute;
-	right: 20px;
-	font-style: italic;
-	margin-left: 20px;
-	text-align: right;
-}
-
-.credit {
-	color: red;
-	font-style: none;
-	position: absolute;
-	bottom: 22px;
-	right: 20px;
-	display: inline-block;
-}
-
-.website {
-	text-decoration: none;
-	color: red;
-	border: 2px solid white;
-	padding: 5px;
-}
-
-.website:hover {
-	color: white;
-	background-color: blue;
-}
 
 
 
