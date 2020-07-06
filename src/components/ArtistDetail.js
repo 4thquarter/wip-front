@@ -46,7 +46,7 @@ const ArtistDetail = ({ match, deleteArtist }) => {
 				console.error(error);
 			});
 
-		console.log(response);
+		// console.log(response);
 		// eslint-disable-next-line
 	}, []);
 
