@@ -23,6 +23,11 @@ body {
 }
 
 
+button:focus {
+	outline: none;
+}
+
+
 
 
 
@@ -574,14 +579,6 @@ svg {
 
 
 
-
-
-
-
-
-
-
-
 #ct1:hover {
 	fill: red;
 }
@@ -617,6 +614,23 @@ svg {
 :not(svg) {
 	transform-origin: 100px 100px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -681,6 +695,11 @@ svg {
   /* z-index: -10; */
   /* display: inline-flex; */
 }
+
+
+
+
+
 
 
 /* ARTISTS GALLERY */
