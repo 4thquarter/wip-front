@@ -86,8 +86,8 @@ function App() {
 	
 	
 	useEffect(() => {
-		// console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
-		console.log('app useffecting')
+		console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
+		// console.log('app useffecting')
 
 		window.addEventListener('scroll', onScroll);
 		window.addEventListener('wheel', onAttemptedScroll);
@@ -97,7 +97,7 @@ function App() {
 		getArtistData()
 		getArtData()
 		
-		console.log(localStorage['userArtists'])
+		// console.log(localStorage['userArtists'])
 		
 		let access = localStorage.getItem('accessToken')
 					// console.log(access)

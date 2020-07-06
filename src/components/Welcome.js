@@ -5,6 +5,7 @@ import "../css/Welcome.css";
 import { motion } from "framer-motion";
 
 const Welcome = () => {
+	
 	const icon = {
 		hidden: {
 			opacity: 0,

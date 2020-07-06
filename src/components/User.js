@@ -75,8 +75,8 @@ function User(props) {
 			<div className='artistHeadersContainer'>{userArtists}</div>
 			<div className='submitArtContainer'>
 				<p className={props.error ? 'error' : 'hidden'}>{props.error}</p>
-				<p className='newArtistHeader'>NEW ARTIST</p>
-				<form className='artist-form'>
+				<p className={props.userArtists[2] ? 'hidden' : 'newArtistHeader'}>NEW ARTIST</p>
+				<form className={props.userArtists[2] ? 'hidden' : 'artist-form'}>
 					<input
 						className='inputBox'
 						placeholder='name / pseudonym'
