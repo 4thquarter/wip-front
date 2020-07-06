@@ -83,8 +83,6 @@ function App() {
 
 	const [scrollValue, setScrollValue] = useState(0);
 	const [colorValue, setColorValue] = useState(0);
-
-	
 	
 	
 	useEffect(() => {
@@ -99,6 +97,7 @@ function App() {
 		getArtistData()
 		getArtData()
 		
+		console.log(localStorage['userArtists'])
 		
 		let access = localStorage.getItem('accessToken')
 					// console.log(access)
