@@ -79,6 +79,7 @@ function User(props) {
 				<p className={props.error ? 'error' : 'hidden'}>{props.error}</p>
 				<p className={props.userArtists[2] ? 'hidden' : 'newArtistHeader'}>NEW ARTIST</p>
 				<form className={props.userArtists[2] ? 'hidden' : 'artist-form'}>
+<<<<<<< HEAD
 =======
 	const colorChoices = colors.map((color) => {
 		return (
@@ -129,6 +130,8 @@ function User(props) {
 
 				<form className='artist-form'>
 >>>>>>> linted
+=======
+>>>>>>> limit user artists to 3
 					<input
 						className='inputBox'
 						placeholder='name / pseudonym'

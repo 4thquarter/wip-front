@@ -86,12 +86,17 @@ function App() {
 	
 	
 	useEffect(() => {
+<<<<<<< HEAD
 		// console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
 <<<<<<< HEAD
 		// console.log('app useffecting')
 =======
 		console.log('app useffecting')
 >>>>>>> deleted viewbox and started matching users/artists
+=======
+		console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
+		// console.log('app useffecting')
+>>>>>>> limit user artists to 3
 
 		window.addEventListener('scroll', onScroll);
 		window.addEventListener('wheel', onAttemptedScroll);
