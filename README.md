@@ -15,8 +15,8 @@
 
 ### planned features
 
-- Present to the user a visualization of trades they have completed, including items traded by other users as part of the same transaction.
-- Email the user when a trade is proposed so that they don't have to log in to the app to check if they have offers pending.
+- Make the mediums and artists galleries more visually interesting
+- Display the user's artists in the first [up to three] slots of the artists gallery
 
 ### technologies used
 
