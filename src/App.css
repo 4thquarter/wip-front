@@ -23,8 +23,16 @@ body {
 }
 
 
+button:hover {
+	border: none;
+}
+
 button:focus {
 	outline: none;
+}
+
+button:active {
+	translate: 4px
 }
 
 
@@ -346,6 +354,7 @@ h2 {
 	appearance: none;
 	box-sizing: border-box;
 	width: 80px;
+	height:420px;
 	border: 2px solid #B6AB92;
 	border-radius: 0px;
 	/* border-top: none;
@@ -355,10 +364,18 @@ h2 {
 	padding: 2px;
 	margin-left: 2px;
 	text-align-last: center;
+	color: #B6AB92;
+	font-weight: 800;
 }
 
 .select:focus {
 	outline: 0;
+}
+
+.select:hover {
+	background:red;
+	border: 2px solid black;
+	color: black;
 }
 
 #artTiers,

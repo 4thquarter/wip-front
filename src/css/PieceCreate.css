@@ -1,0 +1,38 @@
+.pieceForm {
+  position: fixed;
+  top: 15vh;
+  left: 15vh;
+}
+
+select option[data-default] {
+  display: none;
+}
+
+.mediumSelect, .colorSelect:hover {
+  background: red;
+  background-color: red;
+}
+
+.artSubmit {
+  width: 10vh;
+  height: 10vh;
+}
+
+.artSubmit:hover {
+  border: none;
+  width: 9vh;
+  height: 9vh;
+}
+
+.inputBox:hover {
+  background-color: red;
+  border: none;
+}
+
+.inputBox:hover::placeholder {
+  color: black
+}
+
+.inputBox:focus::placeholder {
+  color: transparent;
+}

@@ -218,7 +218,7 @@ const ArtistDetail = ({ match, deleteArtist }) => {
 				className={'artistLink'}
 				onClick={(e) => {
 					e.preventDefault();
-					history.push(`/artists/${artistId}/add_piece`);
+					history.push(`/artists/${artistId}/addpiece`);
 				}}
 				style={{cursor: 'pointer'}}>
 					<button className='details-add-piece-button'>add piece</button>

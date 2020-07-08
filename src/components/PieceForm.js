@@ -85,7 +85,7 @@ export default PieceForm;
 
 
 
-{
+
 	/* <form autoComplete='yeeyee'>
 					<input
 						className='inputBox'
@@ -130,7 +130,7 @@ export default PieceForm;
 						===>
 					</button>
 				</form> */
-}
+
 
 
 // <div className='submitArtContainer'>
