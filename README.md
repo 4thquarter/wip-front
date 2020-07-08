@@ -31,7 +31,7 @@
 
 ### contribution guidelines
 
-- [Issues](https://github.com/briansamtrent/paperclip-frontend/issues)
+- [Issues](https://github.com/4thquarter/wip-front/issues)
 
 ### backend
 
