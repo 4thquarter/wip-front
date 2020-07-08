@@ -4,5 +4,35 @@
 
 ![home page](/public/[wip].png?raw=true "[wip]")
 
+## CURRENT FEATURES
 
-the frontend uses React for its structure.
+- Create an account
+- Log in to the app
+- Add and remove up to three artists on your profile
+- Add and remove pieces for your artist showcase
+- Group pieces by color and medium - if you're lucky, one of them may be featured in our colors or mediums galleries!
+- You may visit the colors, mediums, or artists galleries - which are randomly generated, both in structure and content
+
+## PLANNED FEATURES
+
+- Present to the user a visualization of trades they have completed, including items traded by other users as part of the same transaction.
+- Email the user when a trade is proposed so that they don't have to log in to the app to check if they have offers pending.
+
+## TECHNOLOGIES USED
+
+- HTML
+- CSS
+- Javascript
+- React
+- Node
+- Python
+- Django
+- PostgreSQL
+
+## CONTRIBUTION GUIDELINES
+
+- [Issues](https://github.com/briansamtrent/paperclip-frontend/issues)
+
+## BACKEND
+
+- [Backend](https://github.com/4thquarter/project-backend)
