@@ -13,12 +13,12 @@
 - Group pieces by color and medium - if you're lucky, one of them may be featured in our colors or mediums galleries!
 - You may visit the colors, mediums, or artists galleries - which are randomly generated, both in structure and content
 
-## planned features
+### planned features
 
 - Present to the user a visualization of trades they have completed, including items traded by other users as part of the same transaction.
 - Email the user when a trade is proposed so that they don't have to log in to the app to check if they have offers pending.
 
-## technologies used
+### technologies used
 
 - HTML
 - CSS
@@ -29,10 +29,10 @@
 - Django
 - PostgreSQL
 
-## contribution guidelines
+### contribution guidelines
 
 - [Issues](https://github.com/briansamtrent/paperclip-frontend/issues)
 
-## backend
+### backend
 
 - [Backend](https://github.com/4thquarter/p4back)
