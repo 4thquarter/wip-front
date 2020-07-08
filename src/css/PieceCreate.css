@@ -24,6 +24,7 @@ select option[data-default] {
   height: 9vh;
 }
 
+<<<<<<< HEAD
 .inputBox:hover::placeholder {
   color: red
 }
@@ -61,3 +62,17 @@ input[type="file"] {
 }
 
 
+=======
+.inputBox:hover {
+  background-color: red;
+  border: none;
+}
+
+.inputBox:hover::placeholder {
+  color: black
+}
+
+.inputBox:focus::placeholder {
+  color: transparent;
+}
+>>>>>>> made piece create form, cleaned up a little

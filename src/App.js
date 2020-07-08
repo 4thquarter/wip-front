@@ -838,7 +838,11 @@ function App() {
 					render={(props) => {
 						return (
 							<>
+<<<<<<< HEAD
 								<PieceCreate {...props} userArtists={userArtists} />
+=======
+								<PieceCreate {...props} />
+>>>>>>> made piece create form, cleaned up a little
 							</>
 						);
 					}}

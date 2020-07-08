@@ -34,9 +34,13 @@ const PieceCreate = () => {
 	const [mediaName, setMediaName] = useState(null)
 	const [mediaFile, setMediaFile] = useState(null)
 	const [createdId, setCreatedId] = useState(null);
+<<<<<<< HEAD
 	const [error, setError] = useState(false);
 	
 	const history = useHistory()
+=======
+  const [error, setError] = useState(false);
+>>>>>>> made piece create form, cleaned up a little
 	// const [passedArtistName, setPassedArtistName] = useState(match.params.artistName);
 	// const [passedArtistId, setPassedArtistId] = useState(artistId);
     
@@ -136,17 +140,29 @@ const PieceCreate = () => {
 		'mixed',
 	];
 
+<<<<<<< HEAD
 	const colorChoices = colors.map((color, i) => {
 		return (
 			<option key={i}>
+=======
+	const colorChoices = colors.map((color) => {
+		return (
+			<option value={color._id} key={color._id}>
+>>>>>>> made piece create form, cleaned up a little
 				{color}
 			</option>
 		);
 	});
 
+<<<<<<< HEAD
 	const mediumChoices = mediums.map((medium, i) => {
 		return (
 			<option key={i}>
+=======
+	const mediumChoices = mediums.map((medium) => {
+		return (
+			<option value={medium._id} key={medium._id}>
+>>>>>>> made piece create form, cleaned up a little
 				{medium}
 			</option>
 		);
@@ -162,6 +178,9 @@ const PieceCreate = () => {
 				{error && <p>Something went wrong... Please try again!</p>}
 			</div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> made piece create form, cleaned up a little
 			<div className='submitArt'>
 				<form autoComplete='yeeyee' className="pieceForm">
 					<input
@@ -175,6 +194,7 @@ const PieceCreate = () => {
 					/>
 
 					<select
+<<<<<<< HEAD
 						name='primary_palette'
 						id='color'
 						onChange={handleChange}
@@ -209,6 +229,24 @@ const PieceCreate = () => {
 						type="file"
 						accept=".png,.jpg,.jpeg">
 					</input>
+=======
+						name='colorSelect'
+						id='colorSelect'
+						onChange={handleChange}
+						className='select'>
+						<option value="" selected data-default>color</option>
+						{colorChoices}
+					</select>
+
+					<select
+						name='mediumSelect'
+						id='mediumSelect'
+						onChange={handleChange}
+						className='select'>
+						<option value="" selected data-default>medium</option>
+						{mediumChoices}
+					</select>
+>>>>>>> made piece create form, cleaned up a little
 
 					<button
 						className='artSubmit'
@@ -219,6 +257,7 @@ const PieceCreate = () => {
 					</button>
 				</form>
 			</div>
+<<<<<<< HEAD
 =======
 			<PieceForm
 				piece={piece}
@@ -226,6 +265,8 @@ const PieceCreate = () => {
 				handleSubmit={handleSubmit}
 			/>
 >>>>>>> deploy test 1
+=======
+>>>>>>> made piece create form, cleaned up a little
 		</>
 	);
 };
