@@ -35,4 +35,4 @@
 
 ### backend
 
-- [Backend](https://github.com/4thquarter/p4back)
+- [backend](https://github.com/4thquarter/p4back)
