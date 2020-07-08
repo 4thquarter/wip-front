@@ -550,11 +550,11 @@ function App() {
 				}
 			})
 			.then((data) => {
-				console.log(data);
+				// console.log(data);
 				if (data) {
 					localStorage.setItem('accessToken', `${data.access}`);
 					let access = localStorage.getItem('accessToken');
-					console.log(access);
+					// console.log(access);
 					localStorage.setItem('username', `${username}`);
 					localStorage.setItem('email', `${email}`);
 					
@@ -810,7 +810,17 @@ function App() {
 						);
 					}}
 			/>
-			<Route exact path='/artists/:id/add_piece' component={PieceCreate} />
+			<Route
+					path='/artists/:id/addpiece'
+					exact={true}
+					render={(props) => {
+						return (
+							<>
+								<PieceCreate {...props} />
+							</>
+						);
+					}}
+			/>
 			<Route exact path='/pieces/:id' component={PieceDetail} />
 			
 			<Switch>

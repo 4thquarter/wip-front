@@ -60,7 +60,8 @@ function User(props) {
 			e.preventDefault();
 			history.push(`/artists/${artist.id}`);
 		}}
-		style={{cursor: 'pointer'}}>
+		style={{cursor: 'pointer'}}
+		key={artist.id}>
 			
 			<h1 key={artist.id} className='artistHeader' id={'artistHeader' + (i+1)}>{artist.name}</h1>
 			
