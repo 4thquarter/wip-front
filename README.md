@@ -4,7 +4,7 @@
 
 ![home page](/public/[wip].png?raw=true "[wip]")
 
-## current features
+### current features
 
 - Create an account
 - Log in to the app
