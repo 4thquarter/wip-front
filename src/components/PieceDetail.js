@@ -164,9 +164,6 @@ const PieceDetail = ({ match }) => {
 								<Link
 									className='anchor-to-fix'
 									to={`/pieces/${match.params.id}/edit`}>
-									<button className='details-update-button' id='piece-button1'>
-										edit
-									</button>
 								</Link>
 								<button
 									className='details-delete-button'

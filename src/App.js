@@ -816,7 +816,7 @@ function App() {
 					render={(props) => {
 						return (
 							<>
-								<PieceCreate {...props} />
+								<PieceCreate {...props} userArtists={userArtists} />
 							</>
 						);
 					}}
@@ -877,12 +877,22 @@ function App() {
 						<>
 							{/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
 							<div className='userSignIn'>
-								<Link to='/signup'>
+								<a
+								className='signUpLink'
+								onClick={(e) => {
+									e.preventDefault();
+									history.push('/signup');
+								}}>
 									<h2 className='navSignButton'>sign up</h2>
-								</Link>
-								<Link to='/signin'>
+								</a>
+								<a
+								className='signInLink'
+								onClick={(e) => {
+									e.preventDefault();
+									history.push('/signin');
+								}}>
 									<h2 className='navSignButton'>sign in</h2>
-								</Link>
+								</a>
 							</div>
 						</>
 					);

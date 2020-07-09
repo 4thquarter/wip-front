@@ -86,6 +86,7 @@ a {
 a:hover {
 	text-decoration: none;
 	color: grey;
+	cursor: pointer;
 }
 
 h1 {
@@ -170,6 +171,7 @@ h2 {
 
 .navSignButton:hover {
 	color: #695F49;
+	cursor: pointer;
 }
 
 .navSignButton:active {
@@ -230,6 +232,7 @@ h2 {
 	height: 20px;
 	font-size: 10pt;
 	caret-color: #B6AB92;
+	font-weight: 800;
 }
 
 .inputBox:focus {
