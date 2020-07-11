@@ -71,7 +71,7 @@ const PieceCreate = ({props, match}) => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data)
+				// console.log(data)
 				setCreatedId(data.id);
 								
 				mediaData.set('artwork', data.id)
@@ -89,7 +89,7 @@ const PieceCreate = ({props, match}) => {
 						})
 							.then((res) => res.json())
 							.then((data) => {
-								console.log(data)
+								// console.log(data)
 								history.push(`/artists/${match.params.id}`);
 							})
 				
@@ -132,17 +132,17 @@ const PieceCreate = ({props, match}) => {
 		'mixed',
 	];
 
-	const colorChoices = colors.map((color) => {
+	const colorChoices = colors.map((color, i) => {
 		return (
-			<option value={color._id} key={color._id}>
+			<option key={i}>
 				{color}
 			</option>
 		);
 	});
 
-	const mediumChoices = mediums.map((medium) => {
+	const mediumChoices = mediums.map((medium, i) => {
 		return (
-			<option value={medium._id} key={medium._id}>
+			<option key={i}>
 				{medium}
 			</option>
 		);
@@ -173,21 +173,27 @@ const PieceCreate = ({props, match}) => {
 						name='primary_palette'
 						id='color'
 						onChange={handleChange}
-						className='select'>
-						<option value="" selected data-default>color</option>
+						className='select'
+						defaultValue={"DEFAULT"}>
+							
+						<option value="DEFAULT" disabled>color</option>
 						{colorChoices}
+						
 					</select>
 
 					<select
 						name='medium'
 						id='medium'
 						onChange={handleChange}
-						className='select'>
-						<option value="" selected data-default>medium</option>
+						className='select'
+						defaultValue={"DEFAULT"}>
+							
+						<option value="DEFAULT" disabled>medium</option>
 						{mediumChoices}
+						
 					</select>
 					
-					<label for="fileUpload" className="custom-file-upload">
+					<label htmlFor="fileUpload" className="custom-file-upload">
 				    {mediaName ? mediaName : 'photo'}
 					</label>
 					<input
