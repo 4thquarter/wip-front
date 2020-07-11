@@ -86,8 +86,8 @@ function App() {
 	
 	
 	useEffect(() => {
-		// console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
-		console.log('app useffecting')
+		console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
+		// console.log('app useffecting')
 
 		window.addEventListener('scroll', onScroll);
 		window.addEventListener('wheel', onAttemptedScroll);
@@ -406,7 +406,7 @@ function App() {
 				break;
 				
 			default:
-				console.log('switch is broke');
+				// console.log('switch is broke');
 		}
 	}
 
@@ -415,7 +415,7 @@ function App() {
 
 	function checkSubmit(event) {
 		event.preventDefault();
-		console.log('checking submit');
+		// console.log('checking submit');
 
 		switch (event.target.name) {
 			case 'signUp':
@@ -469,7 +469,7 @@ function App() {
 				break;
 
 			default:
-				console.log('switch is broke');
+				// console.log('switch is broke');
 				break;
 		}
 	}
