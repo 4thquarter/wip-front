@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import { BACKENDURL } from '../config';
 import { motion } from 'framer-motion';
 import '../css/PieceDetail.css';
@@ -9,10 +9,13 @@ import '../css/PieceDetail.css';
 const PieceDetail = ({ match }) => {
 	window.scrollTo(0, 0);
 
+	const history = useHistory()
+	
 	const [deleted, setDeleted] = useState(false);
 	const [error, setError] = useState(false);
 	const [piece, setPiece] = useState(null);
 	const [artist, setArtist] = useState(null);
+	const [artistId, setArtistId] = useState(null);
 
 	// useEffect(() => {
 	// 	const artUrl = `${BACKENDURL}/artwork/${match.params.id}`;
@@ -57,23 +60,30 @@ const PieceDetail = ({ match }) => {
 				setError(error);
 			});
 		const artistId = piece.artist;
-		console.log(`THIS IS ${artistId}`);
+		// console.log(`THIS IS ${artistId}`);
 		const artist = await fetch(`${BACKENDURL}/artists/${artistId}`).then(
 			async (response) => {
 				const res = await response.json();
-				console.log(res.name);
+				// console.log(res.name);
 				return res.name;
 			}
 		);
 		setArtist(artist);
+		setArtistId(artistId)
 		setPiece(piece);
 	}
 
 	const onDeletedPiece = (e) => {
-		const artUrl = `${BACKENDURL}/artwork/${match.params.id}`;
-		fetch(artUrl, { method: 'DELETE' })
+		const url = `${BACKENDURL}/artwork/${match.params.id}`;
+		fetch(url, { 
+			method: 'DELETE',
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+			},
+		})
 			.then((res) => {
 				setDeleted(true);
+				history.push(`/artists/${artistId}`)
 			})
 			.catch(console.error);
 	};
@@ -164,9 +174,6 @@ const PieceDetail = ({ match }) => {
 								<Link
 									className='anchor-to-fix'
 									to={`/pieces/${match.params.id}/edit`}>
-									<button className='details-update-button' id='piece-button1'>
-										edit
-									</button>
 								</Link>
 								<button
 									className='details-delete-button'

@@ -1,0 +1,63 @@
+.pieceForm {
+  position: fixed;
+  top: 15vh;
+  left: 15vh;
+}
+
+select option[data-default] {
+  display: none;
+}
+
+.mediumSelect, .colorSelect:hover {
+  background: red;
+  background-color: red;
+}
+
+.artSubmit {
+  width: 10vh;
+  height: 10vh;
+}
+
+.artSubmit:hover {
+  border: none;
+  width: 9vh;
+  height: 9vh;
+}
+
+.inputBox:hover::placeholder {
+  color: red
+}
+
+.inputBox:focus::placeholder {
+  color: transparent;
+}
+
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 2px solid #B6AB92;
+  width: 12vh;
+  text-align: center;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: #B6AB92;
+  font-weight: 800;
+  font-size: 12px
+}
+
+.custom-file-upload:hover {
+  background-color: red;
+  border-color: transparent;
+  color: black;
+  
+}
+
+.custom-file-upload:active {
+  color: #B6AB92;  
+}
+
+

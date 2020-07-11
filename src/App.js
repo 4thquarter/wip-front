@@ -87,7 +87,7 @@ function App() {
 	
 	useEffect(() => {
 		// console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
-		console.log('app useffecting')
+		// console.log('app useffecting')
 
 		window.addEventListener('scroll', onScroll);
 		window.addEventListener('wheel', onAttemptedScroll);
@@ -97,7 +97,7 @@ function App() {
 		getArtistData()
 		getArtData()
 		
-		console.log(localStorage['userArtists'])
+		// console.log(localStorage['userArtists'])
 		
 		let access = localStorage.getItem('accessToken')
 					// console.log(access)
@@ -264,14 +264,13 @@ function App() {
 			window.requestAnimationFrame(scrollToLeft);
 			window.scrollTo(c - c / 20, 0);
 		}
-	};
-	
+	};	
 	
 	
 	
 	
 	const colorAnimation = {
-		backgroundColor: `${colorValue}`,
+		backgroundColor: window.location.pathname === '/colors' ? `${colorValue}` : 'black',
 	};
 	
 	const navAnimation = {
@@ -407,7 +406,7 @@ function App() {
 				break;
 				
 			default:
-				console.log('switch is broke');
+				// console.log('switch is broke');
 		}
 	}
 
@@ -416,7 +415,7 @@ function App() {
 
 	function checkSubmit(event) {
 		event.preventDefault();
-		console.log('checking submit');
+		// console.log('checking submit');
 
 		switch (event.target.name) {
 			case 'signUp':
@@ -426,7 +425,7 @@ function App() {
 				if (email === null) break;
 
 			default:
-				console.log('switch is broke');
+				// console.log('switch is broke');
 				break;
 		}
 
@@ -470,7 +469,7 @@ function App() {
 				break;
 
 			default:
-				console.log('switch is broke');
+				// console.log('switch is broke');
 				break;
 		}
 	}
@@ -551,11 +550,11 @@ function App() {
 				}
 			})
 			.then((data) => {
-				console.log(data);
+				// console.log(data);
 				if (data) {
 					localStorage.setItem('accessToken', `${data.access}`);
 					let access = localStorage.getItem('accessToken');
-					console.log(access);
+					// console.log(access);
 					localStorage.setItem('username', `${username}`);
 					localStorage.setItem('email', `${email}`);
 					
@@ -811,7 +810,17 @@ function App() {
 						);
 					}}
 			/>
-			<Route exact path='/artists/:id/add_piece' component={PieceCreate} />
+			<Route
+					path='/artists/:id/addpiece'
+					exact={true}
+					render={(props) => {
+						return (
+							<>
+								<PieceCreate {...props} userArtists={userArtists} />
+							</>
+						);
+					}}
+			/>
 			<Route exact path='/pieces/:id' component={PieceDetail} />
 			
 			<Switch>
@@ -868,12 +877,22 @@ function App() {
 						<>
 							{/* USER BUTTON ON CLICK WHILE NOT SIGNED IN */}
 							<div className='userSignIn'>
-								<Link to='/signup'>
+								<a
+								className='signUpLink'
+								onClick={(e) => {
+									e.preventDefault();
+									history.push('/signup');
+								}}>
 									<h2 className='navSignButton'>sign up</h2>
-								</Link>
-								<Link to='/signin'>
+								</a>
+								<a
+								className='signInLink'
+								onClick={(e) => {
+									e.preventDefault();
+									history.push('/signin');
+								}}>
 									<h2 className='navSignButton'>sign in</h2>
-								</Link>
+								</a>
 							</div>
 						</>
 					);

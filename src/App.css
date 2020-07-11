@@ -23,6 +23,19 @@ body {
 }
 
 
+button:hover {
+	border: none;
+}
+
+button:focus {
+	outline: none;
+}
+
+button:active {
+	translate: 4px
+}
+
+
 
 
 
@@ -73,6 +86,7 @@ a {
 a:hover {
 	text-decoration: none;
 	color: grey;
+	cursor: pointer;
 }
 
 h1 {
@@ -157,6 +171,7 @@ h2 {
 
 .navSignButton:hover {
 	color: #695F49;
+	cursor: pointer;
 }
 
 .navSignButton:active {
@@ -217,6 +232,7 @@ h2 {
 	height: 20px;
 	font-size: 10pt;
 	caret-color: #B6AB92;
+	font-weight: 800;
 }
 
 .inputBox:focus {
@@ -341,6 +357,7 @@ h2 {
 	appearance: none;
 	box-sizing: border-box;
 	width: 80px;
+	height:420px;
 	border: 2px solid #B6AB92;
 	border-radius: 0px;
 	/* border-top: none;
@@ -350,10 +367,18 @@ h2 {
 	padding: 2px;
 	margin-left: 2px;
 	text-align-last: center;
+	color: #B6AB92;
+	font-weight: 800;
 }
 
 .select:focus {
 	outline: 0;
+}
+
+.select:hover {
+	background:red;
+	border: 2px solid black;
+	color: black;
 }
 
 #artTiers,
@@ -574,14 +599,6 @@ svg {
 
 
 
-
-
-
-
-
-
-
-
 #ct1:hover {
 	fill: red;
 }
@@ -617,6 +634,23 @@ svg {
 :not(svg) {
 	transform-origin: 100px 100px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -683,6 +717,11 @@ svg {
 }
 
 
+
+
+
+
+
 /* ARTISTS GALLERY */
 
 
@@ -743,6 +782,11 @@ svg {
   /* z-index: -10; */
   /* display: inline-flex; */
 }
+
+
+
+
+
 
 
 
@@ -903,85 +947,6 @@ svg {
 
 
 
-/* GALLERY */
-
-
-.Arts {
-	display: flex;
-	margin-top: 8px;
-	margin-right: 8px;
-	margin-left: 200px;
-}
-
-.Art {
-	margin: 10px;
-	max-height: 750px;
-}
-
-.galleryPiece {
-	height: 100%;
-	/* width: 100%; */
-	/* max-height: 570px; */
-	/* object-fit: contain; */
-}
-
-
-
-
-
-/* ABOUT BUTTON */
-
-.about {
-	color: #ff4400;
-	position: fixed;
-	right: 30px;
-	bottom: 5px;
-	margin-top: 8px;
-	font-weight: 800;
-}
-
-.about:hover {
-	color: #7b2619;
-}
-
-.about:active {
-	transform: translateY(4px);
-}
-
-
-
-
-
-/* ABOUT PAGE */
-
-.aboutText {
-	position: absolute;
-	right: 20px;
-	font-style: italic;
-	margin-left: 20px;
-	text-align: right;
-}
-
-.credit {
-	color: red;
-	font-style: none;
-	position: absolute;
-	bottom: 22px;
-	right: 20px;
-	display: inline-block;
-}
-
-.website {
-	text-decoration: none;
-	color: red;
-	border: 2px solid white;
-	padding: 5px;
-}
-
-.website:hover {
-	color: white;
-	background-color: blue;
-}
 
 
 

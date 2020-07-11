@@ -60,7 +60,8 @@ function User(props) {
 			e.preventDefault();
 			history.push(`/artists/${artist.id}`);
 		}}
-		style={{cursor: 'pointer'}}>
+		style={{cursor: 'pointer'}}
+		key={artist.id}>
 			
 			<h1 key={artist.id} className='artistHeader' id={'artistHeader' + (i+1)}>{artist.name}</h1>
 			
@@ -75,8 +76,8 @@ function User(props) {
 			<div className='artistHeadersContainer'>{userArtists}</div>
 			<div className='submitArtContainer'>
 				<p className={props.error ? 'error' : 'hidden'}>{props.error}</p>
-				<p className='newArtistHeader'>NEW ARTIST</p>
-				<form className='artist-form'>
+				<p className={props.userArtists[2] ? 'hidden' : 'newArtistHeader'}>NEW ARTIST</p>
+				<form className={props.userArtists[2] ? 'hidden' : 'artist-form'}>
 					<input
 						className='inputBox'
 						placeholder='name / pseudonym'

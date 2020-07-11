@@ -91,24 +91,8 @@
 
 .details-add-piece-button {
 	position: fixed;
-	bottom: 11vh;
-	right: 15vh;
-	margin-top: 3px;
-	padding: 5px;
-	background: transparent;
-	color: #B6AB92;
-	border: 2px solid #B6AB92;
-	font-weight: bolder;
-	font-size: 9pt;
-	width: 60px;
-	height: 60px;
-	border-radius: 90%;
-}
-
-.details-update-button {
-	position: fixed;
-	bottom: 5vh;
-	right: 15vh;
+	bottom: 8vh;
+	right: 16vh;
 	margin-top: 3px;
 	padding: 5px;
 	background: transparent;
