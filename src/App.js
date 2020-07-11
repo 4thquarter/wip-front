@@ -425,7 +425,7 @@ function App() {
 				if (email === null) break;
 
 			default:
-				console.log('switch is broke');
+				// console.log('switch is broke');
 				break;
 		}
 
