@@ -10,11 +10,25 @@ const PieceCreate = ({props, match}) => {
 		artist: match.params.id,
 		medium: '',
 		description: '',
-		primaryPalette: '',
-		secondaryPalette: '',
+		primary_palette: '',
 		owner: 1,
 	};
+	
+	const initialMediaState = {
+		title: '',
+		file_type: 'image',
+		media_url: '',
+		owner: 1,
+		artwork: '',
+	}
+	
+	const mediaData = new FormData()
+	mediaData.set('owner', 1)
+	mediaData.set('file_type', 'image')
+
 	const [piece, setPiece] = useState(initialPieceState);
+	const [mediaName, setMediaName] = useState(null)
+	const [mediaFile, setMediaFile] = useState(null)
 	const [createdId, setCreatedId] = useState(null);
 	const [error, setError] = useState(false);
 	
@@ -25,18 +39,26 @@ const PieceCreate = ({props, match}) => {
     // console.log(passedArtistName)
     // console.log(match.params.artistId)
     
-    const handleChange = (e) => {
+  const handleChange = (e) => {
 		e.persist();
 		setPiece({
 			...piece,
 			[e.target.name]: e.target.value,
 		});
 	};
+	
+	const handleMediaChange = (e) => {
+		e.persist();
+		
+		setMediaFile(e.target.files[0])
+		
+		let splitPath = e.target.value.split('\\')
+		setMediaName(splitPath[splitPath.length - 1])
+	};
 
     
 	const handleSubmit = (e) => {
-		e.preventDefault();
-		
+		e.preventDefault();		
 		const url = `${BACKENDURL}/artwork/`;
 
 		fetch(url, {
@@ -49,9 +71,31 @@ const PieceCreate = ({props, match}) => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
+				console.log(data)
+				setCreatedId(data.id);
+								
+				mediaData.set('artwork', data.id)
+				mediaData.set('name', mediaName)
+				mediaData.set('media_url', mediaFile)
+				
+
+						
+						fetch(`${BACKENDURL}/artworkmedia/`, {
+							method: 'POST',
+							headers: {
+								Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+							},
+							body: mediaData,
+						})
+							.then((res) => res.json())
+							.then((data) => {
 								console.log(data)
-								setCreatedId(data.id);
-								history.push(`/pieces/${data.id}`);
+								history.push(`/artists/${match.params.id}`);
+							})
+				
+				
+				
+				
 			})
 			.catch(() => {
 				setError(true);
@@ -126,7 +170,7 @@ const PieceCreate = ({props, match}) => {
 					/>
 
 					<select
-						name='primaryPalette'
+						name='primary_palette'
 						id='color'
 						onChange={handleChange}
 						className='select'>
@@ -143,13 +187,16 @@ const PieceCreate = ({props, match}) => {
 						{mediumChoices}
 					</select>
 					
-					<label for="fileUpload" class="custom-file-upload">
-				    media
+					<label for="fileUpload" className="custom-file-upload">
+				    {mediaName ? mediaName : 'photo'}
 					</label>
 					<input
+						name="media_url"
 						className="mediaSubmit"
 						id="fileUpload"
-						type="file">
+						onChange={handleMediaChange}
+						type="file"
+						accept=".png,.jpg,.jpeg">
 					</input>
 
 					<button
