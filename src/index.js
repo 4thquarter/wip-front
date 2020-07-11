@@ -8,7 +8,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 
-
+console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
 
 
 ReactDOM.render(

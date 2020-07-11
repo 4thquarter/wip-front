@@ -86,7 +86,7 @@ function App() {
 	
 	
 	useEffect(() => {
-		console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
+		// console.log('samrussell.com x Andrés Ortiz Montalvo  ϟ  2020');
 		// console.log('app useffecting')
 
 		window.addEventListener('scroll', onScroll);
