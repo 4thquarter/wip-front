@@ -20,16 +20,7 @@ function NavCircle(props) {
 
 	return (
 		<div>
-
-<<<<<<< HEAD
-<<<<<<< HEAD
 			<svg className='header' width='200px' height='200px'>
-=======
-			<svg className='header' width='200px' height='200px' viewBox='100 100'>
->>>>>>> deploy test 1
-=======
-			<svg className='header' width='200px' height='200px'>
->>>>>>> deleted viewbox and started matching users/artists
 				<path
 					id='curve'
 					fill='none'
@@ -70,7 +61,7 @@ function NavCircle(props) {
 									history.push('/colors');
 								}}>
 								{/* -––– colors ––––- */}
-								││ colors♕☯☭☠
+								││ colors♕☯☭
 							</a>
 						</tspan>
 
@@ -99,9 +90,9 @@ function NavCircle(props) {
 							││ artists ◰ ◱ ▲
 						</a>
 					</tspan>
-				</textPath>
-			</text>
-		</svg>
+					</textPath>
+				</text>
+			</svg>
 		</div>
 	);
 }
