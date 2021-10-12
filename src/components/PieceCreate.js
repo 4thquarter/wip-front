@@ -210,7 +210,6 @@ const PieceCreate = ({props, match}) => {
 						onClick={handleSubmit}
 						type='submit'
 						name='submit'>
-						===>
 					</button>
 				</form>
 			</div>
