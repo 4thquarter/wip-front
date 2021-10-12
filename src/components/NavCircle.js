@@ -61,7 +61,7 @@ function NavCircle(props) {
 									history.push('/colors');
 								}}>
 								{/* -––– colors ––––- */}
-								││ colors♕☯☭☠
+								││ colors♕☯☭
 							</a>
 						</tspan>
 
